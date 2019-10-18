@@ -13,16 +13,31 @@
                         v-for="(link, index) in $static.posts.edges"
                         :key="index"
                         cols="12" md="6" lg="4" xl="3" 
-                        class="link__wrapper"
+                        class="link__wrapper d-inline-flex align-items-center mb-3 px-0 px-md-2"
                     >
-                        <a
-                            :href="link.node.url"
-                            target="_blank"
-                            class="link d-flex align-items-center justify-content-start mb-5"
+                        <g-link
+                            v-if="getDomain(link.node.url) == 'flinbu.co'"
+                            to="/"
+                            class="link d-flex align-items-center justify-content-start py-3 px-3"
                         >
                             <i 
                                 v-if="link.node.icon"
-                                :class="`link__icon bx bx-md ${link.node.icon} mr-2 text-${snakeCase(link.node.title)}`"
+                                :class="`link__icon bx bx-sm ${link.node.icon} mr-3 text-${snakeCase(link.node.title)}`"
+                            />
+                            <div>
+                                <h3 class="link__title">{{ link.node.title }}</h3>
+                                <h6 class="link__domain font-weight-light">{{ getDomain(link.node.url) }}</h6>
+                            </div>
+                        </g-link>
+                        <a
+                            v-else
+                            :href="link.node.url"
+                            target="_blank"
+                            class="link d-flex align-items-center justify-content-start py-3 px-3"
+                        >
+                            <i 
+                                v-if="link.node.icon"
+                                :class="`link__icon bx bx-sm ${link.node.icon} mr-3 text-${snakeCase(link.node.title)}`"
                             />
                             <div>
                                 <h3 class="link__title">{{ link.node.title }}</h3>

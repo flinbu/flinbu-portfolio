@@ -1,0 +1,19 @@
+.module__links {
+    background: $gray-lighter;
+    .link {
+        margin: 0;
+        width: 100%;
+        box-shadow: 0 8px 26px rgba($black, .08);
+        &__title {
+            color: $gray-darker;
+            font-size: 18px;
+            margin-bottom: 5px;
+            padding: 0;
+        }
+        &__domain {
+            color: $gray;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
