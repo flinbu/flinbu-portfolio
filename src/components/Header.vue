@@ -1,6 +1,6 @@
 <template>
     <header class="header__main header__fixed">   
-        <b-container class="d-flex align-items-center">
+        <b-container v-if="theme == 'default'" class="d-flex align-items-center">
             <g-link 
                 to="/"
                 class="header__brand--wrapper d-inline-flex align-items-center"
@@ -14,8 +14,29 @@
             </g-link>
             <social-menu class="header__social ml-auto"/>
         </b-container>
+        <b-container v-else class="d-flex align-items-center justify-content-center">
+            <g-link
+                to="/"
+                class="header__bran--wrapper d-inline-flex align-items-center"
+            >
+                <g-image
+                    src="~/assets/images/logo.svg"
+                    class="header__brand--logo mx-auto"
+                />
+            </g-link>
+        </b-container>
     </header>
 </template>
+<script>
+export default {
+    props: {
+        theme: {
+            type: String,
+            default: 'default'
+        }
+    }
+}
+</script>
 <static-query>
     query {
         metaData {

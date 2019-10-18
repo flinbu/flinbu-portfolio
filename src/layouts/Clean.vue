@@ -1,11 +1,10 @@
 <template>
-  <main class="app">
-    <app-header/>
+  <main class="app app__clean">
+    <app-header theme="clean"/>
     <slot/>
-    <app-footer/>
-    <modals />
   </main>
 </template>
+
 <static-query>
 query {
   metaData {

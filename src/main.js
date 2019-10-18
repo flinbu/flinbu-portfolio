@@ -7,6 +7,7 @@ import '~/scss/app.scss'
 
 //Components
 import DefaultLayout from '~/layouts/Default.vue'
+import CleanLayout from '~/layouts/Clean.vue'
 import SocialMenu from "~/components/SocialMenu"
 import Header from "~/components/Header"
 import Icon from "~/components/Icon"
@@ -23,6 +24,7 @@ import DataVisualization from "~/components/modules/DataVisualization"
 import FrontendDevelopment from "~/components/modules/FrontendDevelopment"
 import CreationProccess from "~/components/modules/CreationProccess"
 import Contact from "~/components/modules/Contact"
+import Modals from '~/components/Modals'
 
 //SVG Assets
 import Brand from "~/assets/images/logo.svg"
@@ -43,6 +45,7 @@ export default function (Vue, { router, head, isClient }) {
 
   //Components
   Vue.component('Layout', DefaultLayout)
+  Vue.component('CleanLayout', CleanLayout)
   Vue.component('SocialMenu', SocialMenu)
   Vue.component('AppHeader', Header)
   Vue.component('Icon', Icon)
@@ -51,6 +54,7 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('LogoList', LogoList)
   Vue.component('AppFooter', AppFooter)
   Vue.component('ContactForm', ContactForm)
+  Vue.component('Modals', Modals)
 
   //Modules
   Vue.component('Hero', Hero)

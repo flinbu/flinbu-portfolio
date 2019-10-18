@@ -6,3 +6,12 @@
 @import "global/mixins";
 @import "global/icons";
 @import "global/transitions";
+
+
+@each $color in $social-scheme {
+    $color-name: nth($color, 1);
+    $color-val: nth($color, 2);
+    .text-#{$color-name} {
+        color: $color-val;
+    }
+}

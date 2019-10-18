@@ -18,9 +18,18 @@ module.exports = {
       use: '@gridsome/source-airtable',
       options: {
         apiKey: process.env.AIRTABLE_API_KEY,
-        baseId: process.env.AIRTABLE_BASE_ID,
+        baseId: 'appgdNHtR9HAbVowJ',
         tableName: 'Gigs',
         typeName: 'Gig'
+      }
+    },
+    {
+      use: '@gridsome/source-airtable',
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        baseId: 'appsGip9LDER3YCTH',
+        tableName: 'main',
+        typeName: 'BioLink'
       }
     }
   ],

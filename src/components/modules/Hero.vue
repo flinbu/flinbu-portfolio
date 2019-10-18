@@ -48,9 +48,9 @@ export default {
                     shadow: true
                 },
                 {
-                    type: "external",
+                    type: "modal",
                     label: "Request CV",
-                    target: process.env.GF_CV_REQUEST,
+                    target: 'RequestModal',
                     theme: "text",
                     color: "red"
                 }
