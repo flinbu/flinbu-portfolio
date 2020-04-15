@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             labels: {
-                title: "UI Design",
+                title: "UX Design",
                 subtitle: "Innovate. Together.",
                 description: "Together we investigate, we create, we approach, we test and innovate with the solution to that challenge you hav with yout digital products."
             },
@@ -40,8 +40,8 @@ export default {
                 },
                 {
                     type: "link",
-                    label: "Some work",
-                    target: "/portfolio",
+                    label: "Check my work",
+                    target: "https://dribbble.com/flinbu",
                     theme: "text"
                 }
             ]

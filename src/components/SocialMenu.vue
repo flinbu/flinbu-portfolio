@@ -1,5 +1,5 @@
 <template>
-    <b-nav :class="`social-menu social-menu__${scheme}`">
+    <b-nav :class="`social-menu social-menu__${scheme} social-menu__${location}`">
         <b-nav-item
             v-for="(social, index) in $static.posts.edges"
             :key="index"
@@ -37,6 +37,10 @@ export default {
         iconSize: {
             type: String,
             default: "md"
+        },
+        location: {
+            type: String,
+            default: 'header'
         }
     }
 }

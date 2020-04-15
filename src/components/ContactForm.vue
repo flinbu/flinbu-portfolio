@@ -70,7 +70,7 @@ export default {
         },
         labelMessage: {
             type: String,
-            default: "Message"
+            default: "What's about?"
         },
         labelSubmit: {
             type: String,
@@ -98,21 +98,33 @@ export default {
         async send(event) {
             this.loading = true
 
-            let data = new FormData()
-            data.append("name", this.form.name)
-            data.append("email", this.form.email)
-            data.append("message", this.form.message)
+            let data = {
+                name: this.form.name,
+                email: this.form.email,
+                message: this.form.message
+            }
             
-            let actionURL = process.env.CONTACT_ACTION
+            let actionURL = 'https://getform.io/f/bc4077af-db2a-438a-8236-59e7504aff44'
 
             await axios
-                    .post(actionURL, data)
+                    .post(actionURL, data, {
+                        headers: {
+                            Accept: 'application/json'
+                        }
+                    })
                     .then(response => {
                         this.loading = false
-                        event.target.reset()
-                        this.clearForm()
-                        this.response = "Thank you for the message! I will contact you ASAP."
-                        this.responseColor = "green"
+                        let success = response.data.success ? true : false
+                        if (success) {
+                            event.target.reset()
+                            this.clearForm()
+                            this.response = "Thank you for the message! I will contact you ASAP."
+                            this.responseColor = "green"
+                        } else {
+                            console.log(response)
+                            this.response = "Something has gone wrong! Your message could not be sent, please try again, thank you!"
+                            this.responseColor = "red"
+                        }
                     })
                     .catch(err => {
                         this.loading = false

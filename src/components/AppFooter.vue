@@ -13,8 +13,8 @@
                             />
                         </b-col>
                         <b-col cols="8">
-                            <h1 class="header__brand--name mr-2">{{ $static.metaData.siteName }}</h1>
-                            <p class="header__brand--description mt-1 mb-3">{{ $static.metaData.siteDescription }}</p>
+                            <h1 class="header__brand--name mr-2">{{ $static.metadata.siteName }}</h1>
+                            <p class="header__brand--description mt-1 mb-3">{{ $static.metadata.siteDescription }}</p>
                             <div class="footer__copyright">
                                 <a class="mb-1" :href="`mailto:${email}`">{{ email }}</a>
                                 <p v-html="copyright" class="mb-0"/>
@@ -26,7 +26,7 @@
                 <!-- Social -->
                 <b-col class="d-none d-md-block" cols="12" md="6">
                     <b-row class="justify-content-start justify-content-md-end">
-                        <social-menu class="footer__social" icon-size="xl"/>
+                        <social-menu class="footer__social" location="footer"/>
                     </b-row>
                 </b-col>
 
@@ -36,13 +36,14 @@
 </template>
 <static-query>
     query {
-        metaData {
+        metadata {
             siteName,
             siteDescription
         }
     }
 </static-query>
 <script>
+const YEAR = new Date().getFullYear()
 export default {
     data() {
         return {
@@ -58,7 +59,7 @@ export default {
                     target: "https://forms.gle/NS1fLSukVBWzYw8K7",
                 }
             ],
-            copyright: "&copy; 2019",
+            copyright: `&copy; ${YEAR}`,
             email: "me@flinbu.co"
         }
     }

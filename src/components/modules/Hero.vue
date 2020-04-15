@@ -37,7 +37,7 @@ export default {
             labels: {
                 title: "Digital products designer",
                 subtitle: "Let's create. Innovate. Together.",
-                description: "My name is Felipe Linares. I'm a designer with over 8 years of experience. I work with you to design effective interfaces and user experiences based in \"personas\", in order to innovate and grow better."
+                description: "I'm a UX Designer, developer & consultant based in Colombia. I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years."
             },
             buttons: [
                 {
@@ -48,9 +48,9 @@ export default {
                     shadow: true
                 },
                 {
-                    type: "modal",
-                    label: "Request CV",
-                    target: 'RequestModal',
+                    type: "link",
+                    label: "Resume",
+                    target: 'https://www.notion.so/flinbu/Felipe-Linares-dcd2cfa766714e6e8e0f692ac3264c24',
                     theme: "text",
                     color: "red"
                 }

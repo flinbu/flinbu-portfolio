@@ -13,7 +13,7 @@ const Behance = {
 }
 module.exports = function (api) {
   api.loadSource(store => {
-    const contentType = store.addContentType({
+    const contentType = store.addCollection({
       typeName: "Social"
     })
 
@@ -27,7 +27,7 @@ module.exports = function (api) {
   })
 
   api.loadSource(store => {
-    const contentType = store.addContentType({
+    const contentType = store.addCollection({
       typeName: "HomeModule"
     })
 
@@ -46,7 +46,7 @@ module.exports = function (api) {
 
   api.loadSource(async store => {
     const { data } = await axios.get(`http://www.behance.net/v2/users/${Behance.username}/projects?api_key=${Behance.apiKey}`)
-    const contentType = store.addContentType({
+    const contentType = store.addCollection({
       typeName: "Portfolio"
     })
     for (const item of data.projects) {

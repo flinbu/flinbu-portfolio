@@ -4,6 +4,9 @@
             transition: .3s ease-in-out;
             font-size: 20px;
             padding: 10px;
+            .social-menu__footer & {
+                font-size: 26px;
+            }
         }
     }
     &__lg {
