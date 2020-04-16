@@ -2,10 +2,10 @@
     @include media-breakpoint-up(lg) {
         .module {
             &__image {
-                width: 115%;
-                max-width: 115%;
+                // width: 115%;
+                // max-width: 115%;
                 &--wrapper {
-                    margin-left: -150px;
+                    // margin-left: -150px;
                 }
             }
         }

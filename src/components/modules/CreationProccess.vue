@@ -1,15 +1,15 @@
 <template>
     <b-container fluid class="module module__creation module__red content content__middle py-6 py-lg-10">
-        <div class="module__background module__background--bl d-none d-lg-block">
+        <!-- <div class="module__background module__background--bl d-none d-lg-block">
             <img :src="imagePath('creation-proccess.svg')" alt="">
-        </div>
+        </div> -->
         <b-container class="module__wrapper px-0">
             <b-row class="module__content">
-                <b-col class="module__data" cols="12" lg="8" offset-lg="4">
+                <b-col class="module__data" cols="12" xl="10" offset-xl="1">
                     <h3 class="module__subtitle mb-2 text-center text-lg-left" v-html="labels.subtitle"/>
                     <h2 class="module__title mb-5 text-center text-lg-left" v-html="labels.title"/>
                     <b-row class="creation-proccess__wrapper" align-v="stretch">
-                        <b-col v-for="(step, index) in process" :key="index" class="creation-proccess__step mb-4 mb-lg-5" cols="12" md="6">
+                        <b-col v-for="(step, index) in process" :key="index" class="creation-proccess__step mb-4 mb-lg-5" cols="12" md="6" lg="4">
                             <div class="creation-proccess__content">
                                 <h3 class="creation-proccess__title">
                                     <span class="creation-proccess__title--step">{{ index < 9 ? `0${index+1}` : index+1}}</span>

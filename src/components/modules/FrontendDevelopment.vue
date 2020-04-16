@@ -38,17 +38,17 @@ export default {
             },
             buttons: [
                 {
-                    type: "anchor",
+                    type: "modal",
                     label: "Let's create",
-                    target: "#contact",
+                    target: "ContactModal",
                     theme: "main",
                     shadow: true
                 }
             ],
             logos: [
                 {
-                    name: "HTML5",
-                    image: "logos/html5.svg"
+                    name: "NativeScript",
+                    image: "logos/ns.svg"
                 },
                 {
                     name: "VUE",
@@ -59,16 +59,16 @@ export default {
                     image: "logos/js.svg"
                 },
                 {
+                    name: "HTML5",
+                    image: "logos/html5.svg"
+                },
+                {
                     name: "WordPress",
                     image: "logos/wordpress.svg"
                 },
                 {
                     name: "SASS",
                     image: "logos/sass.svg"
-                },
-                {
-                    name: "Gulp",
-                    image: "logos/gulp.svg"
                 }
             ]
         }

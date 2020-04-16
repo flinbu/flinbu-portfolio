@@ -45,7 +45,7 @@
                             :disabled="loading"
                         />
                     </b-col>
-                    <b-col cols="12" lg="6" v-if="response">
+                    <b-col cols="12" class="mt-4" v-if="response">
                         <span
                             :class="`font-weight-light text-${responseColor}`"
                             v-html="response"

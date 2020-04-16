@@ -4,9 +4,9 @@
             <b-col class="module__wrapper">
                 <b-row class="module__content mb-5 mb-md-7 mb-lg-8" align-v="center">
                     <b-col class="module__image--wrapper mb-5 mb-md-0" cols="12" md="6">
-                        <g-image :src="imagePath('ui-design.svg')" class="img-fluid"/>
+                        <g-image :src="imagePath('ui-design.svg')" class="img-fluid module__image"/>
                     </b-col>
-                    <b-col class="module__data" cols="12" md="6">
+                    <b-col class="module__data" cols="12" md="6" xl="4">
                         <h3 class="module__subtitle mb-2 text-center text-md-left" v-html="labels.subtitle"/>
                         <h2 class="module__title mb-5 text-center text-md-left" v-html="labels.title"/>
                         <div class="module__description mb-5 text-center text-md-left" v-html="labels.description"/>
@@ -32,9 +32,9 @@ export default {
             },
             buttons: [
                 {
-                    type: "anchor",
+                    type: "modal",
                     label: "Let's create",
-                    target: "#contact",
+                    target: "ContactModal",
                     theme: "main",
                     shadow: true
                 },

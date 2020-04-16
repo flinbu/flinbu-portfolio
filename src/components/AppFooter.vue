@@ -1,6 +1,6 @@
 <template>
     <footer class="footer footer__main py-6">
-        <b-container>
+        <b-col cols="12" md="10" offset-lg="1" xl="8" offset-xl="2">
             <b-row align-v="center">
                 
                 <!-- Brand -->
@@ -31,7 +31,7 @@
                 </b-col>
 
             </b-row>
-        </b-container>
+        </b-col>
     </footer>
 </template>
 <static-query>

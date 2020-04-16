@@ -41,9 +41,9 @@ export default {
             },
             buttons: [
                 {
-                    type: "anchor",
+                    type: "modal",
                     label: "Get in touch",
-                    target: "#contact",
+                    target: "ContactModal",
                     theme: "main",
                     shadow: true
                 },

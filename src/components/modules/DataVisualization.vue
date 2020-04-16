@@ -5,7 +5,7 @@
                 <b-row>
                     <b-col class="module__wrapper">
                         <b-row class="module__content align-items-center align-items-lg-start">
-                            <b-col class="module__data order-2 order-md-1 pt-0 pt-md-8" cols="12" md="6" lg="5" offset-lg="1" xl="4" offset-xl="2">
+                            <b-col class="module__data order-2 order-md-1 pt-0 pt-md-8" cols="12" md="6" lg="5" xl="4" offset-xl="1">
                                 <h3 class="module__subtitle mb-2 text-center text-md-left" v-html="labels.subtitle"/>
                                 <h2 class="module__title mb-5 text-center text-md-left" v-html="labels.title"/>
                                 <div class="module__description mb-5 text-center text-md-left" v-html="labels.description"/>
@@ -40,9 +40,9 @@ export default {
             },
             buttons: [
                 {
-                    type: "anchor",
+                    type: "modal",
                     label: "Get in touch",
-                    target: "#contact",
+                    target: "ContactModal",
                     theme: "main",
                     shadow: true
                 }

@@ -3,3 +3,8 @@ body {
     padding-top: 60px;
     overflow-x: hidden;
 }
+.container {
+    @include media-breakpoint-up(xl) {
+        max-width: 1440px;
+    }
+}

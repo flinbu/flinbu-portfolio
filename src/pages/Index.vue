@@ -6,7 +6,7 @@
       <DataVisualization key="data-visualization"/>
       <FrontendDevelopment key="frontend-development"/>
       <CreationProccess key="creation-proccess"/>
-      <Contact key="contact"/>
+      <!-- <Contact key="contact"/> -->
     </transition-group>
   </Layout>
 </template>
