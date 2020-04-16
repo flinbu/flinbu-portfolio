@@ -35,9 +35,9 @@ export default {
     data() {
         return {
             labels: {
-                title: "Digital products designer",
+                title: "UX Designer, Developer & Consultant",
                 subtitle: "Let's create. Innovate. Together.",
-                description: "I'm a UX Designer, developer & consultant based in Colombia. I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years."
+                description: "<p>I'm a UX Designer, developer & consultant based in Colombia.</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>"
             },
             buttons: [
                 {
