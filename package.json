@@ -4,7 +4,8 @@
   "scripts": {
     "build": "gridsome build",
     "develop": "gridsome develop",
-    "explore": "gridsome explore"
+    "explore": "gridsome explore",
+    "dist": "gridsome build && rm -rf deploy/* && mv dist/* deploy"
   },
   "dependencies": {
     "@gridsome/plugin-google-analytics": "^0.1.0",

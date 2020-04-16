@@ -8,7 +8,7 @@
                         <h2 class="module__title mb-5 text-center text-lg-left" v-html="labels.title"/>
                         <contact-form/>
                     </b-col>
-                    <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-lg-2 text-center text-lg-left" cols="12" lg="5">
+                    <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-lg-2 text-center text-lg-left d-none d-lg-block" cols="12" lg="5">
                         <g-image :src="imagePath('contact.svg')" class="module__image img-fluid"/>
                     </b-col>
                 </b-row>
