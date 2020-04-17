@@ -1,10 +1,24 @@
 body {
     background: $body-bg;
-    padding-top: 60px;
     overflow-x: hidden;
+}
+.app {
+    background-color: $body-bg;
+    transition: .4s ease-in-out;
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
+    &__dark {
+        background-color: $body-bg-dark;
+    }
 }
 .container {
     @include media-breakpoint-up(xl) {
         max-width: 1440px;
     }
+}
+
+.divider {
+    width: 10%;
+    height: 5px;
+    @include linear-gradient($red, $pink);
 }

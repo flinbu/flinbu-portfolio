@@ -1,88 +1,71 @@
 <template>
-    <b-container
-        class="module module__hero content content__middle pt-6 pb-6"
+    <div
+        class="module module__hero content content__middl pt-3 pb-6"
+        style="background-image: url('assets/images/hero-bg.svg');"
     >
-        <b-row>
-            <b-col class="module__wrapper">
-                <b-row class="module__content mb-5" align-v="center">
-                    <b-col class="module__data mb-5 mb-md-0" cols="12" md="6" lg="5" offset-lg="1">
-                        <h3 class="module__subtitle mb-2 text-center text-md-left" v-html="labels.subtitle"/>
-                        <h2 class="module__title mb-5 text-center text-md-left" v-html="labels.title"/>
-                        <div class="module__description mb-5 text-center text-md-left" v-html="labels.description"/>
-                        <button-group
-                            class="module__actions d-flex align-items-center justify-content-center justify-content-md-start flex-wrap"
-                            :buttons="buttons"
-                            button-class="module__action"
-                        />
-                    </b-col>
-                    <b-col class="module__image--wrapper" cols="12" md="6">
-                        <g-image :src="imagePath('hero-image.svg')" class="img-fluid"/>
-                    </b-col>
-                </b-row>
-                <b-row align-h="center">
-                    <b-col>
-                        <logo-list
-                            :logos="logos"
-                        />
-                    </b-col>
-                </b-row>
-            </b-col>
-        </b-row>
-    </b-container>
+        <b-container>
+            <b-row class="h-100" align-v="center">
+                <b-col cols="12" lg="6" order="2" order-lg="1">
+                    <module-title
+                        tag="h1"
+                        :strongText="labels.title[0]"
+                        :lightText="labels.title[1]"
+                    />
+                    <p class="module__subtitle">{{ labels.subtitle }}</p>
+                    <div class="divider mb-5"/>
+                    <div class="module__description mb-5" v-html="labels.description"/>
+                    <button-group
+                        class="module__actions d-flex align-items-center justify-content-flex-start flex-wrap"
+                        :buttons="buttons"
+                        button-class="module__action"
+                    />
+                </b-col>
+                <b-col cols="12" lg="6" class="text-center mb-3 mb-lg-0" order="1" order-lg="2">
+                    <g-image
+                        class="img-fluid"
+                        src="~/assets/images/flinbu.png"
+                        quality="100"
+                        width="500"
+                    />
+                    <social-menu 
+                        class="module__hero--social"
+                        icon-size="lg"
+                        alignment="center"
+                    />
+                </b-col>
+            </b-row>
+        </b-container>
+    </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
             labels: {
-                title: "UX Designer, Developer & Consultant",
-                subtitle: "Let's create. Innovate. Together.",
+                title: ['Felipe','Linares'],
+                subtitle: 'UX Designer, Developer & Consultant',
                 description: "<p>I'm a UX Designer, developer & consultant based in Colombia.</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>"
-            },
-            buttons: [
+            }
+        }
+    },
+    computed: {
+        buttons() {
+            return [
                 {
-                    type: "modal",
-                    label: "Get in touch",
-                    target: "ContactModal",
+                    type: "anchor",
+                    label: "Work together",
+                    target: "#contact",
                     theme: "main",
                     shadow: true
                 },
                 {
                     type: "link",
                     label: "Resume",
-                    target: 'https://www.notion.so/flinbu/Felipe-Linares-dcd2cfa766714e6e8e0f692ac3264c24',
-                    theme: "text",
-                    color: "red"
-                }
-            ],
-            logos: [
-                {
-                    name: "Send",
-                    image: "logos/send.svg"
-                },
-                {
-                    name: "WeSend",
-                    image: "logos/wesend.svg"
-                },
-                {
-                    name: "Connectas",
-                    image: "logos/connectas.png"
-                },
-                {
-                    name: "Johnson Controls",
-                    image: "logos/johnson-controls.svg"
-                },
-                {
-                    name: "Energiteca",
-                    image: "logos/energiteca.png"
-                },
-                {
-                    name: "Plan Ciudad",
-                    image: "logos/plan-ciudad.svg"
-                },
-                {
-                    name: "El País",
-                    image: "logos/el-pais.svg"
+                    target: process.env.GRIDSOME_RESUME_URL,
+                    theme: "white",
+                    color: "red",
+                    shadow: true
                 }
             ]
         }

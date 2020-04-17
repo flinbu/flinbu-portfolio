@@ -14,6 +14,7 @@
     "bootstrap-vue": "^2.11.0",
     "gridsome": "^0.7.13",
     "vue": "^2.6.11",
+    "vue-cookies": "^1.7.0",
     "vue-scrollto": "^2.18.1",
     "vue-svg-loader": "^0.12.0"
   },

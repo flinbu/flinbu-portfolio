@@ -64,4 +64,71 @@
             height: 100%;
         }
     }
+
+    &__menu {
+        .modal {
+            &-content {
+                @include linear-gradient($red, $pink);
+            }
+        }
+        .module {
+            &__title,
+            &__subtitle {
+                color: $white;
+            }
+            &__title {
+                @include media-breakpoint-down(sm) {
+                    font-size: 40px;
+                }
+            }
+        }
+        .social-menu {
+            &__item {
+                color: $white;
+            }
+        }
+        .menu {
+            &__menu {
+                .nav-link {
+                    color: rgba($white, .7);
+                    font-size: 22px;
+                }
+                @include media-breakpoint-down(sm) {
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+                    margin-top: 16px;
+                    margin-bottom: 16px;
+                    border-top: 1px solid rgba($white, .1);
+                    border-bottom: 1px solid rgba($white, .1);
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+        .scheme-switch {
+            padding: 0.5rem 1rem;
+            .custom-control {
+                &-label {
+                    &:before {
+                        background-color: rgba($white, 0);
+                        border-color: $white;
+                        opacity: 0.5;
+                    }
+                    &:after {
+                        background-color: $white;
+                        opacity: 0.5;
+                    }
+                }
+                &-input {
+                    &:checked + .custom-control-label {
+                        &:before,
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

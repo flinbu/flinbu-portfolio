@@ -1,8 +1,14 @@
 .header {
     &__main {
-        background: $white;
+        background: transparent;
         padding-top: 10px;
         padding-bottom: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        transition: .4s ease-in-out;
     }
     &__brand {
         &--logo {
@@ -26,12 +32,22 @@
             line-height: 12px;
         }
     }
+    &__menu {
+        font-size: 20px;
+        color: $gray-darker;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: rgba($white, .7);
+            &:hover {
+                color: $red;
+            }
+        }
+    }
     &__fixed {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 100;
-        box-shadow: 0 0 20px rgba($black, .015);
+        background-color: $white;
+        .app__dark & {
+            background-color: $body-bg-dark;
+        }
+        // box-shadow: 0 0 20px rgba($black, .015);
     }
 }

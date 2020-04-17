@@ -1,0 +1,40 @@
+<template>
+    <div v-if="show" class="module__title--wrapper">
+        <small class="module__title--sup" v-if="supText" v-html="supText"/>
+        <h1 v-if="tag == 'h1'" class="module__title">
+            <strong v-if="strongText" v-html="strongText"/>
+            <span v-if="lightText" v-html="lightText"/>
+        </h1>
+        <h2 v-else class="module__title">
+            <strong v-if="strongText" v-html="strongText"/>
+            <span v-if="lightText" v-html="lightText"/>
+        </h2>
+    </div>
+</template>
+<script>
+export default {
+    props: {
+        tag: {
+            type: String,
+            default: 'h2'
+        },
+        strongText: {
+            type: String,
+            default: ''
+        },
+        lightText: {
+            type: String,
+            default: ''
+        },
+        supText: {
+            type: String,
+            default: ''
+        }
+    },
+    computed: {
+        show() {
+            return this.strongText || this.lightText
+        }
+    }
+}
+</script>

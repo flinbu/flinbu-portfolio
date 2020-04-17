@@ -2,7 +2,7 @@
     @extend .btn;
     background: $gray;
     padding: 10px 30px;
-    border-radius: 3px;
+    border-radius: 30px;
     cursor: pointer;
     &__main {
         @include linear-gradient($red, $pink);
@@ -10,7 +10,7 @@
             color: $white;
         }
         &.app-button__has-shadow {
-            box-shadow: 0 5px 15px -5px rgba($red, .3);
+            box-shadow: 0 5px 10px rgba($red, .2);
         }
         .module__red & {
             background: $white;
@@ -18,8 +18,17 @@
                 color: $red;
             }
             &.app-button__has-shadow {
-                box-shadow: 0 5px 15px -5px rgba($black, .2);
+                box-shadow: 0 5px 10px rgba($black, .08);
             }
+        }
+    }
+    &__white {
+        background-color: $white;
+        .app-button__content {
+            color: $red;
+        }
+        &.app-button__has-shadow {
+            box-shadow: 0 5px 10px rgba($black, .08);
         }
     }
     &__content {

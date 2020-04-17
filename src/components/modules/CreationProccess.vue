@@ -6,8 +6,12 @@
         <b-container class="module__wrapper px-0">
             <b-row class="module__content">
                 <b-col class="module__data" cols="12" xl="10" offset-xl="1">
-                    <h3 class="module__subtitle mb-2 text-center text-lg-left" v-html="labels.subtitle"/>
-                    <h2 class="module__title mb-5 text-center text-lg-left" v-html="labels.title"/>
+                    <module-title
+                        :strongText="labels.title[0]"
+                        :lightText="labels.title[1]"
+                        :supText="labels.subtitle"
+                        class="mb-6"
+                    />
                     <b-row class="creation-proccess__wrapper" align-v="stretch">
                         <b-col v-for="(step, index) in process" :key="index" class="creation-proccess__step mb-4 mb-lg-5" cols="12" md="6" lg="4">
                             <div class="creation-proccess__content">
@@ -29,7 +33,7 @@ export default {
     data() {
         return {
             labels: {
-                title: "Creation proccess",
+                title: ['Creation','Process'],
                 subtitle: "Research. Together.",
                 description: ""
             },

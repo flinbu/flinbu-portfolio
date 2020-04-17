@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" height="768" viewBox="0 0 1366 768">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="1366" height="768" fill="#fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.722" y1="0.353" x2="0.315" y2="0.729" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.376"/>
+      <stop offset="1" stop-color="#545454" stop-opacity="0.376"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.589" y1="0.521" x2="0.497" y2="0.685" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-opacity="0.082"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.376"/>
+    </linearGradient>
+  </defs>
+  <g id="hero-bg" clip-path="url(#clip-path)">
+    <g id="Group_1" data-name="Group 1" transform="translate(-150.178 -50.734)" opacity="0.054" style="isolation: isolate">
+      <path id="Path_1" data-name="Path 1" d="M1590.209,31.32S1025.894,75.8,792.09,360.085s-870.268,135.2-870.268,135.2V742.62l50.252,197.931L881.8,906.645l506.753,33.906,252.176-60.658V371.634Z" transform="matrix(0.966, -0.259, 0.259, 0.966, 7.152, 234.396)" fill="url(#linear-gradient)"/>
+      <path id="Path_2" data-name="Path 2" d="M6.6,31.32S953.573,89.3,1345.92,459.858s1460.4,176.233,1460.4,176.233V958.485l-84.328,258-1526.608-44.2L345,1216.484l-423.176-79.067V474.912Z" transform="translate(-816.594 364.419) rotate(-11)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

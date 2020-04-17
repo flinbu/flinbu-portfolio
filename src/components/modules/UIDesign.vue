@@ -7,9 +7,12 @@
                         <g-image :src="imagePath('ui-design.svg')" class="img-fluid module__image"/>
                     </b-col>
                     <b-col class="module__data" cols="12" md="6" xl="4">
-                        <h3 class="module__subtitle mb-2 text-center text-md-left" v-html="labels.subtitle"/>
-                        <h2 class="module__title mb-5 text-center text-md-left" v-html="labels.title"/>
-                        <div class="module__description mb-5 text-center text-md-left" v-html="labels.description"/>
+                        <module-title
+                            :strongText="labels.title[0]"
+                            :lightText="labels.title[1]"
+                            :supText="labels.subtitle"
+                        />
+                        <div class="module__description mb-5" v-html="labels.description"/>
                         <button-group
                             class="module__action d-flex align-items-center justify-content-center justify-content-md-start flex-wrap"
                             :buttons="buttons"
@@ -26,7 +29,7 @@ export default {
     data() {
         return {
             labels: {
-                title: "UX Design",
+                title: ['UX', 'Design'],
                 subtitle: "Innovate. Together.",
                 description: "Together we investigate, we create, we approach, we test and innovate with the solution to that challenge you hav with yout digital products."
             },
@@ -42,7 +45,8 @@ export default {
                     type: "link",
                     label: "Check my work",
                     target: "https://dribbble.com/flinbu",
-                    theme: "text"
+                    theme: "white",
+                    shadow: true
                 }
             ]
         }

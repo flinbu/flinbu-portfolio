@@ -1,6 +1,6 @@
 <template>
-    <header class="header__main header__fixed">   
-        <b-container v-if="theme == 'default'" class="d-flex align-items-center">
+    <header :class="`header__main header__${scrollClass}`">   
+        <b-container fluid v-if="theme == 'default'" class="d-flex align-items-center">
             <g-link 
                 to="/"
                 class="header__brand--wrapper d-inline-flex align-items-center"
@@ -9,10 +9,17 @@
                     src="~/assets/images/logo.svg"
                     class="header__brand--logo mr-0 mr-md-2"
                 />
-                <h1 class="header__brand--name mr-2 d-none d-md-block">{{ $static.metadata.siteName }}</h1>
-                <p class="header__brand--description mt-1 d-none d-md-block">{{ $static.metadata.siteDescription }}</p>
             </g-link>
-            <social-menu class="header__social ml-auto"/>
+            <div class="ml-auto d-flex align-items-center">
+                <scheme-switch location="header" class="mr-2"/>
+                <b-button
+                    class="header__menu"
+                    variant="link"
+                    @click="$root.$emit('openMenu')"
+                >
+                    <i class="bx bx-menu-alt-right"></i>
+                </b-button>
+            </div>
         </b-container>
         <b-container v-else class="d-flex align-items-center justify-content-center">
             <g-link
@@ -34,6 +41,22 @@ export default {
             type: String,
             default: 'default'
         }
+    },
+    data() {
+        return {
+            scrollClass: 'normal'
+        }
+    },
+    methods: {
+        onScroll() {
+            this.scrollClass = window.scrollY > 100 ? 'fixed' : 'normal'
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.onScroll)
+    },
+    destroy() {
+        window.removeEventListener('scroll', this.onScroll)
     }
 }
 </script>

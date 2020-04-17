@@ -21,7 +21,8 @@ module.exports = function (api) {
       contentType.addNode({
         network: item.network,
         icon: item.icon,
-        url: item.url
+        url: item.url,
+        label: item.label
       })
     }
   })

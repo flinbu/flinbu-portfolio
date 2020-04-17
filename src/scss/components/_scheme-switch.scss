@@ -1,0 +1,7 @@
+.scheme-switch {
+    color: $gray-darker;
+    transition: .4s ease-in-out;
+    .app__dark & {
+        color: rgba($white, .7);
+    }
+}

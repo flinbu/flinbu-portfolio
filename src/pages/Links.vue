@@ -4,8 +4,11 @@
             <b-container class="module module__links py-6">
                 <b-row align-h="center" class="mb-5">
                     <b-col cols="12" class="text-center">
-                        <h1 class="module__title">{{ labels.sectionName }}</h1>
-                        <h5 class="font-weight-light">{{ labels.sectionSubName }}</h5>
+                        <module-title
+                            :strongText="labels.sectionName[0]"
+                            :lightText="labels.sectionName[1]"
+                        />
+                        <h5 class="font-weight-light text-gray">{{ labels.sectionSubName }}</h5>
                     </b-col>
                 </b-row>
                 <b-row align-h="center" align-v="stretch" class="px-4">
@@ -46,6 +49,11 @@
                         </a>
                     </b-col>
                 </b-row>
+                <b-row align-h="center" class="mt-8">
+                    <b-col cols="12" class="text-center">
+                        <scheme-switch location="header"/>
+                    </b-col>
+                </b-row>
             </b-container>
         </transition>
     </CleanLayout>
@@ -59,7 +67,7 @@ export default {
             labels: {
                 title: 'Felipe Linares',
                 subtitle: 'Hello there!',
-                sectionName: 'My favorite links',
+                sectionName: ['Favourite', 'Links'],
                 sectionSubName: 'sharing is caring 😌'
             }
         }

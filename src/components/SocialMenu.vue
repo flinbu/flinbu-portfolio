@@ -1,5 +1,9 @@
 <template>
-    <b-nav :class="`social-menu social-menu__${scheme} social-menu__${location}`">
+    <b-nav 
+        :class="`social-menu social-menu__${scheme} social-menu__${location}`"
+        :align="alignment"
+        :vertical="vertical"
+    >
         <b-nav-item
             v-for="(social, index) in $static.posts.edges"
             :key="index"
@@ -11,6 +15,7 @@
                 :name="social.node.icon"
                 type="logo"
             />
+            <span class="ml-1 social-menu__item--label" v-if="labels">{{ social.node.label }}</span>
         </b-nav-item>
     </b-nav>
 </template>
@@ -22,6 +27,7 @@
                  network
                  icon
                  url
+                 label
              }
          }
      }
@@ -41,6 +47,18 @@ export default {
         location: {
             type: String,
             default: 'header'
+        },
+        alignment: {
+            type: String,
+            default: "left"
+        },
+        vertical: {
+            type: Boolean,
+            default: false
+        },
+        labels: {
+            type: Boolean,
+            default: false
         }
     }
 }

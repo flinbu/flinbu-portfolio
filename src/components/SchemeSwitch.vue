@@ -1,0 +1,44 @@
+<template>
+    <b-form-checkbox
+        switch
+        size="lg"
+        class="scheme-switch"
+        v-model="darkMode"
+    >
+        <span v-if="location == 'menu'">Dark mode</span>
+        <i v-else-if="location == 'header'" class="bx bx-moon"></i>
+    </b-form-checkbox>
+</template>
+<script>
+export default {
+    props: {
+        location: {
+            type: String,
+            default: 'menu'
+        }
+    },
+    data() {
+        return {
+            darkMode: false
+        }
+    },
+    watch: {
+        darkMode(status) {
+            this.$root.$emit('scheme', status ? 'dark' : 'light')
+        }
+    },
+    mounted() {
+        let cookie = this.$cookies.get('color-scheme')
+        if ( cookie) {
+            this.darkMode = cookie == 'dark' ? true : false
+        } else {
+            if (window.matchMedia && !this.set) {
+                this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+            }
+        }
+        this.$root.$on('scheme', scheme => {
+            this.darkMode = scheme == 'dark' ? true : false
+        })
+    }
+}
+</script>

@@ -1,20 +1,43 @@
 .module {
     position: relative;
     &__title {
-        font-size: 30px;
-        font-weight: 600;
+        font-size: 55px;
+        font-weight: 400;
         color: $black;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: $white;
+        }
+        @include media-breakpoint-down(sm) {
+            font-size: 40px;
+        }
+        &--sup {
+            color: $red;
+            font-weight: 700;
+            font-size: 16px;
+            .module__red & {
+                color: rgba($white, .5);
+            }
+        }
     }
     &__subtitle {
-        font-size: 16px !important;
-        font-weight: 600;
-        color: $red;
+        font-size: 18px !important;
+        font-weight: 400;
+        color: $gray-dark;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: rgba($white, .8);
+        }
     }
     &__description {
         font-size: 16px;
         font-weight: 300;
         color: $gray-darker;
         line-height: 30px;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: rgba($white, .6);
+        }
     }
     &__red {
         @include linear-gradient($red, $pink);
@@ -95,6 +118,7 @@
     }
 }
 
+@import "modules/hero";
 @import "modules/data-visualization";
 @import "modules/frontend-development";
 @import "modules/creation-proccess";

@@ -1,6 +1,7 @@
 //Frontend framework
 import BootstrapVue from 'bootstrap-vue'
 import VueScrollTo from "vue-scrollto"
+import VueCookies from 'vue-cookies'
 
 //Styles
 import '~/scss/app.scss'
@@ -16,6 +17,8 @@ import ButtonGroup from "~/components/ButtonGroup"
 import LogoList from "~/components/LogoList"
 import AppFooter from "~/components/AppFooter"
 import ContactForm from "~/components/ContactForm"
+import ModuleTitle from "~/components/ModuleTitle"
+import SchemeSwitch from "~/components/SchemeSwitch"
 
 //Modules
 import Hero from "~/components/modules/Hero"
@@ -39,6 +42,7 @@ export default function (Vue, { router, head, isClient }) {
   //Frontend framework
   Vue.use(BootstrapVue)
   Vue.use(VueScrollTo)
+  Vue.use(VueCookies)
 
   //Mixins
   Vue.mixin(ImagePath)
@@ -55,6 +59,8 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('AppFooter', AppFooter)
   Vue.component('ContactForm', ContactForm)
   Vue.component('Modals', Modals)
+  Vue.component('ModuleTitle', ModuleTitle)
+  Vue.component('SchemeSwitch', SchemeSwitch)
 
   //Modules
   Vue.component('Hero', Hero)
