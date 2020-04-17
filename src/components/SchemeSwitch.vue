@@ -32,9 +32,7 @@ export default {
         if ( cookie) {
             this.darkMode = cookie == 'dark' ? true : false
         } else {
-            if (window.matchMedia && !this.set) {
-                this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-            }
+            this.darkMode = false
         }
         this.$root.$on('scheme', scheme => {
             this.darkMode = scheme == 'dark' ? true : false
