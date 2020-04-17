@@ -19,6 +19,7 @@ import AppFooter from "~/components/AppFooter"
 import ContactForm from "~/components/ContactForm"
 import ModuleTitle from "~/components/ModuleTitle"
 import SchemeSwitch from "~/components/SchemeSwitch"
+import ImageSlider from "~/components/ImageSlider"
 
 //Modules
 import Hero from "~/components/modules/Hero"
@@ -61,6 +62,7 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('Modals', Modals)
   Vue.component('ModuleTitle', ModuleTitle)
   Vue.component('SchemeSwitch', SchemeSwitch)
+  Vue.component('ImageSlider', ImageSlider)
 
   //Modules
   Vue.component('Hero', Hero)

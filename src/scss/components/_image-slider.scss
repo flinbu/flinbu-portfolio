@@ -1,0 +1,42 @@
+.image-slider {
+    width: 100%;
+    .carousel {
+        &-control-prev,
+        &-control-next {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $black;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            transition: .4s ease-in-out;
+            opacity: .5;
+            &:hover {
+                opacity: .7;
+            }
+        }
+        &-control-prev {
+            left: 16px;
+        }
+        &-control-next {
+            right: 16px;
+        }
+        &-indicators {
+            li {
+                background-color: $white;
+                height: 10px;
+                border-radius: 5px;
+                box-shadow: 0 5px 10px rgba($black, .16);
+                opacity: .5;
+                border: none;
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

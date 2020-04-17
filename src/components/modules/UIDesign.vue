@@ -16,12 +16,15 @@
                             button-class="module__action"
                         />
                     </b-col>
-                    <b-col class="module__image--wrapper pr-md-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
+                    <b-col class="module__image--wrapper order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                         <b-row>
-                            <g-image 
+                            <!-- <g-image 
                                 src="~/assets/images/mon-1@2x.jpg" 
                                 class="img-fluid module__image"
                                 quality="100"
+                            /> -->
+                            <image-slider
+                                location="ux"
                             />
                         </b-row>
                     </b-col>
