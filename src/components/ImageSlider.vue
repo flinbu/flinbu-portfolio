@@ -46,15 +46,11 @@ export default {
     data() {
         return {
             slide: 0,
-            sliding: null
+            sliding: null,
+            background: '#F9F9F9'
         }
     },
     computed: {
-        background() {
-            let scheme = this.$cookies.get('color-scheme')
-            let bgColor = scheme ? scheme == 'dark' ? '#181818' : '#F9F9F9' : '#F9F9F9'
-            return bgColor
-        },
         images() {
             let images = []
             switch (this.location) {
@@ -78,6 +74,13 @@ export default {
         onSlideEnd(slide) {
             this.sliding = false
         }
+    },
+    mounted() {
+        let schemeCookie = this.$cookies.get('color-scheme')
+        this.background = schemeCookie ? schemeCookie == 'dark' ? '#181818' : '#F9F9F9' : '#F9F9F9'
+        this.$root.$on('scheme', scheme => {
+            this.background = scheme == 'dark' ? '#181818' : '#F9F9F9'
+        })
     }
 }
 </script>
