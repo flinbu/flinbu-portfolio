@@ -5,7 +5,7 @@
         class="scheme-switch"
         v-model="darkMode"
     >
-        <span v-if="location == 'menu'">Dark mode</span>
+        <span v-if="location == 'menu'">Night mode</span>
         <i v-else-if="location == 'header'" class="bx bx-moon"></i>
     </b-form-checkbox>
 </template>
