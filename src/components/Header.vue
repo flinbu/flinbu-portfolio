@@ -1,6 +1,6 @@
 <template>
     <header :class="`header__main header__${scrollClass}`">   
-        <b-container fluid v-if="theme == 'default'" class="d-flex align-items-center">
+        <b-container fluid v-if="theme == 'default'" class="d-flex align-items-center pr-0">
             <g-link 
                 to="/"
                 class="header__brand--wrapper d-inline-flex align-items-center"

@@ -1,6 +1,13 @@
 .scheme-switch {
     color: $gray-darker;
     transition: .4s ease-in-out;
+    .custom-control {
+        &-label {
+            i {
+                margin-top: 4px;
+            }
+        }
+    }
     .app__dark & {
         color: rgba($white, .7);
     }

@@ -1,31 +1,27 @@
 <template>
-    <b-container fluid class="module module__data module__red contet content__middle pt-8 pb-8">
+    <b-container fluid class="module module__data content content__middle">
         <b-row>
-            <b-container>
-                <b-row>
-                    <b-col class="module__wrapper">
-                        <b-row class="module__content align-items-center align-items-lg-start">
-                            <b-col class="module__data order-2 order-md-1 pt-0 pt-md-8" cols="12" md="6" lg="5" xl="4" offset-xl="1">
-                                <module-title
-                                    :strongText="labels.title[0]"
-                                    :lightText="labels.title[1]"
-                                    :supText="labels.subtitle"
-                                />
-                                <div class="module__description mb-5" v-html="labels.description"/>
-                                <button-group
-                                    class="module__action d-flex align-items-center flex-wrap"
-                                    :buttons="buttons"
-                                    button-class="module__action"
-                                />
-                            </b-col>
-                            <b-col 
-                                class="module__image--wrapper mb-5 mb-md-0 order-1 order-md-2"
-                                cols="12"
-                                md="6"
-                            >
-                                <g-image :src="imagePath('data-visualization.svg')" class="module__image img-fluid"/>
-                            </b-col>
-                        </b-row>
+            <b-container fluid class="module__wrapper">
+                <b-row class="module__content" align-v="center">
+                    <b-col class="module__data order-2 pl-md-5 mb-5 mb-md-0" cols="12" md="5">
+                        <module-title
+                            :strongText="labels.title[0]"
+                            :lightText="labels.title[1]"
+                            :supText="labels.subtitle"
+                        />
+                        <div class="module__description mb-5" v-html="labels.description"/>
+                        <button-group
+                            class="module__action d-flex align-items-center flex-wrap"
+                            :buttons="buttons"
+                            button-class="module__action"
+                        />
+                    </b-col>
+                    <b-col 
+                        class="module__image--wrapper order-1 mb-5 mb-md-0 pl-0 pr-0"
+                        cols="12"
+                        md="6"
+                    >   
+                        <g-image :src="imagePath('gota-gota@2x.jpg')" class="module__image img-fluid"/>
                     </b-col>
                 </b-row>
             </b-container>
@@ -43,10 +39,17 @@ export default {
             },
             buttons: [
                 {
-                    type: "modal",
+                    type: "anchor",
                     label: "Get in touch",
-                    target: "ContactModal",
+                    target: "#contact",
                     theme: "main",
+                    shadow: true
+                },
+                {
+                    type: 'link',
+                    label: 'Check example',
+                    target: 'https://www.elpais.com.co/especiales/gota-gota-america-latina/colombianos2/index.html#/',
+                    theme: 'white',
                     shadow: true
                 }
             ]

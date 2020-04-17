@@ -16,7 +16,7 @@
                         <b-col v-for="(step, index) in process" :key="index" class="creation-proccess__step mb-4 mb-lg-5" cols="12" md="6" lg="4">
                             <div class="creation-proccess__content">
                                 <h3 class="creation-proccess__title">
-                                    <span class="creation-proccess__title--step">{{ index < 9 ? `0${index+1}` : index+1}}</span>
+                                    <span class="creation-proccess__title--step">{{ index + 1 }}</span>
                                     {{ step.title }}
                                 </h3>
                                 <div class="creation-proccess__description" v-html="step.description"/>

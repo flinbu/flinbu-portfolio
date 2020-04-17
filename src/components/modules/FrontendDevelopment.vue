@@ -1,9 +1,9 @@
 <template>
-    <b-container class="module module__frontend content content__middle py-8 py-lg-12">
+    <b-container class="module module__frontend content content__middle">
         <b-row>
-            <b-col class="module__wrapper">
+            <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
-                    <b-col class="module__data order-2 order-lg-1" cols="12" lg="6" xl="5" offset-xl="1">
+                    <b-col class="module__data order-2 order-md-1 mb-5 mb-md-0" cols="12" md="5" offset-md="1">
                         <module-title
                             :strongText="labels.title[0]"
                             :lightText="labels.title[1]"
@@ -22,11 +22,11 @@
                             breakpoint="lg"
                         />
                     </b-col>
-                    <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-lg-2" cols="12" md="6" offset-md="3" offset-lg="0">
-                        <g-image :src="imagePath('frontend-development.svg')" class="module__image img-fluid"/>
+                    <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
+                        <g-image :src="imagePath('carbon@2x.png')" class="module__image img-fluid"/>
                     </b-col>
                 </b-row>
-            </b-col>
+            </b-container>
         </b-row>
     </b-container>
 </template>

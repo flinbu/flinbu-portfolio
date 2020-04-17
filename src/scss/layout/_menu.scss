@@ -1,0 +1,147 @@
+.modal__menu {
+    &--content {
+        background: $body-bg;
+        transition: .4s ease-in-out;
+        padding: 50px;
+        .modal__dark & {
+            background: $body-bg-dark;
+        }
+        @include media-breakpoint-down(sm) {
+            border-radius: 0;
+            padding: 16px 8px;
+        }
+    }
+    &--dialog {
+        @include media-breakpoint-down(sm) {
+            padding: 0;
+            margin: 0;
+        }
+    }
+    & + .modal-backdrop {
+        transition: .4s ease-in-out;
+        background-color: $body-bg;
+        opacity: 1;
+    }
+    .module {
+        &__title {
+            color: $black;
+        }
+        &__subtitle {
+            color: $gray-dark;
+        }
+        &__title {
+            @include media-breakpoint-down(sm) {
+                font-size: 40px;
+            }
+        }
+    }
+    .social-menu {
+        &__item {
+            color: $gray-darker;
+        }
+    }
+    .menu {
+        &__menu {
+            .nav-link {
+                color: $gray-darker;
+                font-size: 22px;
+                transition: .4s ease-in-out;
+            }
+            @include media-breakpoint-down(sm) {
+                padding-top: 16px;
+                padding-bottom: 16px;
+                margin-top: 16px;
+                margin-bottom: 16px;
+                border-top: 1px solid rgba($black, .1);
+                border-bottom: 1px solid rgba($black, .1);
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+        &__copyright {
+            color: $gray;
+            transition: .4s ease-in-out;
+        }
+    }
+    .scheme-switch {
+        padding: 0.5rem 1rem;
+        color: $gray-darker;
+        .custom-control {
+            &-label {
+                &:before {
+                    background-color: rgba($gray-darker, 0);
+                    border-color: $gray-darker;
+                    opacity: 0.5;
+                }
+                &:after {
+                    background-color: $gray-darker;
+                    opacity: 0.5;
+                }
+            }
+            &-input {
+                &:checked + .custom-control-label {
+                    &:before,
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .modal__close {
+        z-index: 10;
+    }
+
+    // Dark mode
+    &.modal__dark {
+        & + .modal-backdrop {
+            background-color: $body-bg-dark;
+        }
+        .modal__close {
+            background: none;
+            color: $red;
+        }
+        .module {
+            &__title {
+                color: $white;
+            }
+            &__subtitle {
+                color: rgba($white, .7);
+            }
+        }
+        .scheme-switch {
+            color: $white;
+            .custom-control {
+                &-label {
+                    &:before {
+                        background-color: rgba($white, 0);
+                        border-color: $white;
+                    }
+                    &:after {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+        .social-menu {
+            &__item {
+                color: $white;
+            }
+        }
+        .menu {
+            &__copyright {
+                color: rgba($white, .6);
+            }
+            &__menu {
+                .nav-link {
+                    color: $white;
+                }
+                @include media-breakpoint-down(sm) {
+                    border-top-color: rgba($white, .1);
+                    border-bottom-color: rgba($white, .1);
+                }
+            }
+        }
+    }
+}

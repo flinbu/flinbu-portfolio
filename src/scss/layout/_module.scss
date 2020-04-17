@@ -5,11 +5,14 @@
         font-weight: 400;
         color: $black;
         transition: .4s ease-in-out;
+        display: flex;
+        flex-wrap: wrap;
         .app__dark & {
             color: $white;
         }
         @include media-breakpoint-down(sm) {
             font-size: 40px;
+            word-wrap: break-word;
         }
         &--sup {
             color: $red;

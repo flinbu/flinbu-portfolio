@@ -1,12 +1,9 @@
 <template>
-    <b-container class="module module__ui content content__middle pt-10 pb-10">
+    <b-container fluid class="module module__ui content content__middle">
         <b-row>
-            <b-col class="module__wrapper">
-                <b-row class="module__content mb-5 mb-md-7 mb-lg-8" align-v="center">
-                    <b-col class="module__image--wrapper mb-5 mb-md-0" cols="12" md="6">
-                        <g-image :src="imagePath('ui-design.svg')" class="img-fluid module__image"/>
-                    </b-col>
-                    <b-col class="module__data" cols="12" md="6" xl="4">
+            <b-container fluid class="module__wrapper">
+                <b-row class="module__content" align-v="center">
+                    <b-col class="module__data order-2 order-md-1 mb-5 mb-md-0" cols="12" md="5" offset-xl="1">
                         <module-title
                             :strongText="labels.title[0]"
                             :lightText="labels.title[1]"
@@ -19,8 +16,13 @@
                             button-class="module__action"
                         />
                     </b-col>
+                    <b-col class="module__image--wrapper pr-md-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
+                        <b-row>
+                            <g-image :src="imagePath('mon-1@2x.jpg')" class="img-fluid module__image"/>
+                        </b-row>
+                    </b-col>
                 </b-row>
-            </b-col>
+            </b-container>
         </b-row>
     </b-container>
 </template>
