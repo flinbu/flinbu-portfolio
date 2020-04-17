@@ -1,5 +1,5 @@
 <template>
-    <b-container class="module module__frontend content content__middle">
+    <b-container fluid class="module module__frontend content content__middle">
         <b-row>
             <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
@@ -23,7 +23,11 @@
                         />
                     </b-col>
                     <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
-                        <g-image :src="imagePath('carbon@2x.png')" class="module__image img-fluid"/>
+                        <g-image 
+                            src="~/assets/images/carbon@2x.png" 
+                            class="module__image img-fluid"
+                            quality="100"
+                        />
                     </b-col>
                 </b-row>
             </b-container>

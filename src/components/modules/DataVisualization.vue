@@ -21,7 +21,11 @@
                         cols="12"
                         md="6"
                     >   
-                        <g-image :src="imagePath('gota-gota@2x.jpg')" class="module__image img-fluid"/>
+                        <g-image 
+                            src="~/assets/images/gota-gota@2x.jpg" 
+                            class="module__image img-fluid"
+                            quality="100"
+                        />
                     </b-col>
                 </b-row>
             </b-container>
