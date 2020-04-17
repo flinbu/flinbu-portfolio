@@ -37,9 +37,9 @@ export default {
             },
             buttons: [
                 {
-                    type: "modal",
+                    type: "anchor",
                     label: "Let's create",
-                    target: "ContactModal",
+                    target: "#contact",
                     theme: "main",
                     shadow: true
                 },

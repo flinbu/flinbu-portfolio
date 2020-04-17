@@ -41,10 +41,17 @@ export default {
             },
             buttons: [
                 {
-                    type: "modal",
+                    type: "anchor",
                     label: "Let's create",
-                    target: "ContactModal",
+                    target: "contact",
                     theme: "main",
+                    shadow: true
+                },
+                {
+                    type: 'link',
+                    label: 'Explore this page code',
+                    target: 'https://gitlab.com/flinbu-dev/portfolio',
+                    theme: 'white',
                     shadow: true
                 }
             ],

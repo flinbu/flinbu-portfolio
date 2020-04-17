@@ -75,16 +75,21 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('BrandLight', BrandLight)
   Vue.component('BrandDark', BrandDark)
 
+  let smallChat = process.env.GRIDSOME_SMALLCHAT_URL
+
   //Load libraries on head
   head.link.push({
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,800&display=swap"
   })
-  head.script.push({
-    src: "https://embed.small.chat/T105JNEHFGC1Q3EWSG.js",
-    body: true,
-    assync: true
-  })
+
+  if (smallChat) {
+    head.script.push({
+      src: smallChat,
+      body: true,
+      assync: true
+    })
+  }
 
   // Custom analytics
   head.script.push({

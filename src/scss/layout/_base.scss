@@ -5,8 +5,7 @@ body {
 .app {
     background-color: $body-bg;
     transition: .4s ease-in-out;
-    padding-top: 60px;
-    min-height: calc(100vh - 60px);
+    min-height: 100vh;
     &__dark {
         background-color: $body-bg-dark;
     }
