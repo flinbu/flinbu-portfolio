@@ -1,7 +1,7 @@
 <template>
     <b-form class="contact-form" @submit.prevent="send">
         <b-form-row>
-            <b-col cols="12" md="6">
+            <b-col cols="12">
                 <b-form-group :label="labelName">
                     <b-form-input
                         v-model="form.name"
@@ -11,7 +11,7 @@
                     />
                 </b-form-group>
             </b-col>
-            <b-col cols="12" md="6">
+            <b-col cols="12">
                 <b-form-group :label="labelEmail">
                     <b-form-input
                         type="email"
@@ -22,14 +22,47 @@
                     />
                 </b-form-group>
             </b-col>
+            <b-col cols="12" md="6">
+                <b-form-group :label="labelHelp">
+                    <b-dropdown 
+                        :text="form.help" 
+                        class="contact-form__select"
+                        lazy
+                    >
+                        <b-dropdown-item
+                            v-for="(item, i) in helpOptions"
+                            :key="i"
+                            :active="form.help == item"
+                            @click="form.help = item"
+                        >{{ item }}</b-dropdown-item>
+                    </b-dropdown>
+                </b-form-group>
+            </b-col>
+            <b-col cols="12" md="6">
+                <b-form-group :label="labelPriority">
+                    <b-dropdown 
+                        :text="form.priority" 
+                        class="contact-form__select"
+                        lazy
+                    >
+                        <b-dropdown-item
+                            v-for="(item, i) in priorityOptions"
+                            :key="i"
+                            :active="form.priority == item"
+                            @click="form.priority = item"
+                        >{{ item }}</b-dropdown-item>
+                    </b-dropdown>
+                </b-form-group>
+            </b-col>
             <b-col cols="12">
                 <b-form-group :label="labelMessage">
                     <b-form-textarea
                         v-model="form.message"
-                        rows="4"
+                        rows="10"
                         required
                         :disabled="loading"
                         @focus="onFocus"
+                        :placeholder="placeholderMessage"
                     />
                 </b-form-group>
             </b-col>
@@ -57,6 +90,13 @@
     </b-form>
 </template>
 <script>
+const initialForm = {
+    name: "",
+    email: "",
+    help: "",
+    priority: "",
+    message: ""
+}
 import axios from "axios"
 export default {
     props: {
@@ -68,6 +108,14 @@ export default {
             type: String,
             default: "Email"
         },
+        labelHelp: {
+            type: String,
+            default: "What do you need?"
+        },
+        labelPriority: {
+            type: String,
+            default: "Priority"
+        },
         labelMessage: {
             type: String,
             default: "What's about?"
@@ -75,16 +123,16 @@ export default {
         labelSubmit: {
             type: String,
             default: "Send"
+        },
+        placeholderMessage: {
+            type: String,
+            default: ''
         }
     },
     data() {
         return {
             loading: false,
-            form: {
-                name: "",
-                email: "",
-                message: ""
-            },
+            form: initialForm,
             response: false,
             responseColor: "gray"
         }
@@ -92,19 +140,33 @@ export default {
     computed: {
         buttonLabel() {
             return this.loading ? '<i class="bx bx-loader-alt bx-spin"></i>' : this.labelSubmit
+        },
+        helpOptions() {
+            return [
+                'App design',
+                'Web design',
+                'Frontend development',
+                'UX Advisory',
+                'Greetings',
+                'General'
+            ]
+        },
+        priorityOptions() {
+            return [
+                'We have time',
+                'Urgent',
+                'ASAP',
+                'Does not apply'
+            ]
         }
     },
     methods: {
         async send(event) {
             this.loading = true
 
-            let data = {
-                name: this.form.name,
-                email: this.form.email,
-                message: this.form.message
-            }
+            let data = this.form
             
-            let actionURL = 'https://getform.io/f/bc4077af-db2a-438a-8236-59e7504aff44'
+            let actionURL = process.env.GRIDSOME_CONTACT_ACTION
 
             await axios
                     .post(actionURL, data, {
@@ -134,13 +196,15 @@ export default {
                     })
         },
         clearForm() {
-            this.form.name = ""
-            this.form.email = ""
-            this.form.message = ""
+            this.form = initialForm
         },
         onFocus() {
             this.response = false
         }
+    },
+    mounted() {
+        this.form.help = this.helpOptions[0]
+        this.form.priority = this.priorityOptions[0]
     }
 }
 </script>

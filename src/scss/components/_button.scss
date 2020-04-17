@@ -10,7 +10,12 @@
             color: $white;
         }
         &.app-button__has-shadow {
-            box-shadow: 0 5px 10px rgba($red, .2);
+            box-shadow: 5px 5px 20px rgba($red, .4),
+                        -5px -5px 20px rgba($gray-light, .4);
+            .app__dark & {
+                box-shadow: 10px 10px 30px rgba($red, .2),
+                            -10px -10px 30px #1c1c1c;
+            }
         }
         .module__red & {
             background: $white;
@@ -18,7 +23,8 @@
                 color: $red;
             }
             &.app-button__has-shadow {
-                box-shadow: 0 5px 10px rgba($black, .08);
+                box-shadow:  10px 10px 30px #c64b37, 
+                             -10px -10px 30px #ff654b;
             }
         }
     }
@@ -28,7 +34,16 @@
             color: $red;
         }
         &.app-button__has-shadow {
-            box-shadow: 0 5px 10px rgba($black, .08);
+            box-shadow: 10px 10px 30px rgba($black, .05), 
+                        -10px -10px 30px $gray-lighter;
+        }
+        .app__dark & {
+            background-color: $body-bg-dark;
+            box-shadow: 10px 10px 30px #141414, 
+                        -10px -10px 30px #1c1c1c;
+            .app-button__content {
+                color: $white;
+            }
         }
     }
     &__content {

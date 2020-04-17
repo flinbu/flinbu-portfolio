@@ -7,6 +7,12 @@
         transition: .4s ease-in-out;
         display: flex;
         flex-wrap: wrap;
+        .module__title--md & {
+            font-size: 40px;
+            @include media-breakpoint-down(sm) {
+                font-size: 30px;
+            }
+        }
         .app__dark & {
             color: $white;
         }

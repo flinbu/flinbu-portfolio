@@ -1,0 +1,115 @@
+.contact-form {
+    .form {
+        &-group {
+            margin-bottom: 24px;
+            legend {
+                font-size: 18px;
+                margin-bottom: 8px;
+                transition: .4s ease-in-out;
+                .app__dark & {
+                    color: $gray-lighter;
+                }
+            }
+        }
+        &-control {
+            border: none;
+            transition: .4s ease-in-out;
+            &:not(textarea) {
+                height: 55px;
+            }
+            .app__dark & {
+                background-color: $gray-darker;
+                color: $white;
+            }
+        }
+    }
+    &__select {
+        width: 100%;
+        .dropdown {
+            &-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 55px;
+                background-color: $white;
+                color: $gray-darker;
+                border: none;
+                transition: .4s ease-in-out;
+                outline: none;
+                &:focus,
+                &:focus-within {
+                    box-shadow: none !important;
+                }
+                .app__dark & {
+                    background-color: $gray-darker;
+                    color: $white;
+                }
+            }
+            &-menu {
+                background: none;
+                width: 100%;
+                border: none;
+                margin-top: 4px;
+                padding: 0;
+                outline: none;
+                box-shadow: 0 10px 20px rgba($black, .08);
+                transition: .4s ease-in-out;
+                .app__dark & {
+                    box-shadow: 0 10px 20px rgba($black, .4);
+                }
+                li {
+                    background: none;
+                    &:first-child {
+                        .dropdown-item {
+                            border-radius: 5px 5px 0 0;
+                        }
+                    }
+                    &:last-child {
+                        .dropdown-item {
+                            border-radius: 0 0 5px 5px;
+                        }
+                    }
+                }
+            }
+            &-item {
+                padding: 16px;
+                background-color: $white;
+                &:active {
+                    color: $gray-darker;
+                }
+                &.active {
+                    background-color: $red;
+                }
+                .app__dark & {
+                    background-color: $gray-darker;
+                    color: $white;
+                    &:active {
+                        color: $white;
+                    }
+                    &.active {
+                        background-color: $red;
+                    }
+                }
+            }
+        }
+        &.show {
+            & > .dropdown-toggle {
+                background-color: $white;
+                color: $gray-darker;
+                &:after {
+                    border-top-color: $gray-darker;
+                }
+                .app__dark & {
+                    background-color: $gray-darker;
+                    color: $white;
+                    &:after {
+                        border-top-color: $white;
+                    }
+                }
+            }
+        }
+    }
+    &__submit {
+        border-radius: 30px;
+    }
+}

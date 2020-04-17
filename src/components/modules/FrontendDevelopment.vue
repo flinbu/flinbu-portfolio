@@ -47,7 +47,7 @@ export default {
                 {
                     type: "anchor",
                     label: "Let's create",
-                    target: "contact",
+                    target: "#contact",
                     theme: "main",
                     shadow: true
                 },

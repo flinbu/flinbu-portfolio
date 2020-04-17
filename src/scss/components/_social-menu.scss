@@ -9,6 +9,10 @@
             }
         }
     }
+    &.px-0 {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
     &__lg {
         .nav-link {
             font-size: 26px;
@@ -33,6 +37,18 @@
             &__item {
                 .nav-link {
                     color: rgba($white, .7);
+                }
+            }
+        }
+    }
+    &__black {
+        .social-menu {
+            &__item {
+                .nav-link {
+                    color: $gray-dark;
+                    .app__dark & {
+                        color: $white;
+                    }
                 }
             }
         }

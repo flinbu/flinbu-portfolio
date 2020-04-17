@@ -153,7 +153,9 @@ export default {
             this.$root.$emit(modal, true)
         },
         doAnchor(anchor) {
-            this.$scrollTo(anchor, 1000)
+            this.$scrollTo(anchor, 1000, {
+                offset: -100
+            })
         }
     }
 }
