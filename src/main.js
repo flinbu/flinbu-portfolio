@@ -76,6 +76,8 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('BrandDark', BrandDark)
 
   let smallChat = process.env.GRIDSOME_SMALLCHAT_URL
+  let piwik = process.env.GRIDSOME_PIWIK_ID
+  let piwikURL = process.env.GRIDSOME_PIWIK_URL
 
   //Load libraries on head
   head.link.push({
@@ -91,9 +93,11 @@ export default function (Vue, { router, head, isClient }) {
     })
   }
 
-  // Custom analytics
-  head.script.push({
-    innerHTML: `var _paq = window._paq || []; /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ _paq.push(['trackPageView']); _paq.push(['enableLinkTracking']); (function() { var u="//piwik.flinbu.co/"; _paq.push(['setTrackerUrl', u+'matomo.php']); _paq.push(['setSiteId', '2']); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();`,
-    type: 'text/javascript'
-  })
+  if (piwik && piwikURL) {
+    // Custom analytics
+    head.script.push({
+      innerHTML: `var _paq = window._paq || []; /* tracker methods like "setCustomDimension" should be called before "trackPageView" */ _paq.push(['trackPageView']); _paq.push(['enableLinkTracking']); (function() { var u="${piwikURL}"; _paq.push(['setTrackerUrl', u+'matomo.php']); _paq.push(['setSiteId', '${piwik}']); var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);})();`,
+      type: 'text/javascript'
+    })
+  }
 }

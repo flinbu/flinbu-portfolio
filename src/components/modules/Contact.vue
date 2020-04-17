@@ -15,7 +15,8 @@
                         :supText="labels.socialSubtitle"
                         size="md"
                     />
-                    <social-menu iconSize="lg" scheme="black" class="px-0"/>
+                    <social-menu iconSize="lg" scheme="black" class="px-0 mb-4"/>
+                    <a :href="`mailto:${contactEmail}`" class="module__contact--email d-inline-flex align-items-center"><i class="bx bx-envelope mr-2"></i> {{ contactEmail }}</a>
                 </b-col>
                 <b-col cols="12" md="5" class="mb-6">
                     <contact-form
@@ -51,7 +52,8 @@ export default {
                 message: 'Tell me more about your project',
                 messagePlaceholder: 'Budget, extra details, deadlines, special features...',
                 submit: `Let's work!`
-            }
+            },
+            contactEmail: process.env.GRIDSOME_CONTACT_EMAIL
         }
     }
 }

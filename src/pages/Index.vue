@@ -10,3 +10,10 @@
     </transition-group>
   </Layout>
 </template>
+<script>
+export default {
+  metaInfo: {
+    title: `${process.env.GRIDSOME_SITE_NAME} - ${process.env.GRIDSOME_SITE_DESCRIPTION}`
+  }
+}
+</script>

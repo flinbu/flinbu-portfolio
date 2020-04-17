@@ -15,4 +15,12 @@
             }
         }
     }
+    &--email {
+        font-size: 18px;
+        color: $gray-darker;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: $white;
+        }
+    }
 }

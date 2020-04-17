@@ -43,8 +43,8 @@ export default {
     data() {
         return {
             labels: {
-                title: ['Felipe','Linares'],
-                subtitle: 'UX Designer, Developer & Consultant',
+                title: [],
+                subtitle: process.env.GRIDSOME_SITE_DESCRIPTION,
                 description: "<p>I'm a UX Designer, developer & consultant based in Colombia.</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>"
             }
         }
@@ -68,6 +68,13 @@ export default {
                     shadow: true
                 }
             ]
+        }
+    },
+    mounted() {
+        let title = process.env.GRIDSOME_SITE_NAME
+        let titleArr = title.split(' ')
+        for(let i = 0; i < titleArr.length; i++) {
+            this.labels.title.push(titleArr[i])
         }
     }
 }
