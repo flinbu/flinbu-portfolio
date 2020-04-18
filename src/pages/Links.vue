@@ -1,12 +1,22 @@
 <template>
     <CleanLayout>
         <transition name="fade" appear>
-            <b-container class="module module__links py-6">
-                <b-row align-h="center" class="mb-5">
+            <b-col 
+                cols="12" 
+                md="10"
+                offset-md="1"
+                lg="8"
+                offset-lg="2"
+                xl="6"
+                offset-xl="3"
+                class="module module__links py-6"
+            >
+                <b-row align-h="center" class="mb-5 mt-5">
                     <b-col cols="12" class="text-center">
                         <module-title
                             :strongText="labels.sectionName[0]"
                             :lightText="labels.sectionName[1]"
+                            justify="center"
                         />
                         <h5 class="font-weight-light text-gray">{{ labels.sectionSubName }}</h5>
                     </b-col>
@@ -15,8 +25,8 @@
                     <b-col 
                         v-for="(link, index) in $static.posts.edges"
                         :key="index"
-                        cols="12" md="6" lg="4" xl="3" 
-                        class="link__wrapper d-inline-flex align-items-center mb-3 px-0 px-md-2"
+                        cols="12" md="6"
+                        class="link__wrapper d-inline-flex align-items-center mb-3 mb-md-5 px-0 px-md-2"
                     >
                         <g-link
                             v-if="getDomain(link.node.url) == 'flinbu.co'"
@@ -49,12 +59,12 @@
                         </a>
                     </b-col>
                 </b-row>
-                <b-row align-h="center" class="mt-8">
+                <b-row align-h="center" class="mt-5">
                     <b-col cols="12" class="text-center">
                         <scheme-switch location="header"/>
                     </b-col>
                 </b-row>
-            </b-container>
+            </b-col>
         </transition>
     </CleanLayout>
 </template>
@@ -62,6 +72,9 @@
 import { snakeCase } from 'lodash'
 export default {
     layout: 'clean',
+    metaInfo: {
+        title: `${process.env.GRIDSOME_SITE_NAME} - My favourite links`
+    },
     data() {
         return {
             labels: {

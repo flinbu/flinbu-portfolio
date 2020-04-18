@@ -29,12 +29,12 @@
         }
     }
     &__white {
-        background-color: $white;
+        background-color: $body-bg;
         .app-button__content {
             color: $red;
         }
         &.app-button__has-shadow {
-            box-shadow: 10px 10px 30px rgba($black, .05), 
+            box-shadow: 10px 10px 30px rgba($body-bg-dark, .05), 
                         -10px -10px 30px $gray-lighter;
         }
         .app__dark & {

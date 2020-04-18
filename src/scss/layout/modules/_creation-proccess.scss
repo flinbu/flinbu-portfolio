@@ -47,7 +47,7 @@
             transition: .4s ease-in-out;
         }
         .app__dark & {
-            background-color: $black;
+            background-color: $body-bg-dark;
             box-shadow: 10px 10px 30px #141414, 
                         -10px -10px 30px #1c1c1c;
         }

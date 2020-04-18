@@ -5,12 +5,16 @@
         background-color: $body-bg-dark;
     }
     .link {
+        background-color: $body-bg;
         margin: 0;
         width: 100%;
-        box-shadow: 0 8px 26px rgba($black, .08);
+        box-shadow: 10px 10px 30px rgba($black, .05), 
+                    -10px -10px 30px $gray-lighter;
         transition: .4s ease-in-out;
         .app__dark & {
-            background-color: rgba($white, .05);
+            background-color: $body-bg-dark;
+            box-shadow: 10px 10px 30px #141414, 
+                        -10px -10px 30px #1c1c1c;
         }
         &__title {
             color: $gray-darker;
