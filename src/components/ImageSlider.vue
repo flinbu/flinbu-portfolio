@@ -14,10 +14,10 @@
             :key="i"
         >
             <template v-slot:img>
-                <img 
+                <b-img-lazy
                     class="d-block img-fluid w-100"
-                    :src="`assets/images/${item}.jpg`"
-                    :srcset="`assets/images/${item}.jpg 1x, assets/images/${item}@2x.jpg 2x`"
+                    :src="`assets/images/${item}@2x.jpg`"
+                    v-bind="imgProps"
                 />
             </template>
         </b-carousel-slide>
@@ -47,7 +47,11 @@ export default {
         return {
             slide: 0,
             sliding: null,
-            background: '#F9F9F9'
+            background: '#F9F9F9',
+            imgProps: {
+                center: true,
+                fluidGrow: true
+            }
         }
     },
     computed: {

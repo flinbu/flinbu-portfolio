@@ -26,7 +26,7 @@
                 <!-- Social -->
                 <b-col class="d-none d-md-flex flex-column text-center text-md-right" cols="12" md="6">
                     <social-menu class="footer__social justify-content-center justify-content-md-end" iconSize="md"/>
-                    <p class="sources">Do you want this <a href="https://gitlab.com/flinbu-dev/portfolio" target="_blank">page source</a>?</p>
+                    <p class="sources">Do you want this <a href="https://dribbble.com/shots/11097348-Personal-website-flinbu-co" target="_blank" title="Adobe XD template">XD Template</a> or this <a href="https://gitlab.com/flinbu-dev/portfolio" target="_blank" title="Page source code">page source</a>?</p>
                 </b-col>
 
             </b-row>
