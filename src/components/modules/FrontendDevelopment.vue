@@ -24,7 +24,14 @@
                     </b-col>
                     <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                         <g-image 
+                            v-if="scheme == 'light'"
                             src="~/assets/images/carbon@2x.png" 
+                            class="module__image img-fluid"
+                            quality="100"
+                        />
+                        <g-image 
+                            v-else
+                            src="~/assets/images/carbon-dark@2x.png" 
                             class="module__image img-fluid"
                             quality="100"
                         />
@@ -84,8 +91,16 @@ export default {
                     name: "SASS",
                     image: "logos/sass.svg"
                 }
-            ]
+            ],
+            scheme: 'light'
         }
+    },
+    mounted() {
+        let schemeCookie = this.$cookies.get('color-scheme')
+        this.scheme = schemeCookie ? schemeCookie : 'light'
+        this.$root.$on('scheme', scheme => {
+            this.scheme = scheme
+        })
     }
 }
 </script>
