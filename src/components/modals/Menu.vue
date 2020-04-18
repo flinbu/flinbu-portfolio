@@ -72,6 +72,16 @@ export default {
                     label: "My work",
                     link: process.env.GRIDSOME_PORTFOLIO_URL,
                     target: '_blank'
+                },
+                {
+                    label: "XD Template",
+                    link: 'https://dribbble.com/shots/11097348-Personal-website-flinbu-co',
+                    target: '_blank'
+                },
+                {
+                    label: "Source code",
+                    link: 'https://gitlab.com/flinbu-dev/portfolio',
+                    target: '_blank'
                 }
             ],
             theme: 'light'
