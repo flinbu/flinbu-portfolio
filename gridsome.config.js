@@ -31,6 +31,21 @@ module.exports = {
         tableName: 'main',
         typeName: 'BioLink'
       }
+    },
+    {
+      use: '@gridsome/source-airtable',
+      options: {
+        apiKey: process.env.AIRTABLE_API_KEY,
+        baseId: 'app1hWcRe8qIKmjiJ',
+        tableName: 'Questions',
+        typeName: 'KickForm',
+        select: {
+          sort: [{
+            field: 'ID',
+            direction: 'desc'
+          }]
+        }
+      }
     }
   ],
   chainWebpack: config => {

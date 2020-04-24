@@ -2,12 +2,18 @@
   <main :class="`app app__${scheme}`">
     <app-header/>
     <slot/>
-    <app-footer/>
+    <app-footer v-if="!hideFooter" />
     <modals />
   </main>
 </template>
 <script>
 export default {
+  props: {
+    hideFooter: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       scheme: 'light'

@@ -23,6 +23,23 @@
             }
         }
     }
+    .field__check_group {
+        .form-group {
+            legend {
+                text-align: center;
+            }
+        }
+    }
+    .custom-control-label {
+        color: $gray-darker;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: $gray-light;
+        }
+    }
+    [role="radiogroup"] {
+        outline: none;
+    }
     &__select {
         width: 100%;
         .dropdown {
@@ -111,5 +128,33 @@
     }
     &__submit {
         border-radius: 30px;
+        &--special {
+            @include media-breakpoint-down(sm) {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background: $body-bg;
+                padding: 8px;
+                width: 100%;
+                z-index: 1000000000;
+                .app__dark & {
+                    background: $body-bg-dark;
+                }
+            }
+        }
+    }
+    &__header {
+        color: $gray-darker;
+        border-bottom: 1px solid rgba($gray-darker, .05);
+        padding-bottom: 16px;
+        text-align: center;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: $white;
+            border-bottom-color: rgba($white, .05);
+        }
+        &.borderless {
+            border: none;
+        }
     }
 }
