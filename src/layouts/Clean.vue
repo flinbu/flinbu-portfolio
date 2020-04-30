@@ -13,7 +13,7 @@ export default {
   },
   watch: {
     scheme(scheme) {
-      this.$cookies.set('color-scheme', scheme)
+      this.$root.$emit('scheme', this.scheme)
     }
   },
   mounted() {
@@ -24,10 +24,12 @@ export default {
       if (window.matchMedia) {
           this.scheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
           this.$cookies.set('color-scheme', this.scheme)
+          this.$root.$emit('scheme', this.scheme)
       }
     }
     this.$root.$on('scheme', scheme => {
       this.scheme = scheme
+      this.$cookies.set('color-scheme', this.scheme)
     })
   }
 }

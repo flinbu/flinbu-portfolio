@@ -1,0 +1,15 @@
+.module__kickoff {
+    &--helper {
+        display: inline-block;
+        position: fixed;
+        bottom: 8px;
+        right: 180px;
+        width: auto;
+        font-size: 20px;
+        padding: 16px 0;
+        color: $red;
+        @include media-breakpoint-down(sm) {
+            padding: 10px 0;
+        }
+    }
+}

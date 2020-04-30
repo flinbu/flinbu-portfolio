@@ -185,6 +185,7 @@
                         </b-form>
                     </b-col>
                 </b-row>
+                <div class="module__kickoff--helper">{{ labels.help[language] }}</div>
             </b-container>
         </transition>
     </Layout>    
@@ -230,6 +231,10 @@ export default {
                 success: {
                     es: '¡Gracias! Se han enviando las respuestas, estaremos en contacto para continuar con el proyecto.',
                     en: 'Thank you! Answers have been sent, we will be in contact to continue with the project.'
+                },
+                help: {
+                    es: '¿Necesitas ayuda? 👉',
+                    en: 'Need help? 👉'
                 }
             },
             sections: [],
