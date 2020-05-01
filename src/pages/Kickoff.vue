@@ -328,7 +328,7 @@ export default {
                     let form = this.$static.fields.edges
 
                     let data = new URLSearchParams()
-                    data.append('action', 'send_kickoff')
+                    data.append('action', 'send_mail')
                     data.append('email', process.env.GRIDSOME_API_EMAIL)
                     data.append('key', process.env.GRIDSOME_API_KEY)
                     data.append('to', process.env.GRIDSOME_API_EMAIL)
@@ -349,7 +349,7 @@ export default {
                         message.replace('{client}', this.form.client)
                     })
 
-                    data.append('form', message)
+                    data.append('body', message)
 
                     await axios
                         .post(process.env.GRIDSOME_API, data)

@@ -164,16 +164,27 @@ export default {
         async send(event) {
             this.loading = true
 
-            let data = this.form
+            let data = new URLSearchParams()
+            data.append('action', 'send_mail')
+            data.append('email', process.env.GRIDSOME_API_EMAIL)
+            data.append('key', process.env.GRIDSOME_API_KEY)
+            data.append('to', process.env.GRIDSOME_API_EMAIL)
+            data.append('name', this.form.name)
+            data.append('subject', 'Message from webpage')
+
+            let message = ''
+            message += `<strong>${this.labelName}:</strong>${this.form.name}</br>`
+            message += `<strong>${this.labelEmail}:</strong>${this.form.email}</br>`
+            message += `<strong>${this.labelHelp}:</strong>${this.form.help}</br>`
+            message += `<strong>${this.labelPriority}:</strong>${this.form.priority}</br>`
+            message += `<strong>${this.labelMessage}:</strong>${this.form.message}</br>`
+
+            data.append('body', message)
             
             let actionURL = process.env.GRIDSOME_CONTACT_ACTION
 
             await axios
-                    .post(actionURL, data, {
-                        headers: {
-                            Accept: 'application/json'
-                        }
-                    })
+                    .post(actionURL, data)
                     .then(response => {
                         this.loading = false
                         let success = response.data.success ? true : false
