@@ -45,6 +45,7 @@ module.exports = function (api) {
     }
   })
 
+  // Behance
   api.loadSource(async store => {
     const { data } = await axios.get(`http://www.behance.net/v2/users/${Behance.username}/projects?api_key=${Behance.apiKey}`)
     const contentType = store.addCollection({
@@ -67,6 +68,24 @@ module.exports = function (api) {
         terms: projectFields,
         covers: item.covers,
         owner: item.owners[0]
+      }
+      contentType.addNode(newNode)
+    }
+  })
+
+  // Dribbble
+  api.loadSource(async store => {
+    const getURL = `${process.env.GRIDSOME_DRIBBBLE_API}?access_token=${process.env.GRIDSOME_DRIBBBLE_TOKEN}`
+    const { data } = await axios.get(getURL)
+    const contentType = store.addCollection({
+      typeName: "Dribbble"
+    })
+    for (const item of data) {
+      let newNode = {
+        title: item.title,
+        image: item.images.hidpi,
+        description: item.description,
+        url: item.html_url
       }
       contentType.addNode(newNode)
     }

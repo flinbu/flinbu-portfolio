@@ -31,6 +31,10 @@
                     />
                 </b-col>
                 <b-col cols="12" md="6">
+                    <app-menu 
+                        location="modal-menu"
+                        @clicked="closeModal"
+                    />
                     <b-nav 
                         vertical
                         class="menu__menu text-left text-md-right"
@@ -68,11 +72,11 @@ export default {
                 copyright: `&copy; ${year}. Felipe Linares. All rights reserved.`
             },
             menu: [
-                {
-                    label: "My work",
-                    link: process.env.GRIDSOME_PORTFOLIO_URL,
-                    target: '_blank'
-                },
+                // {
+                //     label: "My work",
+                //     link: process.env.GRIDSOME_PORTFOLIO_URL,
+                //     target: '_blank'
+                // },
                 {
                     label: "XD Template",
                     link: 'https://dribbble.com/shots/11097348-Personal-website-flinbu-co',

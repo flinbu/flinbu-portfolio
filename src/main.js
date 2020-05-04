@@ -20,6 +20,7 @@ import ContactForm from "~/components/ContactForm"
 import ModuleTitle from "~/components/ModuleTitle"
 import SchemeSwitch from "~/components/SchemeSwitch"
 import ImageSlider from "~/components/ImageSlider"
+import Menu from '~/components/Menu'
 
 //Modules
 import Hero from "~/components/modules/Hero"
@@ -63,6 +64,7 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('ModuleTitle', ModuleTitle)
   Vue.component('SchemeSwitch', SchemeSwitch)
   Vue.component('ImageSlider', ImageSlider)
+  Vue.component('AppMenu', Menu)
 
   //Modules
   Vue.component('Hero', Hero)

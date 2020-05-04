@@ -11,6 +11,7 @@
                 />
             </g-link>
             <div class="ml-auto d-flex align-items-center">
+                <app-menu location="header" class="mr-4"/>
                 <scheme-switch location="header" class="mr-2"/>
                 <b-button
                     class="header__menu"

@@ -171,17 +171,18 @@ export default {
             data.append('to', process.env.GRIDSOME_API_EMAIL)
             data.append('name', this.form.name)
             data.append('subject', 'Message from webpage')
+            data.append('replyto', this.form.email)
 
             let message = ''
-            message += `<strong>${this.labelName}:</strong>${this.form.name}</br>`
-            message += `<strong>${this.labelEmail}:</strong>${this.form.email}</br>`
-            message += `<strong>${this.labelHelp}:</strong>${this.form.help}</br>`
-            message += `<strong>${this.labelPriority}:</strong>${this.form.priority}</br>`
-            message += `<strong>${this.labelMessage}:</strong>${this.form.message}</br>`
+            message += `<strong>${this.labelName}:</strong> ${this.form.name}</br></br>`
+            message += `<strong>${this.labelEmail}:</strong> ${this.form.email}</br></br>`
+            message += `<strong>${this.labelHelp}:</strong> ${this.form.help}</br></br>`
+            message += `<strong>${this.labelPriority}:</strong> ${this.form.priority}</br></br>`
+            message += `<strong>${this.labelMessage}:</strong> ${this.form.message}`
 
             data.append('body', message)
             
-            let actionURL = process.env.GRIDSOME_CONTACT_ACTION
+            let actionURL = process.env.GRIDSOME_API
 
             await axios
                     .post(actionURL, data)

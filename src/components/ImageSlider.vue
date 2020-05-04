@@ -12,15 +12,9 @@
         <b-carousel-slide
             v-for="(item, i) in images"
             :key="i"
-        >
-            <template v-slot:img>
-                <b-img-lazy
-                    class="d-block img-fluid w-100"
-                    :src="`assets/images/${item}@2x.jpg`"
-                    v-bind="imgProps"
-                />
-            </template>
-        </b-carousel-slide>
+            :img-src="item.image"
+            :caption-html="itemCaption(item)"
+        />
     </b-carousel>
 </template>
 <script>
@@ -47,7 +41,7 @@ export default {
         return {
             slide: 0,
             sliding: null,
-            background: '#F9F9F9',
+            background: '#F8F8F9',
             imgProps: {
                 center: true,
                 fluidGrow: true
@@ -59,14 +53,11 @@ export default {
             let images = []
             switch (this.location) {
                 case 'ux':
-                    images = [
-                        'mon-1',
-                        'referrals',
-                        'marketplace',
-                        'flinbu',
-                        'wesend',
-                        'payment',
-                    ]
+                    images = this.$static.posts.edges.map( edge => {
+                        return edge.node
+                    })
+                    console.log(images)
+
             }
             return images
         }
@@ -77,14 +68,31 @@ export default {
         },
         onSlideEnd(slide) {
             this.sliding = false
+        },
+        itemCaption(item) {
+            return `<a href="${item.url}" target="_blank" title="${item.title}">${item.title}</a>`
         }
     },
     mounted() {
         let schemeCookie = this.$cookies.get('color-scheme')
-        this.background = schemeCookie ? schemeCookie == 'dark' ? '#181818' : '#F9F9F9' : '#F9F9F9'
+        this.background = schemeCookie ? schemeCookie == 'dark' ? '#181818' : '#F8F8F9' : '#F8F8F9'
         this.$root.$on('scheme', scheme => {
-            this.background = scheme == 'dark' ? '#181818' : '#F9F9F9'
+            this.background = scheme == 'dark' ? '#181818' : '#F8F8F9'
         })
     }
 }
 </script>
+<static-query>
+query Dribbble {
+    posts: allDribbble(order: ASC) {
+        edges {
+            node {
+                title
+                image
+                description
+                url
+            }
+        }
+    }
+}
+</static-query>
