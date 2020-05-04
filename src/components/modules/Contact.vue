@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid id="contact" class="module module__contact content content__middle">
+    <b-container fluid id="contact" class="module module__contact content content__middle pt-0 pt-lg-10">
         <b-container fluid class="module__wrapper">
             <b-row class="module__content" align-v="start">
                 <b-col class="module__data pr-md-5 mb-6" cols="12" md="5" offset-md="1">

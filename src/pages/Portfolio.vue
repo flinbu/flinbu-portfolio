@@ -1,21 +1,22 @@
 <template>
     <Layout>
         <transition name="fade" appear>  
-            <b-container class="mmodule module__portfolio py-6">
+            <b-container class="mmodule module__portfolio py-10">
                 <b-row>
                     <b-col cols="12" class="module__wrapper">
-                        <div class="module__content mb-5">
-                            <b-col class="module__data text-center" cols="12" md="6" lg="4" offset-md="3" offset-lg="4">
-                                <h1 class="module__title" v-html="labels.title" />
-                                <h3 class="module__subtitle text-gray-light font-weight-light mb-5" v-html="subtitle" />
-                            </b-col>
+                        <div class="module__content mb-8">
+                            <module-title
+                                :strong-text="labels.title[0]"
+                                :light-text="labels.title[1]"
+                                justify="center"
+                            />
                         </div>
                     </b-col>
                     <b-col cols="12" class="module__wrapper portfolio__wrapper">
-                        <b-row align-v="stretch">
+                        <b-row align-v="stretch" class="mb-6">
                             <b-col
-                                v-for="item in $static.posts.edges"
-                                :key="item.node.id"
+                                v-for="(item, i) in $static.posts.edges"
+                                :key="`portfolio-item-${i}`"
                                 class="portfolio__item--wrapper"
                                 cols="12" 
                                 md="6" 
@@ -24,16 +25,22 @@
                             >
                                 <b-card
                                     class="portfolio__item h-100"
-                                    :title="item.node.name"
-                                    :img-src="item.node.covers.max_808"
+                                    :title="item.node.title"
+                                    :img-src="item.node.image"
                                     @click="visitItem(item.node.url)"
-                                >
-                                    <b-card-text>
-                                        <ul class="portfolio__item--fields">
-                                            <li v-for="(field, index) in item.node.terms" :key="index">{{ field.title }}</li>
-                                        </ul>
-                                    </b-card-text>
-                                </b-card>
+                                />
+                            </b-col>
+                        </b-row>
+                        <b-row>
+                            <b-col
+                                cols="12"
+                                class="d-flex align-items-center justify-content-center"
+                            >
+                                <a 
+                                    :href="dribbbleURL" 
+                                    target="_blank"
+                                    class="app-button app-button__anchor app-button__main app-button__has-shadow text-white"
+                                >{{ labels.fullPortofolio }}</a>
                             </b-col>
                         </b-row>
                     </b-col>
@@ -43,20 +50,14 @@
     </Layout>
 </template>
 <static-query>
-query Portfolio {
-    posts: allPortfolio(order: ASC) {
+query Dribbble {
+    posts: allDribbble(order: ASC) {
         edges {
             node {
-                id
-                name
+                title
+                description
+                image
                 url
-                covers {
-                    original
-                    max_808
-                }
-                terms {
-                    title
-                }
             }
         }
     }
@@ -66,10 +67,10 @@ query Portfolio {
 export default {
     data() {
         return {
-            behanceUrl: "https://behance.net/flinbu",
+            dribbbleURL: process.env.GRIDSOME_DRIBBBLE_URL,
             labels: {
-                title: "Portfolio",
-                seeProject: "Visit"
+                title: ['Latest','Portfolio'],
+                fullPortofolio: "👉 Check full portfolio"
             }
         }
     },

@@ -1,9 +1,22 @@
 .portfolio {
     &__item {
         border: none;
-        border-radius: 3px;
-        box-shadow: 0 10px 30px -5px rgba($dark, .1);
+        border-radius: 20px;
+        box-shadow: -20px -20px 60px lighten($body-bg, 10%),
+                    20px 20px 60px darken($body-bg, 10%);
+        border: 10px solid $body-bg;
+        background-color: $body-bg;
         cursor: pointer;
+        transition: .4s ease-in-out;
+        color: $gray-darker;
+        overflow: hidden;
+        .app__dark & {
+            background-color: $body-bg-dark;
+            color: $white;
+            box-shadow: -20px -20px 60px lighten($body-bg-dark, 2%),
+                        20px 20px 60px darken($body-bg-dark, 3%);
+            border-color: $body-bg-dark;
+        }
         &--wrapper {
             margin-bottom: 30px;
         }
@@ -36,11 +49,19 @@
         }
         .card {
             &-body {
-                padding: 30px;
+                padding: 16px 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             &-title {
                 font-weight: 300;
-                font-size: 24px;
+                font-size: 18px;
+                padding: 0;
+                margin: 0;
+            }
+            &-img {
+                border-radius: 20px;
             }
         }
     }

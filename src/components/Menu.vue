@@ -56,11 +56,17 @@ export default {
     },
     methods: {
         openLink(item) {
+            let current = this.$route
+            console.log(current)
             switch (item.type) {
                 case 'anchor':
-                    this.$scrollTo(item.link, {
-                        offset: -60
-                    })
+                    if (current.path != '/') {
+                        this.$router.push(`/${item.link}`)
+                    } else {
+                        this.$scrollTo(item.link, {
+                            offset: -60
+                        })
+                    }
                     break
             }
             this.$emit('clicked')

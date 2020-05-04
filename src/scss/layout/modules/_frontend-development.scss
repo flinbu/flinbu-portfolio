@@ -3,13 +3,4 @@
         max-width: 100%;
         overflow-x: hidden;
     }
-    @include media-breakpoint-up(lg) {
-        .module {
-            &__image {
-                width: 130%;
-                max-width: 130%;
-                margin-left: -80px;
-            }
-        }
-    }
 }
