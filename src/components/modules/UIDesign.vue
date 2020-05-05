@@ -44,7 +44,7 @@ export default {
                 {
                     type: "link",
                     label: "Check my work",
-                    target: "https://dribbble.com/flinbu",
+                    target: "/portfolio",
                     theme: "white",
                     shadow: true
                 }

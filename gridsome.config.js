@@ -7,6 +7,7 @@
 module.exports = {
   siteName: process.env.GRIDSOME_SITE_NAME,
   siteDescription: process.env.GRIDSOME_SITE_DESCRIPTION,
+  siteUrl: process.env.GRIDSOME_SITE_URL,
   plugins: [
     {
       use: '@gridsome/plugin-google-analytics',
@@ -44,6 +45,23 @@ module.exports = {
             field: 'ID',
             direction: 'desc'
           }]
+        }
+      }
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
+      options: {
+        cacheTime: 600000,
+        exclude: ['/kickoff'],
+        config: {
+          '/': {
+            changefreq: 'weekly',
+            priority: 1
+          },
+          '/portfolio': {
+            changefreq: 'daily',
+            priority: 1
+          }
         }
       }
     }
