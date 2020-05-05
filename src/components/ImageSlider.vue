@@ -53,11 +53,9 @@ export default {
             let images = []
             switch (this.location) {
                 case 'ux':
-                    images = this.$static.posts.edges.map( edge => {
+                    images = this.$static.posts.edges.slice(0, 4).map( edge => {
                         return edge.node
                     })
-                    console.log(images)
-
             }
             return images
         }
