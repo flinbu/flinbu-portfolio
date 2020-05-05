@@ -64,6 +64,14 @@ module.exports = {
           }
         }
       }
+    },
+    {
+      use: 'gridsome-plugin-robots',
+      options: {
+        host: process.env.GRIDSOME_SITE_URL,
+        sitemap: `${process.env.GRIDSOME_SITE_URL}/sitemap.xml`,
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     }
   ],
   chainWebpack: config => {
