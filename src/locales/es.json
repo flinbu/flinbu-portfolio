@@ -1,8 +1,8 @@
 {
     "labels": {
-        "send": "Send",
-        "continue": "Continue",
-        "back": "Back"
+        "send": "Enviar",
+        "continue": "Continuar",
+        "back": "Atrás"
     },
     "site": {
         "title": "Felipe Linares",
@@ -41,10 +41,10 @@
         },
         "menu": {
             "ux_design": "UX Design",
-            "data_visualization": "Data Visualization",
-            "front_development": "Front Dev.",
-            "process": "My Process",
-            "contact": "Let's Work!"
+            "data_visualization": "Visualización de Datos",
+            "front_development": "Desarrollo UX",
+            "process": "Mi Proceso",
+            "contact": "¡Creémos!"
         },
         "scheme_switch": {
             "label": "Night mode"
@@ -114,20 +114,21 @@
             "subtitle": "sharing is caring 😌"
         },
         "kickoff": {
-            "description": "Here we will learn more about the brand, its expectations and how they are perceived. Not all must be answered, but the more answers we have the better the discovery.",
+            "title": "💪Kick Off&nbsp; and&nbsp;discovery",
+            "description": "Aquí conoceremos más de la marca, sus expectativas y como se perciben. No se deben responder todas pero entre más respuestas tengamos mejor el descubrimiento.",
 
-            "company_name": "Let's begin, what is the brand name?",
+            "company_name": "Empecemos, ¿Cuál es el nombre de la marca?",
 
-            "language": "Language",
+            "language": "Idioma",
 
             "es": "ES - Español",
             "en": "EN - English",
 
-            "sending": "Thanks! Answers are being processed and sent...",
-            "success": "Thank you! Answers have been sent, we will be in contact to continue with the project.",
-            "help": "Need help? 👉",
+            "sending": "¡Gracias! Se está procesando y enviando las respuestas...",
+            "success": "¡Gracias! Se han enviando las respuestas, estaremos en contacto para continuar con el proyecto.",
+            "help": "¿Necesitas ayuda? 👉",
 
-            "end_cta": "Check flinbu.co"
+            "end_cta": "Visita flinbu.co"
         }
     }
 }

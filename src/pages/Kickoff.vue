@@ -13,14 +13,14 @@
                         class="text-center mb-5 mt-3 mt-lg-5"
                     >
                         <module-title
-                            :strongText="labels.title[0]"
-                            :lightText="labels.title[1]"
+                            :strongText="title[0]"
+                            :lightText="title[1]"
                             justify="center"
                         />
                         <p 
                             v-if="inStep('init')"
                             class="font-weight-light text-gray" 
-                            v-html="labels.description[language.toLowerCase()]"
+                            v-html="$t('pages.kickoff.description')"
                         />
                     </b-col>
                     <b-col cols="12" lg="8" xl="6" offset-lg="4" offset-xl="3" class="mb-5">
@@ -33,7 +33,7 @@
                                     :id="`fields-init`"
                                 >
                                     <b-col cols="12" md="8">
-                                        <b-form-group :label="labels.company_name[language.toLowerCase()]">
+                                        <b-form-group :label="$t('pages.kickoff.company_name')">
                                             <b-form-input
                                                 v-model="form.client"
                                                 required
@@ -43,9 +43,9 @@
                                         </b-form-group>
                                     </b-col>
                                     <b-col cols="12" md="4">
-                                        <b-form-group :label="labels.language[language]">
+                                        <b-form-group :label="$t('pages.kickoff.language')">
                                             <b-dropdown 
-                                                :text="labels[language][language]" 
+                                                :text="$t(`pages.kickoff.${language}`)" 
                                                 class="contact-form__select"
                                                 lazy
                                             >
@@ -53,8 +53,8 @@
                                                     v-for="lang in languages"
                                                     :key="lang"
                                                     :active="lang == language"
-                                                    @click="language = lang"
-                                                >{{ labels[lang][language] }}</b-dropdown-item>
+                                                    @click="changeLanguage(lang)"
+                                                >{{ $t(`pages.kickoff.${lang}`) }}</b-dropdown-item>
                                             </b-dropdown>
                                         </b-form-group>
                                     </b-col>
@@ -138,7 +138,7 @@
                                         type="button"
                                         variant="link"
                                         size="lg"
-                                        v-html="buttonBackLabel"
+                                        v-html="$t('labels.back')"
                                         :disabled="loading"
                                         @click="back"
                                     />
@@ -162,7 +162,7 @@
                                             variant="primary"
                                             class="mb-7"
                                         />
-                                        <h2 class="contact-form__header borderless text-center">{{ labels.sending[language] }}</h2>
+                                        <h2 class="contact-form__header borderless text-center">{{ $t('pages.kickoff.sending') }}</h2>
                                     </b-col>
                                 </b-form-row>
                                 <b-form-row
@@ -171,21 +171,21 @@
                                 >
                                     <b-col class="d-flex flex-wrap align-items-center justify-content-center h-100">
                                         <h1 class="mb-7 display-1">🚀</h1>
-                                        <h2 class="contact-form__header borderless text-center mb-7">{{ labels.success[language] }}</h2>
+                                        <h2 class="contact-form__header borderless text-center mb-7">{{ $t('pages.kickoff.success') }}</h2>
                                         <b-button 
                                             type="button"
                                             variant="primary"
                                             class="contact-form__submit"
                                             size="lg"
                                             to="/"
-                                        >Check flinbu.co</b-button>
+                                        >{{ $t('pages.kickoff.end_cta') }}</b-button>
                                     </b-col>
                                 </b-form-row>
                             </transition>
                         </b-form>
                     </b-col>
                 </b-row>
-                <div class="module__kickoff--helper">{{ labels.help[language] }}</div>
+                <div class="module__kickoff--helper">{{ $t('pages.kickoff.help') }}</div>
             </b-container>
         </transition>
     </Layout>    
@@ -199,44 +199,10 @@ export default {
     data() {
         return {
             fields: null,
-            language: 'en',
-            languages: ['es', 'en'],
+            language: this.$i18n.locale.toString(),
+            languages: this.$i18n.availableLocales,
             step: 'init',
-            labels: {
-                title: ['💪 Kick Off&nbsp;', 'and discovery'],
-                description: {
-                    es: 'Aquí conoceremos más de la marca, sus expectativas y como se perciben. No se deben responder todas pero entre más respuestas tengamos mejor el descubrimiento.',
-                    en: 'Here we will learn more about the brand, its expectations and how they are perceived. Not all must be answered, but the more answers we have the better the discovery.'
-                },
-                company_name: {
-                    es: 'Empecemos, ¿Cuál es el nombre de la marca?',
-                    en: "Let's begin, what is the brand name?"
-                },
-                language: {
-                    es: 'Idioma',
-                    en: 'Language'
-                },
-                es: {
-                    es: 'Español',
-                    en: 'Spanish'
-                },
-                en: {
-                    es: 'Inglés',
-                    en: 'English'
-                },
-                sending: {
-                    es: '¡Gracias! Se está procesando y enviando las respuestas...',
-                    en: 'Thanks! Answers are being processed and sent...'
-                },
-                success: {
-                    es: '¡Gracias! Se han enviando las respuestas, estaremos en contacto para continuar con el proyecto.',
-                    en: 'Thank you! Answers have been sent, we will be in contact to continue with the project.'
-                },
-                help: {
-                    es: '¿Necesitas ayuda? 👉',
-                    en: 'Need help? 👉'
-                }
-            },
+            title: ['💪 Kick Off&nbsp;', 'and discovery'],
             sections: [],
             form: {},
             classes: {},
@@ -246,23 +212,10 @@ export default {
     computed: {
         buttonLabel() {
             let labels = {
-                send: {
-                    es: 'Enviar',
-                    en: 'Send'
-                },
-                continue: {
-                    es: 'Continuar',
-                    en: 'Continue'
-                }
+                send: this.$t('labels.send'),
+                continue: this.$t('labels.continue')
             }
-            return this.loading ? '<i class="bx bx-loader-alt bx-spin"></i>' : this.step == 'end' ? labels.send[this.language.toLowerCase()] : labels.continue[this.language.toLowerCase()]
-        },
-        buttonBackLabel() {
-            let labels = {
-                es: 'Atrás',
-                en: 'Back'
-            }
-            return labels[this.language.toLowerCase()]
+            return this.loading ? '<i class="bx bx-loader-alt bx-spin"></i>' : this.step == 'end' ? labels.send : labels.continue
         }
     },
     methods: {
@@ -409,6 +362,14 @@ export default {
             let current = this.fields.find(section => section.name == this.step)
             let value = (current.index + 1) * 100 / this.fields.length
             return value
+        },
+        changeLanguage(lang) {
+            if (lang !== this.language) {
+                this.language = lang
+                this.$router.push({
+                    path: this.$tp(this.$route.path, lang, true)
+                })
+            }
         }
     },
     mounted() {

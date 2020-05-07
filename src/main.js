@@ -107,4 +107,5 @@ export default function (Vue, { appOptions, router, head, isClient }) {
 
   // Locales
   appOptions.i18n.setLocaleMessage('en', require('./locales/en.json'))
+  appOptions.i18n.setLocaleMessage('es', require('./locales/es.json'))
 }
