@@ -26,7 +26,7 @@
                 <!-- Social -->
                 <b-col class="d-none d-md-flex flex-column text-center text-md-right" cols="12" md="6">
                     <social-menu class="footer__social justify-content-center justify-content-md-end" iconSize="md"/>
-                    <p class="sources">Do you want this <a href="https://dribbble.com/shots/11097348-Personal-website-flinbu-co" target="_blank" title="Adobe XD template">XD Template</a> or this <a href="https://gitlab.com/flinbu-dev/portfolio" target="_blank" title="Page source code">page source</a>?</p>
+                    <p class="sources" v-html="$t('footer.question', {xd_url: xd_url, code_url: code_url})"/>
                 </b-col>
 
             </b-row>
@@ -46,20 +46,10 @@ const YEAR = new Date().getFullYear()
 export default {
     data() {
         return {
-            menu: [
-                {
-                    label: "Request CV",
-                    type: "external",
-                    target: "https://forms.gle/VPNkTfKm1wZiUntP9"
-                },
-                {
-                    label: "Hire me",
-                    type: "external",
-                    target: "https://forms.gle/NS1fLSukVBWzYw8K7",
-                }
-            ],
-            copyright: `&copy; ${YEAR}. Felipe Linares. All rights reserved.`,
-            email: "me@flinbu.co"
+            copyright: this.$t('site.copyright', {year: YEAR}),
+            email: "me@flinbu.co",
+            xd_url: 'https://dribbble.com/shots/11097348-Personal-website-flinbu-co',
+            code_url: 'https://gitlab.com/flinbu-dev/portfolio'
         }
     }
 }

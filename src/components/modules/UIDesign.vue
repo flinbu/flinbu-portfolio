@@ -28,27 +28,32 @@
 export default {
     data() {
         return {
-            labels: {
-                title: ['UX', 'Design'],
-                subtitle: "Innovate. Together.",
-                description: "Together we investigate, we create, we approach, we test and innovate with the solution to that challenge you hav with yout digital products."
-            },
             buttons: [
                 {
                     type: "anchor",
-                    label: "Let's create",
+                    label: this.$t('pages.home.ux_design_button_main'),
                     target: "#contact",
                     theme: "main",
                     shadow: true
                 },
                 {
                     type: "link",
-                    label: "Check my work",
+                    label: this.$t('pages.home.ux_design_button_second'),
                     target: "/portfolio",
                     theme: "white",
                     shadow: true
                 }
             ]
+        }
+    },
+    computed: {
+        labels() {
+            let title = this.$t('pages.home.ux_design_title').split(' ')
+            return {
+                title: title,
+                subtitle: this.$t('pages.home.ux_design_subtitle'),
+                description: this.$t('pages.home.ux_design_description')
+            }
         }
     }
 }

@@ -61,22 +61,12 @@
     </b-modal>
 </template>
 <script>
-const year = new Date().getFullYear()
+const YEAR = new Date().getFullYear()
 export default {
     data() {
         return {
             showModal: false,
-            labels: {
-                title: ['Felipe', 'Linares'],
-                subtitle: 'UX Designer, Developer & Consultant',
-                copyright: `&copy; ${year}. Felipe Linares. All rights reserved.`
-            },
             menu: [
-                // {
-                //     label: "My work",
-                //     link: process.env.GRIDSOME_PORTFOLIO_URL,
-                //     target: '_blank'
-                // },
                 {
                     label: "XD Template",
                     link: 'https://dribbble.com/shots/11097348-Personal-website-flinbu-co',
@@ -89,6 +79,16 @@ export default {
                 }
             ],
             theme: 'light'
+        }
+    },
+    computed: {
+        labels() {
+            let title = this.$t('site.title').split(' ')
+            return {
+                title: title,
+                subtitle: this.$t('site.subtitle'),
+                copyright: this.$t('site.copyright', {year: YEAR})
+            }
         }
     },
     methods: {

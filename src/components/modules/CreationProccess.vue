@@ -15,9 +15,9 @@
                             <div class="creation-proccess__content">
                                 <h3 class="creation-proccess__title">
                                     <span class="creation-proccess__title--step">{{ index + 1 }}</span>
-                                    {{ step.title }}
+                                    {{ $t(`pages.home.process_${step}`) }}
                                 </h3>
-                                <div class="creation-proccess__description" v-html="step.description"/>
+                                <div class="creation-proccess__description" v-html="$t(`pages.home.process_${step}_desc`)"/>
                             </div>
                         </b-col>
                     </b-row>
@@ -30,37 +30,22 @@
 export default {
     data() {
         return {
-            labels: {
-                title: ['Creation','Process'],
-                subtitle: "Research. Together.",
-                description: ""
-            },
             process: [
-                {
-                    title: "Research",
-                    description: "We must evaluate the precedents and acquire the largest amount of data regarding what we want to give solution"
-                },
-                {
-                    title: "Design",
-                    description: "It's time to play, to create, to immerse yourself in the theme and get the best strategy for your users"
-                },
-                {
-                    title: "Prototype",
-                    description: "But the last word is the users, evaluate the design of their hand they ensure that in the end you have the perfect product for them"
-                },
-                {
-                    title: "Improve",
-                    description: "Re think things with all the feedback received from users and apply them to the design involves people in the process achieving a better goal"
-                },
-                {
-                    title: "Deploy",
-                    description: "Once out of the design flow, the solution is deployed, thought and adjusted to the real needs of the users"
-                },
-                {
-                    title: "Support",
-                    description: "In the end, you will not be alone, any disturbance, mishap or stumble with the final product, we will look for you again the best solution together"
-                }
+                'research',
+                'design',
+                'prototype',
+                'improve',
+                'deploy',
+                'support'
             ]
+        }
+    },
+    computed: {
+        labels() {
+            return {
+                title: this.$t('pages.home.process_title').split(' '),
+                subtitle: this.$t('pages.home.process_subtitle')
+            }
         }
     }
 }

@@ -1,0 +1,112 @@
+{
+    "site": {
+        "title": "Felipe Linares",
+        "subtitle": "UX Designer, Developer & Consultant",
+        "copyright": "© {year}. Felipe Linares. All rights reserved."
+    },
+    "components": {
+        "contact_form": {
+            "name": "Let's meet. What's your name?",
+            "email": "And your email...",
+            "help": "How I can help?",
+            "priority": "What's the priority?",
+            "message": "Tell me about your project",
+            "cta": "Let's work!",
+            "placeholder": {
+                "message": "Budget, extra details, deadlines, special features..."
+            },
+            "help_options": {
+                "app_design": "App design",
+                "web_design": "Web design",
+                "frontend": "Frontend development",
+                "ux_advisory": "UX Advisory",
+                "greetings": "Greetings",
+                "general": "General"
+            },
+            "priority_options": {
+                "we_have_time": "We have time",
+                "urgent": "Urgent",
+                "asap": "ASAP",
+                "not_apply": "Does not apply"
+            },
+            "messges": {
+                "success": "Thank you for the message! I will contact you ASAP.",
+                "error": "Something has gone wrong! Your message could not be sent, please try again, thank you!"
+            }
+        },
+        "menu": {
+            "ux_design": "UX Design",
+            "data_visualization": "Data Visualization",
+            "front_development": "Front Dev.",
+            "process": "My Process",
+            "contact": "Let's Work!"
+        },
+        "scheme_switch": {
+            "label": "Night mode"
+        }
+    },
+    "modals": {
+        "menu": {
+            "xd_template": "XD Template",
+            "source_code": "Source code"
+        }
+    },
+    "footer": {
+        "question": "Do you want this <a href=\"{xd_url}\" target=\"_blank\" title=\"Adobe XD template\">XD Template</a> or this <a href=\"{code_url}\" target=\"_blank\" title=\"Page source code on GitLab\">page source code</a>?"
+    },
+    "pages": {
+        "home": {
+            "hero_description": "<p>I'm a UX Designer, developer & consultant based in Colombia.</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>",
+            "hero_button_main": "Work together",
+            "hero_button_second": "Resume",
+
+            "ux_design_title": "UX Design",
+            "ux_design_subtitle": "Innovate. Together.",
+            "ux_design_description": "Together we investigate, we create, we approach, we test and innovate with the solution to that challenge you hav with yout digital products.",
+            "ux_design_button_main": "Let's create",
+            "ux_design_button_second": "Check my work",
+
+            "data_title": "Data Visualization",
+            "data_subtitle": "Understand. Together.",
+            "data_description": "Create personalized infographics to bring your data to a very friendly level so that anyone can understand in the best way and without bias.",
+            "data_button_main": "Get in touch",
+            "data_button_second": "Check example",
+
+            "front_dev_title": "Front Dev",
+            "front_dev_subtitle": "Create. Together.",
+            "front_dev_description": "I can help you develop your digital product, thanks to the experience gained in HTML 5, VUE, JS, WordPress and more. I create and turn that idea into reality.",
+            "front_dev_button_main": "Let's create",
+            "front_dev_button_second": "Explore source code",
+
+            "process_title": "Creation Process",
+            "process_subtitle": "Research. Together.",
+            "process_research": "Research",
+            "process_research_desc": "We must evaluate the precedents and acquire the largest amount of data regarding what we want to give solution",
+            "process_design": "Design",
+            "process_design_desc": "It's time to play, to create, to immerse yourself in the theme and get the best strategy for your users",
+            "process_prototype": "Prototype",
+            "process_prototype_desc": "But the last word is the users, evaluate the design of their hand they ensure that in the end you have the perfect product for them",
+            "process_improve": "Improve",
+            "process_improve_desc": "Re think things with all the feedback received from users and apply them to the design involves people in the process achieving a better goal",
+            "process_deploy": "Deploy",
+            "process_deploy_desc": "Once out of the design flow, the solution is deployed, thought and adjusted to the real needs of the users",
+            "process_support": "Support",
+            "process_support_desc": "In the end, you will not be alone, any disturbance, mishap or stumble with the final product, we will look for you again the best solution together",
+
+            "contact_title": "Work Together",
+            "contact_subtitle": "Let's create",
+            "contact_description": "<p>Tell me about your needs and let’s start working together on the best solution for users and business.</p><p>I’m not a freelancer, I will be part of your team.</p>",
+
+            "social_title": "Let's Connect",
+            "social_subtitle": "My digital print"
+        },
+        "portfolio": {
+            "title": "Latest Portfolio",
+            "cta": "👉 Check full portfolio"
+        },
+        "links": {
+            "title": "Favourite Links",
+            "subtitle": "sharing is caring 😌"
+        }
+    }
+}

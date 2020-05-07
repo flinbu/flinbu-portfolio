@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <transition name="fade" appear>  
-            <b-container class="mmodule module__portfolio py-10">
+            <b-container class="module module__portfolio py-10">
                 <b-row>
                     <b-col cols="12" class="module__wrapper">
                         <div class="module__content mb-8">
@@ -65,18 +65,20 @@ query Dribbble {
 </static-query>
 <script>
 export default {
+    metaInfo: {
+        title: 'Portfolio'
+    },
     data() {
         return {
-            dribbbleURL: process.env.GRIDSOME_DRIBBBLE_URL,
-            labels: {
-                title: ['Latest','Portfolio'],
-                fullPortofolio: "👉 Check full portfolio"
-            }
+            dribbbleURL: process.env.GRIDSOME_DRIBBBLE_URL
         }
     },
     computed: {
-        subtitle() {
-            return `Data grabbed from <a href="${this.behanceUrl}" target="_blank">Behance</a>`
+        labels() {
+            return {
+                title: this.$t('pages.portfolio.title').split(' '),
+                fullPortofolio: this.$t('pages.portfolio.cta')
+            }
         },
         cols() {
             const gridCols = 3

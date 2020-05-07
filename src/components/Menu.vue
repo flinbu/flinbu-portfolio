@@ -28,27 +28,27 @@ export default {
             return [
                 {
                     link: '#ux-design',
-                    label: 'UX Design',
+                    label: this.$t('components.menu.ux_design'),
                     type: 'anchor'
                 },
                 {
                     link: '#data-visualization',
-                    label:'Data Visualization',
+                    label: this.$t('components.menu.data_visualization'),
                     type: 'anchor'
                 },
                 {
                     link: '#frontend-development',
-                    label: 'Front Dev.',
+                    label: this.$t('components.menu.front_development'),
                     type: 'anchor'
                 },
                 {
                     link: '#creation-process',
-                    label: 'My Process',
+                    label: this.$t('components.menu.process'),
                     type: 'anchor'
                 },
                 {
                     link: '#contact',
-                    label: `Let's Work!`,
+                    label: this.$t('components.menu.contact'),
                     type: 'anchor'
                 }
             ]

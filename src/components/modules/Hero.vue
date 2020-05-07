@@ -40,41 +40,33 @@
 <script>
 import axios from 'axios'
 export default {
-    data() {
-        return {
-            labels: {
-                title: [],
-                subtitle: process.env.GRIDSOME_SITE_DESCRIPTION,
-                description: "<p>I'm a UX Designer, developer & consultant based in Colombia.</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluation of the best method and solution, resulting in functional UI designs and 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>"
-            }
-        }
-    },
     computed: {
+        labels() {
+            let title = this.$t('site.title').split(' ')
+            return {
+                title: title,
+                subtitle: this.$t('site.subtitle'),
+                description: this.$t('pages.home.hero_description')
+            }
+        },
         buttons() {
             return [
                 {
                     type: "anchor",
-                    label: "Work together",
+                    label: this.$t('pages.home.hero_button_main'),
                     target: "#contact",
                     theme: "main",
                     shadow: true
                 },
                 {
                     type: "link",
-                    label: "Resume",
+                    label: this.$t('pages.home.hero_button_second'),
                     target: process.env.GRIDSOME_RESUME_URL,
                     theme: "white",
                     color: "red",
                     shadow: true
                 }
             ]
-        }
-    },
-    mounted() {
-        let title = process.env.GRIDSOME_SITE_NAME
-        let titleArr = title.split(' ')
-        for(let i = 0; i < titleArr.length; i++) {
-            this.labels.title.push(titleArr[i])
         }
     }
 }

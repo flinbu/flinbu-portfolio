@@ -14,11 +14,11 @@
                 <b-row align-h="center" class="mb-5 mt-5">
                     <b-col cols="12" class="text-center">
                         <module-title
-                            :strongText="labels.sectionName[0]"
-                            :lightText="labels.sectionName[1]"
+                            :strongText="labels.title[0]"
+                            :lightText="labels.title[1]"
                             justify="center"
                         />
-                        <h5 class="font-weight-light text-gray">{{ labels.sectionSubName }}</h5>
+                        <h5 class="font-weight-light text-gray">{{ labels.subtitle }}</h5>
                     </b-col>
                 </b-row>
                 <b-row align-h="center" align-v="stretch" class="px-4">
@@ -73,15 +73,13 @@ import { snakeCase } from 'lodash'
 export default {
     layout: 'clean',
     metaInfo: {
-        title: `${process.env.GRIDSOME_SITE_NAME} - My favourite links`
+        title: 'My favourite links'
     },
-    data() {
-        return {
-            labels: {
-                title: 'Felipe Linares',
-                subtitle: 'Hello there!',
-                sectionName: ['Favourite', 'Links'],
-                sectionSubName: 'sharing is caring 😌'
+    computed: {
+        labels() {
+            return {
+                title: this.$t('pages.links.title').split(' '),
+                subtitle: this.$t('pages.links.subtitle')
             }
         }
     },

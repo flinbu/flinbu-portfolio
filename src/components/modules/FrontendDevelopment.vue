@@ -40,22 +40,17 @@
 export default {
     data() {
         return {
-            labels: {
-                title: ['Front','Dev'],
-                subtitle: "Create. Together.",
-                description: "I can help you develop your digital product, thanks to the experience gained in HTML 5, VUE, JS, WordPress and more. I create and turn that idea into reality."
-            },
             buttons: [
                 {
                     type: "anchor",
-                    label: "Let's create",
+                    label: this.$t('pages.home.front_dev_button_main'),
                     target: "#contact",
                     theme: "main",
                     shadow: true
                 },
                 {
                     type: 'link',
-                    label: 'Explore this page code',
+                    label: this.$t('pages.home.front_dev_button_second'),
                     target: 'https://gitlab.com/flinbu-dev/portfolio',
                     theme: 'white',
                     shadow: true
@@ -88,6 +83,15 @@ export default {
                 }
             ],
             scheme: 'light'
+        }
+    },
+    computed: {
+        labels() {
+            return {
+                title: this.$t('pages.home.front_dev_title').split(' '),
+                subtitle: this.$t('pages.home.front_dev_subtitle'),
+                description: this.$t('pages.home.front_dev_description')
+            }
         }
     },
     mounted() {

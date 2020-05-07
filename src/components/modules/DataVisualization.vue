@@ -36,27 +36,31 @@
 export default {
     data() {
         return {
-            labels: {
-                title: ['Data', 'Visualization'],
-                subtitle: "Understand. Together.",
-                description: "Create personalized infographics to bring your data to a very friendly level so that anyone can understand in the best way and without bias."
-            },
             buttons: [
                 {
                     type: "anchor",
-                    label: "Get in touch",
+                    label: this.$t('pages.home.data_button_main'),
                     target: "#contact",
                     theme: "main",
                     shadow: true
                 },
                 {
                     type: 'link',
-                    label: 'Check example',
+                    label: this.$t('pages.home.data_button_second'),
                     target: 'https://www.elpais.com.co/especiales/gota-gota-america-latina/colombianos2/index.html#/',
                     theme: 'white',
                     shadow: true
                 }
             ]
+        }
+    },
+    computed: {
+        labels() {
+            return {
+                title: this.$t('pages.home.data_title').split(' '),
+                subtitle: this.$t('pages.home.data_subtitle'),
+                description: this.$t('pages.home.data_description')
+            }
         }
     }
 }

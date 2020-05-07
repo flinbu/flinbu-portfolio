@@ -37,23 +37,27 @@
 export default {
     data() {
         return {
-            labels: {
-                title: ["Work", 'Together'],
-                subtitle: "Let's create.",
-                description: '<p>Tell me about your needs and let’s start working together on the best solution for users and business.</p><p>I’m not a freelancer, I will be part of your team.</p>',
-                socialTitle: [`Let's`, 'Connect'],
-                socialSubtitle: "My digital print."
-            },
             formLabels: {
-                name: `Let's meet. What's your name?`,
-                email: 'And your email...',
-                help: 'How can I help?',
-                priority: `What's the priority?`,
-                message: 'Tell me more about your project',
-                messagePlaceholder: 'Budget, extra details, deadlines, special features...',
-                submit: `Let's work!`
+                name: this.$t('components.contact_form.name'),
+                email: this.$t('components.contact_form.email'),
+                help: this.$t('components.contact_form.help'),
+                priority: this.$t('components.contact_form.priority'),
+                message: this.$t('components.contact_form.message'),
+                messagePlaceholder: this.$t('components.contact_form.placeholder.message'),
+                submit: this.$t('components.contact_form.cta')
             },
             contactEmail: process.env.GRIDSOME_CONTACT_EMAIL
+        }
+    },
+    computed: {
+        labels() {
+            return {
+                title: this.$t('pages.home.contact_title').split(' '),
+                subtitle: this.$t('pages.home.contact_subtitle'),
+                description: this.$t('pages.home.contact_description'),
+                socialTitle: this.$t('pages.home.social_title').split(' '),
+                socialSubtitle: this.$t('pages.home.social_subtitle')
+            }
         }
     }
 }

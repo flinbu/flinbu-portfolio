@@ -39,7 +39,7 @@ import BrandDark from "~/assets/images/logo-dark.svg"
 //Plugins
 import ImagePath from "~/plugins/ImagePath.js"
 
-export default function (Vue, { router, head, isClient }) {
+export default function (Vue, { appOptions, router, head, isClient }) {
 
   //Frontend framework
   Vue.use(BootstrapVue)
@@ -104,4 +104,7 @@ export default function (Vue, { router, head, isClient }) {
       type: 'text/javascript'
     })
   }
+
+  // Locales
+  appOptions.i18n.setLocaleMessage('en', require('./locales/en.json'))
 }

@@ -143,20 +143,20 @@ export default {
         },
         helpOptions() {
             return [
-                'App design',
-                'Web design',
-                'Frontend development',
-                'UX Advisory',
-                'Greetings',
-                'General'
+                this.$t('components.contact_form.help_options.app_design'),
+                this.$t('components.contact_form.help_options.web_design'),
+                this.$t('components.contact_form.help_options.frontend'),
+                this.$t('components.contact_form.help_options.ux_advisory'),
+                this.$t('components.contact_form.help_options.greetings'),
+                this.$t('components.contact_form.help_options.general')
             ]
         },
         priorityOptions() {
             return [
-                'We have time',
-                'Urgent',
-                'ASAP',
-                'Does not apply'
+                this.$t('components.contact_form.priority_options.we_have_time'),
+                this.$t('components.contact_form.priority_options.urgent'),
+                this.$t('components.contact_form.priority_options.asap'),
+                this.$t('components.contact_form.priority_options.not_apply')
             ]
         }
     },
@@ -192,18 +192,18 @@ export default {
                         if (success) {
                             event.target.reset()
                             this.clearForm()
-                            this.response = "Thank you for the message! I will contact you ASAP."
+                            this.response = this.$t('components.contact_form.messages.success')
                             this.responseColor = "green"
                         } else {
                             console.log(response)
-                            this.response = "Something has gone wrong! Your message could not be sent, please try again, thank you!"
+                            this.response = this.$t('components.contact_form.messages.error')
                             this.responseColor = "red"
                         }
                     })
                     .catch(err => {
                         this.loading = false
                         console.log(err)
-                        this.response = "Something has gone wrong! Your message could not be sent, please try again, thank you!"
+                        this.response = this.$t('components.contact_form.messages.error')
                         this.responseColor = "red"
                     })
         },

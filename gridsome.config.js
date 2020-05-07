@@ -9,12 +9,27 @@ module.exports = {
   siteDescription: process.env.GRIDSOME_SITE_DESCRIPTION,
   siteUrl: process.env.GRIDSOME_SITE_URL,
   plugins: [
+    // Google Analytics
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: process.env.GA_UA
       }
     },
+    // i18n
+    {
+      use: 'gridsome-plugin-i18n',
+      options: {
+        locales: [
+          'en',
+          'es'
+        ],
+        fallbackLocale: 'en',
+        defaultLocale: 'en',
+        enablePathRewrite: false
+      }
+    },
+    // Airtable source
     {
       use: '@gridsome/source-airtable',
       options: {
@@ -48,6 +63,7 @@ module.exports = {
         }
       }
     },
+    // Sitemap
     {
       use: '@gridsome/plugin-sitemap',
       options: {
@@ -65,6 +81,7 @@ module.exports = {
         }
       }
     },
+    // Robots TXT
     {
       use: 'gridsome-plugin-robots',
       options: {
