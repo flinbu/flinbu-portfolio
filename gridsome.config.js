@@ -26,7 +26,7 @@ module.exports = {
         ],
         fallbackLocale: 'en',
         defaultLocale: 'en',
-        enablePathRewrite: false
+        enablePathRewrite: true
       }
     },
     // Airtable source
@@ -68,13 +68,25 @@ module.exports = {
       use: '@gridsome/plugin-sitemap',
       options: {
         cacheTime: 600000,
-        exclude: ['/kickoff'],
+        exclude: [
+          '/kickoff', 
+          '/en/kickoff', 
+          '/es/kickoff'
+        ],
         config: {
-          '/': {
+          '/en': {
             changefreq: 'weekly',
             priority: 1
           },
-          '/portfolio': {
+          '/en/portfolio': {
+            changefreq: 'daily',
+            priority: 1
+          },
+          '/es': {
+            changefreq: 'weekly',
+            priority: 1
+          },
+          '/es/portfolio': {
             changefreq: 'daily',
             priority: 1
           }

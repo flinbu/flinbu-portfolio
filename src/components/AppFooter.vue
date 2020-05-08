@@ -7,10 +7,7 @@
                 <b-col cols="12" md="6">
                     <b-row align-v="center" class="justify-content-center justify-content-md-start">
                         <b-col class="footer__logo--wrapper mb-4 text-center text-md-left" cols="4" md="2" offset-md="0">
-                            <g-image
-                                src="~/assets/images/logo.svg"
-                                class="footer__logo img-fluid"
-                            />
+                            <brand class="footer__logo img-fluid"/>
                         </b-col>
                         <b-col cols="12" md="10" class="text-center text-md-left">
                             <h1 class="header__brand--name mr-2">{{ $static.metadata.siteName }}</h1>

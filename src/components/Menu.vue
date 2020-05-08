@@ -57,11 +57,13 @@ export default {
     methods: {
         openLink(item) {
             let current = this.$route
-            console.log(current)
+            let currentLang = this.$i18n.locale.toString()
             switch (item.type) {
                 case 'anchor':
-                    if (current.path != '/') {
-                        this.$router.push(`/${item.link}`)
+                    if (current.path != '/' && current.path != `/${currentLang}/`) {
+                        this.$router.push({
+                            path: this.$tp(`/${item.link}`, currentLang, true)
+                        })
                     } else {
                         this.$scrollTo(item.link, {
                             offset: -60

@@ -19,6 +19,7 @@ import AppFooter from "~/components/AppFooter"
 import ContactForm from "~/components/ContactForm"
 import ModuleTitle from "~/components/ModuleTitle"
 import SchemeSwitch from "~/components/SchemeSwitch"
+import LangSwitch from "~/components/LangSwitch"
 import ImageSlider from "~/components/ImageSlider"
 import Menu from '~/components/Menu'
 
@@ -63,6 +64,7 @@ export default function (Vue, { appOptions, router, head, isClient }) {
   Vue.component('Modals', Modals)
   Vue.component('ModuleTitle', ModuleTitle)
   Vue.component('SchemeSwitch', SchemeSwitch)
+  Vue.component('LangSwitch', LangSwitch)
   Vue.component('ImageSlider', ImageSlider)
   Vue.component('AppMenu', Menu)
 

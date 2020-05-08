@@ -1,27 +1,68 @@
 <template>
     <div v-if="logos" class="logo-list__wrapper">
-        <ul :class="listClass">
-            <li 
-                v-for="(logo, index) in logos"
-                :key="index"
-                class="logo-list__item"
-                @click="visitLogo(logo)"
-            >
-                <g-image
-                    :src="imagePath(logo[imageKey])"
-                    :alt="logo[titleKey]"
-                    :style="`width: ${logoWidth}px;`"
+        <ul v-if="logos == 'tech'" :class="listClass">
+            <li class="logo-list__item">
+                <NSLogo
+                    title="NativeScript"
+                    :width="logoWidth"
+                />
+            </li>
+            <li class="logo-list__item">
+                <VueLogo
+                    title="NativeScript"
+                    :width="logoWidth"
+                />
+            </li>
+            <li class="logo-list__item">
+                <JSLogo
+                    title="JavaScript"
+                    :width="logoWidth"
+                />
+            </li>
+            <li class="logo-list__item">
+                <HTML5Logo
+                    title="HTML5"
+                    :width="logoWidth"
+                />
+            </li>
+            <li class="logo-list__item">
+                <WPLogo
+                    title="WordPress"
+                    :width="logoWidth"
+                />
+            </li>
+            <li class="logo-list__item">
+                <SASSLogo
+                    title="SASS"
+                    :width="logoWidth"
                 />
             </li>
         </ul>
     </div>
 </template>
 <script>
+
+// Tech logos
+import NSLogo from "~/assets/images/logos/ns.svg"
+import VueLogo from "~/assets/images/logos/vue.svg"
+import JSLogo from "~/assets/images/logos/js.svg"
+import HTML5Logo from "~/assets/images/logos/html5.svg"
+import WPLogo from "~/assets/images/logos/wordpress.svg"
+import SASSLogo from "~/assets/images/logos/sass.svg"
+
 export default {
+    components: {
+        NSLogo,
+        VueLogo,
+        JSLogo,
+        HTML5Logo,
+        WPLogo,
+        SASSLogo
+    },
     props: {
         logos: {
-            type: [Array, Boolean],
-            default: false
+            type: String,
+            default: ''
         },
         orientation: {
             type: String,

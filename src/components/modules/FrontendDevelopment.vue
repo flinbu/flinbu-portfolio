@@ -16,7 +16,7 @@
                             button-class="module__action"
                         />
                         <logo-list
-                            :logos="logos"
+                            logos="tech"
                             align="left" 
                             logo-width="30"
                             breakpoint="lg"
@@ -54,32 +54,6 @@ export default {
                     target: 'https://gitlab.com/flinbu-dev/portfolio',
                     theme: 'white',
                     shadow: true
-                }
-            ],
-            logos: [
-                {
-                    name: "NativeScript",
-                    image: "logos/ns.svg"
-                },
-                {
-                    name: "VUE",
-                    image: "logos/vue.svg"
-                },
-                {
-                    name: "JavaScript",
-                    image: "logos/js.svg"
-                },
-                {
-                    name: "HTML5",
-                    image: "logos/html5.svg"
-                },
-                {
-                    name: "WordPress",
-                    image: "logos/wordpress.svg"
-                },
-                {
-                    name: "SASS",
-                    image: "logos/sass.svg"
                 }
             ],
             scheme: 'light'

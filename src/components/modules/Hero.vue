@@ -1,8 +1,5 @@
 <template>
-    <div
-        class="module module__hero content content__middl pt-3 pb-6"
-        style="background-image: url('assets/images/hero-bg.svg');"
-    >
+    <div class="module module__hero content content__middl pt-6 pt-md-3 pb-6">
         <b-container>
             <b-row class="h-100" align-v="center">
                 <b-col cols="12" lg="6" order="2" order-lg="1">

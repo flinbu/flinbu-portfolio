@@ -2,16 +2,14 @@
     <header :class="`header__main header__${scrollClass}`">   
         <b-container fluid v-if="theme == 'default'" class="d-flex align-items-center pr-0">
             <g-link 
-                to="/"
+                :to="$tp('/', $i18n.locale.toString(), true)"
                 class="header__brand--wrapper d-inline-flex align-items-center"
             >
-                <g-image
-                    src="~/assets/images/logo.svg"
-                    class="header__brand--logo mr-0 mr-md-2"
-                />
+                <brand class="header__brand--logo mr-0 mr-md-2"/>
             </g-link>
+            <app-menu location="header" class="mr-auto"/>
             <div class="ml-auto d-flex align-items-center">
-                <app-menu location="header" class="mr-4"/>
+                <lang-switch class="mr-2"/>
                 <scheme-switch location="header" class="mr-2"/>
                 <b-button
                     class="header__menu"

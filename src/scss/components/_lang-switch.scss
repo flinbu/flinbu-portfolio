@@ -1,0 +1,87 @@
+.lang-switch {
+    .dropdown {
+        &-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: auto;
+            background: none;
+            color: $gray-darker;
+            border: none;
+            font-size: 12px;
+            transition: .4s ease-in-out;
+            &:focus,
+            &:focus-within,
+            &:active {
+                background: none;
+                box-shadow: none;
+            }
+            .app__dark & {
+                color: $white;
+            }
+        }
+        &-menu {
+            background: none;
+            width: 100%;
+            min-width: 60px;
+            border: none;
+            margin-top: 4px;
+            padding: 0;
+            outline: none;
+            box-shadow: 0 10px 20px rgba($black, .08);
+            transition: .4s ease-in-out;
+            .app__dark & {
+                box-shadow: 0 10px 20px rgba($black, .4);
+            }
+            li {
+                background: none;
+                &:first-child {
+                    .dropdown-item {
+                        border-radius: 5px 5px 0 0;
+                    }
+                }
+                &:last-child {
+                    .dropdown-item {
+                        border-radius: 0 0 5px 5px;
+                    }
+                }
+            }
+        }
+        &-item {
+            padding: 8px;
+            background-color: $white;
+            &:active {
+                color: $gray-darker;
+            }
+            &.active {
+                background-color: $red;
+            }
+            .app__dark & {
+                background-color: $gray-darker;
+                color: $white;
+                &:active {
+                    color: $white;
+                }
+                &.active {
+                    background-color: $red;
+                }
+            }
+        }
+    }
+    &.show {
+        & > .dropdown-toggle {
+            background-color: $white;
+            color: $gray-darker;
+            &:after {
+                border-top-color: $gray-darker;
+            }
+            .app__dark & {
+                background-color: $gray-darker;
+                color: $white;
+                &:after {
+                    border-top-color: $white;
+                }
+            }
+        }
+    }
+}

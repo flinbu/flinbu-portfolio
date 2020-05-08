@@ -26,9 +26,17 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            buttons: [
+    computed: {
+        labels() {
+            let title = this.$t('pages.home.ux_design_title').split(' ')
+            return {
+                title: title,
+                subtitle: this.$t('pages.home.ux_design_subtitle'),
+                description: this.$t('pages.home.ux_design_description')
+            }
+        },
+        buttons() {
+            return [
                 {
                     type: "anchor",
                     label: this.$t('pages.home.ux_design_button_main'),
@@ -39,21 +47,11 @@ export default {
                 {
                     type: "link",
                     label: this.$t('pages.home.ux_design_button_second'),
-                    target: "/portfolio",
+                    target: this.$tp("/portfolio", this.$i18n.locale.toString(), true),
                     theme: "white",
                     shadow: true
                 }
             ]
-        }
-    },
-    computed: {
-        labels() {
-            let title = this.$t('pages.home.ux_design_title').split(' ')
-            return {
-                title: title,
-                subtitle: this.$t('pages.home.ux_design_subtitle'),
-                description: this.$t('pages.home.ux_design_description')
-            }
         }
     }
 }
