@@ -63,6 +63,14 @@ module.exports = {
         }
       }
     },
+    // Instagram
+    {
+      use: '@zefman/gridsome-source-instagram',
+      options: {
+        username: process.env.GRIDSOME_INSTAGRAM_USER,
+        typeName: 'Instagram'
+      }
+    },
     // Sitemap
     {
       use: '@gridsome/plugin-sitemap',

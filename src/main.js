@@ -4,6 +4,7 @@ import VueScrollTo from "vue-scrollto"
 import VueCookies from 'vue-cookies'
 
 //Styles
+import 'hooper/dist/hooper.css'
 import '~/scss/app.scss'
 
 //Components
@@ -22,6 +23,7 @@ import SchemeSwitch from "~/components/SchemeSwitch"
 import LangSwitch from "~/components/LangSwitch"
 import ImageSlider from "~/components/ImageSlider"
 import Menu from '~/components/Menu'
+import InstagramWall from '~/components/InstagramWall'
 
 //Modules
 import Hero from "~/components/modules/Hero"
@@ -67,6 +69,7 @@ export default function (Vue, { appOptions, router, head, isClient }) {
   Vue.component('LangSwitch', LangSwitch)
   Vue.component('ImageSlider', ImageSlider)
   Vue.component('AppMenu', Menu)
+  Vue.component('InstagramWall', InstagramWall)
 
   //Modules
   Vue.component('Hero', Hero)
