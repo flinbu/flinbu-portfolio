@@ -18,9 +18,13 @@
                 </div>
             </slide>
         </hooper>
-        <div class="instagram-wall__tag">
+        <a 
+            class="instagram-wall__tag"
+            :href="instagramURL"
+            target="_blank"
+        >
             <i class="instagram-wall__tag--icon bx bxl-instagram"/>
-        </div>
+        </a>
     </div>
 </template>
 <script>
@@ -42,6 +46,7 @@ export default {
     },
     data() {
         return {
+            instagramURL: `https://instagram.com/${process.env.GRIDSOME_INSTAGRAM_USER}`,
             hooperSettings: {
                 itemsToShow: 2,
                 itemsToSlide: 1,
