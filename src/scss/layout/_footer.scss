@@ -1,9 +1,9 @@
 .footer {
     &__main {
-        background: $white;
+        background: $body-bg;
         transition: .4s ease-in-out;
         .app__dark & {
-            background-color: $black;
+            background-color: $body-bg-dark;
         }
         .footer {
             &__menu {

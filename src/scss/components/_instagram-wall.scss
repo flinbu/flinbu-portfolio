@@ -26,11 +26,13 @@
         align-items: center;
         justify-content: center;
         opacity: .5;
-        mix-blend-mode: overlay;
         &--icon {
             font-size: 70px;
-            color: $white;
-            text-shadow: 0 0 20px rgba($black, .7);
+            color: $red;
+            .app__dark & {
+                color: $white;
+                mix-blend-mode: overlay;
+            }
         }
     }
 }
