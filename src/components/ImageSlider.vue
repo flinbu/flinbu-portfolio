@@ -1,25 +1,95 @@
 <template>
-    <b-carousel 
-        v-if="location" 
-        class="image-slider"
-        :interval="interval"
-        :background="background"
-        :controls="controls"
-        :indicators="indicators"
-        @sliding-start="onSlideStart"
-        @sliding-end="onSlideEnd"
+
+    <div 
+        v-if="images && images.length > 0" 
+        class="image-slider__wrapper"
     >
-        <b-carousel-slide
-            v-for="(item, i) in images"
-            :key="i"
-            :img-src="item.image"
-            :caption-html="itemCaption(item)"
-        />
-    </b-carousel>
+        <hooper
+            :class="`image-slider image-slider__${ratio}`"
+            :settings="hooperSettings"
+            @slide="onSlide"
+            ref="slider"
+        >
+            <slide
+                v-for="(image, i) in images"
+                :key="`image-slider-${location}-${i}`"
+                class="image-slider__item--wrapper"
+            >
+                <div 
+                    class="image-slider__item" 
+                    @click="itemClick(image)"
+                >
+                    <b-img-lazy
+                        v-if="lazy"
+                        fluid-grow
+                        class="image-slider__image"
+                        :src="image.image"
+                    />
+                    <b-img
+                        v-else
+                        fluid-grow
+                        class="image-slider__image"
+                        :src="image.image"
+                    />
+                    <div 
+                        v-if="itemCaption(image)"
+                        class="image-slider__caption" 
+                        v-html="itemCaption(image)"
+                    />
+                </div>
+            </slide>
+        </hooper>
+
+        <!-- Controls -->
+        <div 
+            v-if="controls"
+            class="image-slider__controls"
+        >
+            <b-button 
+                class="image-slider__control image-slider__control--prev"
+                @click="prev()"
+            >
+                <i class="bx bx-chevron-left"/>
+            </b-button>
+            <b-button 
+                class="image-slider__control image-slider__control--next"
+                @click="next()"
+            >
+                <i class="bx bx-chevron-right"/>
+            </b-button>
+        </div>
+
+        <!-- Pagination -->
+        <ul 
+            v-if="pagination"
+            class="image-slider__pagination"
+        >
+            <li 
+                v-for="pag in images.length"
+                :key="pag"
+                :class="`image-slider__pagination--item ${inSlide(pag - 1) ? 'active' : ''}`"
+                @click="slide(pag - 1)"
+            />
+        </ul>
+
+    </div>
+
 </template>
 <script>
+import { 
+    Hooper, 
+    Slide
+} from 'hooper'
 export default {
+    components: {
+        Hooper,
+        Slide
+    },
     props: {
+        items: {
+            type: [Array, Boolean],
+            default: false
+        },
         location: {
             type: String,
             default: ''
@@ -32,65 +102,110 @@ export default {
             type: Boolean,
             default: true
         },
-        indicators: {
+        pagination: {
             type: Boolean,
             default: true
+        },
+        ratio: {
+            type: String,
+            default: '16x9'
+        },
+        itemsToShow: {
+            type: Number,
+            default: 1
+        },
+        itemsToSlide: {
+            type: Number,
+            default: 1
+        },
+        autoPlay: {
+            type: Boolean,
+            default: true
+        },
+        centerMode: {
+            type: Boolean,
+            default: true
+        },
+        playSpeed: {
+            type: Number,
+            default: 3000
+        },
+        infiniteScroll: {
+            type: Boolean,
+            default: false
+        },
+        hoverPause: {
+            type: Boolean,
+            default: false
+        },
+        wheelControl: {
+            type: Boolean,
+            default: false
+        },
+        lazy: {
+            type: Boolean,
+            default: false
+        },
+        caption: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
         return {
-            slide: 0,
-            sliding: null,
-            background: '#F8F8F9',
-            imgProps: {
-                center: true,
-                fluidGrow: true
-            }
+            slider: null,
+            currentSlide: 0
         }
     },
     computed: {
-        images() {
-            let images = []
-            switch (this.location) {
-                case 'ux':
-                    images = this.$static.posts.edges.slice(0, 4).map( edge => {
-                        return edge.node
-                    })
+        hooperSettings() {
+            return {
+                itemsToShow: this.itemsToShow,
+                itemsToSlide: this.itemsToSlide,
+                infiniteScroll: this.infiniteScroll,
+                autoPlay: this.autoPlay,
+                hoverPause: this.hoverPause,
+                centerMode: this.centerMode,
+                playSpeed: this.playSpeed,
+                transition: this.interval,
+                wheelControl: this.wheelControl
             }
-            return images
+        },
+        images() {
+            return this.items
         }
     },
     methods: {
-        onSlideStart(slide) {
-            this.sliding = true
-        },
-        onSlideEnd(slide) {
-            this.sliding = false
+        onSlide({ currentSlide, slideFrom }) {
+            this.currentSlide = currentSlide
         },
         itemCaption(item) {
-            return `<a href="${item.url}" target="_blank" title="${item.title}">${item.title}</a>`
+            if (!this.caption) return false
+            return item.url ? `<a href="${item.url}" target="_blank" title="${item.title}">${item.title}</a>` : item.title
+        },
+        itemClick(item) {
+            return item.url ? window.open(item.url) : false
+        },
+        next() {
+            this.slider.slideNext()
+        },
+        prev() {
+            this.slider.slidePrev()
+        },
+        slide(index) {
+            this.slider.slideTo(index)
+        },
+        inSlide(slide) {
+            if (this.infiniteScroll) {
+                let current = this.currentSlide == this.images.length ? 0 : this.currentSlide
+                return slide === current
+            } else {
+                return slide === current
+            }
         }
     },
     mounted() {
-        let schemeCookie = this.$cookies.get('color-scheme')
-        this.background = schemeCookie ? schemeCookie == 'dark' ? '#181818' : '#F8F8F9' : '#F8F8F9'
-        this.$root.$on('scheme', scheme => {
-            this.background = scheme == 'dark' ? '#181818' : '#F8F8F9'
-        })
+        this.slider = this.$refs.slider
     }
 }
 </script>
-<static-query>
-query Dribbble {
-    posts: allDribbble(order: ASC) {
-        edges {
-            node {
-                title
-                image
-                description
-                url
-            }
-        }
-    }
-}
-</static-query>

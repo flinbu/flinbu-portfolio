@@ -17,7 +17,17 @@
                 </b-col>
                 <b-col class="module__image--wrapper order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                     <b-row>
-                        <image-slider location="ux"/>
+                        <image-slider 
+                            :items="images"
+                            ratio="4x3"
+                            indicators
+                            controls
+                            :infinite-scroll="true"
+                            :interval="2000"
+                            :play-speed="1000"
+                            caption
+                            lazy
+                        />
                     </b-row>
                 </b-col>
             </b-row>
@@ -52,7 +62,24 @@ export default {
                     shadow: true
                 }
             ]
+        },
+        images() {
+            return this.$static.posts.edges.slice(0, 4).map(edge => edge.node)
         }
     }
 }
 </script>
+<static-query>
+query Dribbble {
+    posts: allDribbble(order: ASC) {
+        edges {
+            node {
+                title
+                image
+                description
+                url
+            }
+        }
+    }
+}
+</static-query>
