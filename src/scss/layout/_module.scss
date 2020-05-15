@@ -13,6 +13,9 @@
                 font-size: 30px;
             }
         }
+        .module__hero & {
+            font-size: 50px;
+        }
         .app__dark & {
             color: $white;
         }
@@ -27,6 +30,18 @@
             .module__red & {
                 color: rgba($white, .5);
             }
+        }
+    }
+    &__copyline {
+        font-size: 50px;
+        font-weight: 300;
+        color: $gray-darker;
+        letter-spacing: -1px;
+        .app__dark & {
+            color: $white;
+        }
+        @include media-breakpoint-down(sm) {
+            font-size: 44px;
         }
     }
     &__subtitle {

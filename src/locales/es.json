@@ -7,6 +7,7 @@
     "site": {
         "title": "Felipe Linares",
         "subtitle": "Diseñador, desarrollador y consultor UX",
+        "copyline": "Creo productos fáciles y magnificos para la gente",
         "copyright": "© {year}. Felipe Linares. Todos los derechos reservados."
     },
     "components": {
@@ -65,7 +66,7 @@
     },
     "pages": {
         "home": {
-            "hero_description": "<p>Soy un diseñador, desarrollador y consultor de UX.</p><p>Tomo en cuenta ambos lados del proyecto, los usuarios y la empresa para satisfacer las necesidades de ambos. Aplicando el pensamiento analítico, la investigación de usuario y la evaluación del mejor método y solución, lo que resulta en diseños de interfaz de usuario funcionales y 100% seguro de su implementación, esto gracias a la experiencia en desarrollo adquirida en todos estos años.</p>",
+            "hero_description": "<p>Tomo en cuenta ambos lados del proyecto, los usuarios y la empresa para satisfacer las necesidades de ambos. Aplicando el pensamiento analítico, la investigación de usuario y la evaluación del mejor método y solución, lo que resulta en diseños de interfaz de usuario funcionales y 100% seguro de su implementación, esto gracias a la experiencia en desarrollo adquirida en todos estos años.</p>",
             "hero_button_main": "Trabajemos juntos",
             "hero_button_second": "CV",
 

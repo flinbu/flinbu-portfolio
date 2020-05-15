@@ -13,8 +13,7 @@
             box-shadow: 5px 5px 20px rgba($red, .4),
                         -5px -5px 20px rgba($gray-light, .4);
             .app__dark & {
-                box-shadow: 10px 10px 30px rgba($red, .2),
-                            -10px -10px 30px #1c1c1c;
+                box-shadow: none;
             }
         }
         .module__red & {
@@ -29,7 +28,7 @@
         }
     }
     &__white {
-        background-color: $body-bg;
+        background-color: darken($body-bg, 10%);
         .app-button__content {
             color: $red;
         }
@@ -38,9 +37,8 @@
                         -10px -10px 30px $gray-lighter;
         }
         .app__dark & {
-            background-color: $body-bg-dark;
-            box-shadow: 10px 10px 30px #141414, 
-                        -10px -10px 30px #1c1c1c;
+            background-color: lighten($body-bg-dark, 5%);
+            box-shadow: none;
             .app-button__content {
                 color: $white;
             }

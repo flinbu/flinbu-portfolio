@@ -141,7 +141,7 @@ export default {
         wheelControl: {
             type: Boolean,
             default: false
-        },
+        }, 
         lazy: {
             type: Boolean,
             default: false

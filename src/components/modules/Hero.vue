@@ -7,12 +7,14 @@
                         tag="h1"
                         :strongText="labels.title[0]"
                         :lightText="labels.title[1]"
+                        title-class="justify-content-center justify-content-md-start"
                     />
-                    <p class="module__subtitle">{{ labels.subtitle }}</p>
-                    <div class="divider mb-5"/>
-                    <div class="module__description mb-5" v-html="labels.description"/>
+                    <p class="module__subtitle text-center text-md-left">{{ labels.subtitle }}</p>
+                    <div class="divider mx-auto mr-md-auto ml-md-0 mb-3"/>
+                    <h3 class="module__copyline text-center text-md-left mb-3">{{ $t('site.copyline') }}</h3>
+                    <div class="module__description text-center text-md-left mb-5" v-html="labels.description"/>
                     <button-group
-                        class="module__actions d-flex align-items-center justify-content-flex-start flex-wrap"
+                        class="module__actions d-flex align-items-center justify-content-center justify-content-md-start flex-wrap"
                         :buttons="buttons"
                         button-class="module__action"
                     />

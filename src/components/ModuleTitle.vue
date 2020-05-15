@@ -1,7 +1,7 @@
 <template>
     <div v-if="show" :class="`module__title--wrapper module__title--${size}`">
         <small class="module__title--sup" v-if="supText" v-html="supText"/>
-        <h1 v-if="tag == 'h1'" :class="`module__title justify-content-${justify}`">
+        <h1 v-if="tag == 'h1'" :class="`module__title ${titleClass}`">
             <strong v-if="strongText" v-html="strongText"/>
             <span v-if="lightText" v-html="lightText"/>
         </h1>
@@ -37,6 +37,10 @@ export default {
         size: {
             type: String,
             default: 'lg'
+        },
+        titleClass: {
+            type: String,
+            default: 'justify-content-start'
         }
     },
     computed: {
