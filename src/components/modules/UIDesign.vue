@@ -64,7 +64,7 @@ export default {
             ]
         },
         images() {
-            return this.$static.posts.edges.slice(0, 4).map(edge => edge.node)
+            return this.$static.posts.edges.map(edge => edge.node)
         }
     }
 }
