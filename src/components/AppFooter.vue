@@ -1,8 +1,8 @@
 <template>
     <footer class="footer footer__main py-6">
-        <b-col cols="12" class="px-0 mb-6">
+        <!-- <b-col cols="12" class="px-0 mb-6">
             <instagram-wall opacity=".25"/>
-        </b-col>
+        </b-col> -->
         <b-col cols="12" md="10" offset-lg="1">
             <b-row align-v="center">
                 
