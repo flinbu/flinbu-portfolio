@@ -1,5 +1,9 @@
 .module {
     position: relative;
+    &:not(.module__hero) {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
     &__title {
         font-size: 55px;
         font-weight: 400;
