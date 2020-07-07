@@ -1,0 +1,37 @@
+
+.fade-enter {
+    opacity: 0;
+    &-active {
+        transition: opacity .5s;
+    }
+}
+
+
+@keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+}
+
+.fade-in-down {
+    animation-name: fadeInDown;
+}
+
+// Page transition
+
+.page {
+  &-enter-active,
+  &-leave-active {
+    transition: opacity .3s ease-in-out;
+  }
+  &-enter,
+  &-leave-to {
+    opacity: 0;
+  }
+}

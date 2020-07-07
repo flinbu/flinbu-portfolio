@@ -1,0 +1,161 @@
+.module {
+    position: relative;
+    &:not(.module__hero) {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+    &__title {
+        font-size: 55px;
+        font-weight: 400;
+        color: $black;
+        transition: .4s ease-in-out;
+        display: flex;
+        flex-wrap: wrap;
+        .module__title--md & {
+            font-size: 40px;
+            @include media-breakpoint-down(sm) {
+                font-size: 30px;
+            }
+        }
+        .module__hero & {
+            font-size: 50px;
+        }
+        .app__dark & {
+            color: $white;
+        }
+        @include media-breakpoint-down(sm) {
+            font-size: 40px;
+            word-wrap: break-word;
+        }
+        &--sup {
+            color: $red;
+            font-weight: 700;
+            font-size: 16px;
+            .module__red & {
+                color: rgba($white, .5);
+            }
+        }
+    }
+    &__copyline {
+        font-size: 50px;
+        font-weight: 300;
+        color: $gray-darker;
+        letter-spacing: -1px;
+        .app__dark & {
+            color: $white;
+        }
+        @include media-breakpoint-down(sm) {
+            font-size: 44px;
+        }
+    }
+    &__subtitle {
+        font-size: 18px !important;
+        font-weight: 400;
+        color: $gray-dark;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: rgba($white, .8);
+        }
+    }
+    &__description {
+        font-size: 16px;
+        font-weight: 300;
+        color: $gray-darker;
+        line-height: 30px;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            color: rgba($white, .6);
+        }
+    }
+    &__red {
+        @include linear-gradient($red, $pink);
+        .module {
+            &__title,
+            &__subtitle,
+            &__description {
+                color: $white;
+            }
+            &__subtitle {
+                opacity: .5;
+            }
+            &__description {
+                opacity: .8;
+            }
+        }
+    }
+    &__background {
+        position: absolute;
+        pointer-events: none;
+        z-index: 1;
+        &--tl,
+        &--tc,
+        &--tr {
+            top: 0;
+        }
+        &--ml,
+        &--mr {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        &--mc {
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+        }
+        &--bl,
+        &--bc,
+        &--br {
+            bottom: 0;
+        }
+        &--tc,
+        &--bc {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &--tr,
+        &--mr,
+        &--br {
+            right: 0;
+        }
+        &--tl,
+        &--ml,
+        &--bl {
+            left: 0;
+        }
+        & + .module__wrapper {
+            position: relative;
+            z-index: 2;
+        }
+    }
+    &__image {
+        &--ui {
+            @include media-breakpoint-up(md) {
+                width: 935px;
+                max-width: initial;
+                margin-left: -400px;
+            }
+        }
+        &--hero {
+            // filter: grayscale(1);
+            @include media-breakpoint-up(md) {
+                width: 1000px;
+                max-width: initial;
+                margin-right: -400px;
+            }
+        }
+        &--front-dev {
+            @include media-breakpoint-up(md) {
+                min-height: 525px;
+                object-fit: cover;
+                object-position: left top;
+            }
+        }
+    }
+}
+
+@import "modules/hero";
+@import "modules/data-visualization";
+@import "modules/frontend-development";
+@import "modules/creation-proccess";
+@import "modules/contact";
+@import "modules/kickoff";
