@@ -67,6 +67,9 @@ export default {
   */
   buildModules: [
     '@aceforth/nuxt-optimized-images',
+    ['@nuxtjs/google-analytics', {
+      id: process.env.GA_UA || ''
+    }]
   ],
   optimizedImages: {
     optimizeImages: true,
