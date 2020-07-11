@@ -49,7 +49,7 @@ export default {
                     shadow: true
                 },
                 {
-                    type: 'link',
+                    type: 'external',
                     label: this.$t('pages.home.front_dev_button_second'),
                     target: 'https://gitlab.com/flinbu-dev/portfolio',
                     theme: 'white',

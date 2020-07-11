@@ -45,7 +45,7 @@ export default {
                     shadow: true
                 },
                 {
-                    type: 'link',
+                    type: 'external',
                     label: this.$t('pages.home.data_button_second'),
                     target: 'https://www.elpais.com.co/especiales/gota-gota-america-latina/colombianos2/index.html#/',
                     theme: 'white',
