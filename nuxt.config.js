@@ -48,6 +48,7 @@ export default {
     { src: '~plugins/cookies.js' },
     { src: '~plugins/i18n.js' },
     { src: '~plugins/modal.js', mode: 'client' },
+    { src: '~plugins/lazyload.js' },
     { src: '~plugins/sticky-kit.js' },
     { src: '~plugins/global-components.js' }
   ],
@@ -65,10 +66,11 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@aceforth/nuxt-optimized-images'
+    '@aceforth/nuxt-optimized-images',
   ],
   optimizedImages: {
-    optimizeImages: true
+    optimizeImages: true,
+    optimizeImagesInDev: true
   },
   /*
   ** Nuxt.js modules

@@ -22,9 +22,9 @@
                         md="6"
                     >   
                         <b-img-lazy
-                            src="~/assets/images/gota-gota@2x.jpg" 
                             class="module__image img-fluid"
-                            quality="100"
+                            src="~/assets/images/gota-gota@2x.jpg"
+                            blank-src="~/assets/images/gota-gota@2x.jpg?lqip"
                         />
                     </b-col>
                 </b-row>

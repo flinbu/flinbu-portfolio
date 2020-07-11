@@ -24,9 +24,10 @@
                     </b-col>
                     <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                         <b-row>
-                            <b-img-lazy 
-                                src="~/assets/images/front-dev@2x.png" 
+                            <b-img-lazy
                                 class="module__image module__image--front-dev img-fluid"
+                                src="~/assets/images/front-dev@2x.png"
+                                blank-src="~/assets/images/front-dev@2x.png?lqip"
                             />
                         </b-row>
                     </b-col>

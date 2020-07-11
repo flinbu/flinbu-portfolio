@@ -24,10 +24,16 @@
                         >
                             <b-card
                                 class="portfolio__item h-100"
-                                :title="item.title"
-                                :img-src="item.image"
                                 @click="visitItem(item.url)"
-                            />
+                            >
+                                <b-card-img-lazy
+                                    :src="item.image"
+                                    :blank-src="`${item.image}?lqip`"
+                                />
+                                <b-card-title>
+                                    {{ item.title }}
+                                </b-card-title>
+                            </b-card>
                         </b-col>
                     </b-row>
                     <b-row>

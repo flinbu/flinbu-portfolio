@@ -6,8 +6,8 @@
                 :key="`tech-logo-${i}`"
                 class="logo-list__item"
             >
-                <b-img-lazy
-                    :src="loadLogo(logo.logo)"
+                <div
+                    :v-html="loadLogo(logo.logo)"
                     :title="logo.name"
                 />
             </li>
@@ -112,7 +112,7 @@ export default {
             }
         },
         loadLogo(logo) {
-            return require(`~/assets/images/logos/${logo}.svg`)
+            return require(`@/assets/images/logos/${logo}.svg?include`)
         }
     }
 }

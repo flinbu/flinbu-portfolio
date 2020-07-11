@@ -23,7 +23,7 @@
                     <b-img-lazy
                         class="img-fluid module__hero--avatar"
                         src="~/assets/images/avatar.png"
-                        quality="100"
+                        blank-src="~/assets/images/avatar.png?lqip"
                         width="800"
                     />
                     <social-menu 

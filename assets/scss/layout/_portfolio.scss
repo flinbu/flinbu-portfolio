@@ -49,15 +49,16 @@
         }
         .card {
             &-body {
-                padding: 16px 32px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                flex-wrap: wrap;
+                padding: 0;
             }
             &-title {
                 font-weight: 300;
                 font-size: 18px;
-                padding: 0;
+                padding: 16px 32px;
                 margin: 0;
             }
             &-img {

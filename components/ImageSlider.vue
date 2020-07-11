@@ -20,16 +20,10 @@
                     @click="itemClick(image)"
                 >
                     <b-img-lazy
-                        v-if="lazy"
                         fluid-grow
                         class="image-slider__image"
                         :src="image.image"
-                    />
-                    <b-img
-                        v-else
-                        fluid-grow
-                        class="image-slider__image"
-                        :src="image.image"
+                        :blank-src="`${image.image}?lqip`"
                     />
                     <div 
                         v-if="itemCaption(image)"

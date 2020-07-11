@@ -2,6 +2,10 @@ import Vue from 'vue'
 
 //Components
 
+// Image
+import Photo from '~/components/Image'
+Vue.component('Photo', Photo)
+
 // Social Menu
 import SocialMenu from '~/components/SocialMenu'
 Vue.component('SocialMenu', SocialMenu)
