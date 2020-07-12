@@ -110,6 +110,71 @@
             "social_title": "Let's Connect",
             "social_subtitle": "My digital print"
         },
+        "creation_process": {
+            "brief": {
+                "title": "Brief & Estimation",
+                "desc": "Define and clarify the scope of project, what are the business needs and much time will take, we define the brief and conditions and terms.",
+                "assets": {
+                    "1": "Needs map",
+                    "2": "Product brief"
+                }
+            },
+            "kick_off": {
+                "title": "Kick Off & Discovery",
+                "desc": "We start the project firmly after having total knowledge of what the project will take in time and other conditions. Define the total features and know the brand to be implemented.",
+                "assets": {
+                    "1": "Audience definition",
+                    "2": "Journey map",
+                    "3": "Sketches",
+                    "4": "Brand awareness"
+                }
+            },
+            "user_research": {
+                "title": "User research",
+                "desc": "We focus on users, question are asked to know what they want and how they want to get helped by your product.",
+                "assets": {
+                    "1": "Users personas",
+                    "2": "Journey map",
+                    "3": "Lo-Fi prototype",
+                    "4": "Lo-Fi feedback",
+                    "5": "User needs map"
+                }
+            },
+            "ia_wireframes": {
+                "title": "IA & Wireframes",
+                "desc": "Review project information (users & business). This is mandatory o avoid possible and unnecessary changes in the deliverables. We create initial wireframes and mid-fidelity prototypes. Put prototypes to test and get feedback from users.",
+                "assets": {
+                    "1": "Mid-Fi prototype",
+                    "2": "Mid-Fi feedback",
+                    "3": "Design system"
+                }
+            },
+            "design": {
+                "title": "Hi-Fi Design",
+                "desc": "The product gets is final face, here we apply the design system to that improved wireframe and gets the final design on the product. Creating Hi-fidelity prototype, testing, getting feedback and re design if needed.",
+                "assets": {
+                    "1": "Hi-Fi prototype",
+                    "2": "Final design system",
+                    "3": "Hi-Fi feedback",
+                    "4": "Interaction design"
+                }
+            },
+            "delivery": {
+                "title": "Client deliverables",
+                "desc": "Finally, after all the steps and loops ended, the design assets are being generated and validated. It’ll be delivered in the way that you or your development team need.",
+                "assets": {
+                    "1": "Final prototype",
+                    "2": "Source design",
+                    "3": "Dev. assets",
+                    "4": "Functional documentation",
+                    "5": "Design specifications"
+                }
+            },
+            "support": {
+                "title": "Dev. Support",
+                "desc": "I’ll be supporting the development process to ensure that everything raised in the design stages is implemented. Also, at this moment some observation from the dev team will be valid, and a rethinking the things could be possible at this stage due to dev limitations."
+            }
+        },
         "portfolio": {
             "title": "Latest Portfolio",
             "cta": "👉 Check full portfolio"

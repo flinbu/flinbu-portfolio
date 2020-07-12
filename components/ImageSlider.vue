@@ -181,13 +181,13 @@ export default {
             return item.url ? window.open(item.url) : false
         },
         next() {
-            this.slider.slideNext()
+            this.$refs.slider.slideNext()
         },
         prev() {
-            this.slider.slidePrev()
+            this.$refs.slider.slidePrev()
         },
         slide(index) {
-            this.slider.slideTo(index)
+            this.$refs.slider.slideTo(index)
         },
         inSlide(slide) {
             if (this.infiniteScroll) {

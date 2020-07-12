@@ -24,18 +24,23 @@
     }
 }
 
-.creation-proccess {
+.creation-process {
     &__step {
         margin-bottom: 30px;
+        position: relative;
     }
     &__content {
+        position: relative;
         background: $body-bg;
         border-radius: 25px;
         width: 100%;
         height: 100%;
         padding: 50px;
+        text-align: center;
+        overflow: hidden;
         @extend .d-inline-flex;
         @extend .align-items-center;
+        @extend .justify-content-center;
         @extend .flex-wrap;
         box-shadow: 10px 10px 30px rgba($black, .05), 
                     -10px -10px 30px $gray-lighter;
@@ -56,19 +61,42 @@
         color: $black;
         font-weight: 600;
         font-size: 24px;
-        margin-bottom: 30px;
-        &--step {
-            font-weight: 700;
-            color: $red;
-            margin-right: 8px;
-        }
+        margin-bottom: 0;
+        text-align: center;
+        width: 100%;
         .app__dark & {
             color: $white;
+        }
+    }
+    &__number {
+        font-size: 250px;
+        font-weight: 700;
+        line-height: 250px;
+        color: $red;
+        margin-right: 8px;
+        display: block;
+        margin-bottom: 10px;
+        position: absolute;
+        opacity: .1;
+        top: 10px;
+        left: 30px;
+        @include media-breakpoint-down(sm) {
+            font-size: 200px;
+            line-height: 200px;
+            top: 0;
         }
     }
     &__description {
         font-size: 16px;
         font-weight: 400;
         color: $gray;
+    }
+    &__icon {
+        font-size: 50px;
+        color: $red;
+        margin-bottom: 15px;
+        .app__dark & {
+            color: $gray-light;
+        }
     }
 }

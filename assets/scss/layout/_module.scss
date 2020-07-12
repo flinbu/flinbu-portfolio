@@ -145,9 +145,12 @@
             }
         }
         &--front-dev {
+            object-fit: cover;
+            object-position: center;
+            max-height: 300px;
             @include media-breakpoint-up(md) {
                 min-height: 525px;
-                object-fit: cover;
+                max-height: inherit;
                 object-position: left top;
             }
         }

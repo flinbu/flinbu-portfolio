@@ -84,6 +84,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
+    '@nuxtjs/sitemap',
     'nuxt-webfontloader',
     'vue-scrollto/nuxt'
   ],
@@ -99,6 +100,11 @@ export default {
         'Montserrat:300,400,500,600,700&display=swap'
       ]
     }
+  },
+  // Sitemap
+  sitemap: {
+    hostname: process.env.SITE_URL,
+    gzip: true
   },
   /*
   ** Axios module configuration
