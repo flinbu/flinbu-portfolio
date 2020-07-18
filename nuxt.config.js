@@ -50,7 +50,8 @@ export default {
     { src: '~plugins/modal.js', mode: 'client' },
     { src: '~plugins/lazyload.js' },
     { src: '~plugins/sticky-kit.js' },
-    { src: '~plugins/global-components.js' }
+    { src: '~plugins/global-components.js' },
+    { src: '~plugins/visibility.js' }
   ],
   router: {
     middleware: ['i18n'],

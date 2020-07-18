@@ -1,7 +1,5 @@
 import Vue from 'vue'
 
-//Components
-
 // Image
 import Photo from '~/components/Image'
 Vue.component('Photo', Photo)
@@ -61,3 +59,7 @@ Vue.component('AppMenu', AppMenu)
 // Brand
 import Brand from '~/components/Logo'
 Vue.component('Brand', Brand)
+
+// Glitch Image
+import GlitchImage from '~/components/GlitchImage'
+Vue.component('GlitchImage', GlitchImage)

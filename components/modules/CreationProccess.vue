@@ -11,7 +11,15 @@
                         class="text-center mb-5 mb-md-7"
                     />
                     <b-row class="creation-process__wrapper" align-v="stretch" align-h="center">
-                        <b-col v-for="(step, index) in process" :key="index" class="creation-process__step" cols="12" md="6" lg="4" xl="3">
+                        <b-col 
+                            v-for="(step, index) in steps" 
+                            :key="index" class="creation-process__step" 
+                            cols="12" 
+                            md="6" 
+                            lg="4" 
+                            xl="3"
+                            @click="openStep(index)"
+                        >
                             <div class="creation-process__content">
                                 <span class="creation-process__number">{{ index + 1 }}</span>
                                 <icon
@@ -34,7 +42,7 @@
 <script>
 export default {
     computed: {
-        process() {
+        steps() {
             return [
                 {
                     icon: 'paperclip',
@@ -85,6 +93,15 @@ export default {
                 title: this.$t('pages.home.process_title').split(' '),
                 subtitle: this.$t('pages.home.process_subtitle')
             }
+        }
+    },
+    methods: {
+        openStep(step) {
+            let data = {
+                step: step,
+                steps: this.steps
+            }
+            this.$root.$emit('CreationStep', data)
         }
     }
 }
