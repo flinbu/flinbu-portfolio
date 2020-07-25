@@ -21,10 +21,10 @@
                         cols="12"
                         md="6"
                     >   
-                        <b-img-lazy
-                            class="module__image img-fluid"
-                            src="~/assets/images/gota-gota@2x.jpg"
-                            blank-src="~/assets/images/gota-gota@2x.jpg?lqip"
+                        <lazy-image
+                            customClass="module__image img-fluid w-100"
+                            :src="require('~/assets/images/gota-gota@2x.jpg')"
+                            :placeholder="require('~/assets/images/gota-gota@2x.jpg?lqip')"
                         />
                     </b-col>
                 </b-row>

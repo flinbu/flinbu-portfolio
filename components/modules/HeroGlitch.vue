@@ -1,11 +1,13 @@
 <template>
-    <div class="module module__hero content h-100 pt-0 pb-0">
+    <div class="module module__hero content h-md-100 pt-0 pb-0">
         <b-container fluid>
             <b-row class="h-100" align-v="center">
                 <glitch-image
                     :src="require('~/assets/images/flinbu-poster.jpg')"
+                    :src-mobile="require('~/assets/images/flinbu-poster-mobile.jpg')"
                     :src-dark="require('~/assets/images/flinbu-poster-dark.jpg')"
-                    :slices="10"
+                    :src-dark-mobile="require('~/assets/images/flinbu-poster-dark-mobile.jpg')"
+                    :slices="4"
                     :alt="$t('site.title')"
                 />
             </b-row>

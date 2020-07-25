@@ -1,4 +1,5 @@
-
+// import { createClient } from './plugins/contentful.js'
+// const contentClient = createClient()
 export default {
   /*
   ** Nuxt rendering mode
@@ -56,7 +57,14 @@ export default {
   router: {
     middleware: ['i18n'],
     base: '/',
-    linkExactActiveClass: 'active'
+    linkExactActiveClass: 'active',
+    routes: [
+      { 
+        name: 'portfolio-item',
+        path: '/portfolio/:slug',
+        component: 'pages/portfolio/_slug.vue'
+      }
+    ]
   },
   /*
   ** Auto import components
@@ -117,5 +125,18 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-  }
+  },
+  // generate: {
+  //   routes () {
+  //     contentClient.getEntries({
+  //       content_type: 'portfolio'
+  //     })
+  //     .then(res => {
+  //       return res.items.map( post => {
+  //         let slug = post.fields.title == undefined ? '' : post.fields.title.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()
+  //         return `/portfolio/${slug}`
+  //       })
+  //     })
+  //   }
+  // }
 }

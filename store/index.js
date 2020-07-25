@@ -25,6 +25,7 @@ export const actions = {
         }
       }
     }
+    dispatch('contentful/fetch', { root: true })
   }
 
 }

@@ -1,6 +1,17 @@
 .menu {
     display: inline-flex;
     align-items: center;
+    transition: opacity 0.4s ease-in-out;
+    &__header {
+        &.menu {
+            &__hide {
+                opacity: 0;
+            }
+            &__show {
+                opacity: 1;
+            }
+        }
+    }
     &__item {
         color: $gray-dark;
         font-size: 14px;

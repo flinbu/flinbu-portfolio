@@ -97,11 +97,11 @@ export default {
     },
     methods: {
         openStep(step) {
-            let data = {
-                step: step,
-                steps: this.steps
-            }
-            this.$root.$emit('CreationStep', data)
+            // let data = {
+            //     step: step,
+            //     steps: this.steps
+            // }
+            // this.$root.$emit('CreationStep', data)
         }
     }
 }

@@ -27,7 +27,15 @@ export default {
             type: String,
             default: ''
         },
+        srcMobile: {
+            type: String,
+            default: ''
+        },
         srcDark: {
+            type: String,
+            default: ''
+        },
+        srcDarkMobile: {
             type: String,
             default: ''
         },
@@ -63,7 +71,8 @@ export default {
             onAnimation: false,
             isVisible: false,
             appScheme: 'light',
-            changeClass: 'no-change'
+            changeClass: 'no-change',
+            windowW: window.innerWidth
         }
     },
     computed: {
@@ -71,7 +80,11 @@ export default {
             return this.slices > 2 ? this.slices : 3
         },
         imgSrc() {
-            return this.appScheme == 'light' ? this.src : this.srcDark ? this.srcDark : this.src
+            if (this.windowW > 767) {
+                return this.appScheme == 'light' ? this.src : this.srcDark ? this.srcDark : this.src
+            } else {
+                return this.appScheme == 'light' ? this.srcMobile : this.srcDarkMobile ? this.srcDarkMobile : this.srcMobile
+            }
         }
     },  
     methods: {
@@ -100,7 +113,7 @@ export default {
             if (!this.isVisible) return
             this.glitchStatus = this.glitchStatus == 'no-glitch' ? 'on-glitch' : 'no-glitch'
             this.onAnimation = !this.onAnimation
-        }, Math.floor(Math.random() * 7000) + 1000)
+        }, Math.floor(Math.random() * (this.onAnimation ? 500 : 7000)) + (this.onAnimation  ? 0 : 2000))
         setInterval(() => {
             if (!this.onAnimation) return
             let time = Math.floor(Math.random() * this.animationTime) + 500
@@ -118,6 +131,11 @@ export default {
                 this.changeClass = 'no-change'
             }, this.changeSpeed)
         })
+
+        // resize watch
+        window.onresize = ev => {
+            this.windowW = window.innerWidth
+        }
     }
 }
 </script>

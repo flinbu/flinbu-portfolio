@@ -1,8 +1,11 @@
 import Vue from 'vue'
 
 // Image
-import Photo from '~/components/Image'
-Vue.component('Photo', Photo)
+// import Photo from '~/components/Image'
+// Vue.component('Photo', Photo)
+
+import LazyImage from '~/components/LazyImage'
+Vue.component('LazyImage', LazyImage)
 
 // Social Menu
 import SocialMenu from '~/components/SocialMenu'

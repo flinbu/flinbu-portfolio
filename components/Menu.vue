@@ -1,5 +1,5 @@
 <template>
-    <div :class="`menu menu__${location}`">
+    <div :class="`menu menu__${location} menu__${showMenu ? 'show' : 'hide'}`">
         <div 
             class="menu__item--wrapper"
             v-for="(item, i) in menu"
@@ -7,7 +7,6 @@
         >
             <!-- Anchor -->
             <a 
-                v-if="item.type == 'anchor'"
                 :href="item.link" 
                 @click.prevent="openLink(item)" 
                 class="menu__item menu__item--anchor"
@@ -21,6 +20,11 @@ export default {
         location: {
             type: String,
             default: 'global'
+        }
+    },
+    data() {
+        return {
+            show: false
         }
     },
     computed: {
@@ -47,11 +51,19 @@ export default {
                     type: 'anchor'
                 },
                 {
+                    link: '/portfolio',
+                    label: this.$t('components.menu.portfolio'),
+                    type: 'link'
+                },
+                {
                     link: '#contact',
                     label: this.$t('components.menu.contact'),
                     type: 'anchor'
                 }
             ]
+        },
+        showMenu() {
+            return this.$route.path == '/' ? this.show : true
         }
     },
     methods: {
@@ -70,9 +82,17 @@ export default {
                         })
                     }
                     break
+                default:
+                    this.$router.push(item.link)
+                    break
             }
             this.$emit('clicked')
         }
+    },
+    mounted() {
+        this.$root.$on('hideMenu', hide => {
+            this.show = !hide
+        })
     }
 }
 </script>

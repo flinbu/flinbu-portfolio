@@ -26,6 +26,9 @@ export default {
     FrontendDevelopment,
     CreationProcess,
     Contact
+  },
+  fetch() {
+      if (!this.$store.state.contentful.fetched) this.$store.dispatch('contentful/fetch')
   }
 }
 

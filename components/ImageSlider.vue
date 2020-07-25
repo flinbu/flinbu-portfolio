@@ -19,12 +19,18 @@
                     class="image-slider__item" 
                     @click="itemClick(image)"
                 >
-                    <b-img-lazy
+                    <lazy-image
+                        fluid-grow
+                        customClass="image-slider__image w-100"
+                        :src="image.image"
+                        :placeholder="`${image.image}?lqip`"
+                    />
+                    <!-- <b-img-lazy
                         fluid-grow
                         class="image-slider__image"
                         :src="image.image"
                         :blank-src="`${image.image}?lqip`"
-                    />
+                    /> -->
                     <div 
                         v-if="itemCaption(image)"
                         class="image-slider__caption" 

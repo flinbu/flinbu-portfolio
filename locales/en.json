@@ -45,7 +45,8 @@
             "data_visualization": "Data Visualization",
             "front_development": "Front Dev.",
             "process": "My Process",
-            "contact": "Let's Work!"
+            "contact": "Let's Work!",
+            "portfolio": "My work"
         },
         "scheme_switch": {
             "label": "Night mode"
@@ -177,7 +178,9 @@
         },
         "portfolio": {
             "title": "Latest Portfolio",
-            "cta": "👉 Check full portfolio"
+            "cta": "👉 Check Dribbble portfolio",
+            "assets": "Research assets",
+            "technologies": "Technologies"
         },
         "links": {
             "title": "Favourite Links",

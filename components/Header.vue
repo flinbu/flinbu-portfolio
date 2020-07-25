@@ -1,6 +1,7 @@
 <template>
     <header :class="`header__main header__${scrollClass}`">   
         <b-container fluid v-if="theme == 'default'" class="d-flex align-items-center pr-0">
+            <back-button/>
             <nuxt-link 
                 to="/"
                 class="header__brand--wrapper d-inline-flex align-items-center"
@@ -34,7 +35,11 @@
     </header>
 </template>
 <script>
+import BackButton from '~/components/BackButton'
 export default {
+    components: {
+        BackButton
+    },
     props: {
         theme: {
             type: String,
@@ -43,12 +48,18 @@ export default {
     },
     data() {
         return {
-            scrollClass: 'normal'
+            scrollClass: 'normal',
+            alwaysMenu: false
         }
     },
     methods: {
         onScroll() {
             this.scrollClass = window.scrollY > 100 ? 'fixed' : 'normal'
+            if (this.scrollClass == 'fixed') {
+                this.$root.$emit('hideMenu', false)
+            } else {
+                this.$root.$emit('hideMenu', true)
+            }
         }
     },
     mounted() {

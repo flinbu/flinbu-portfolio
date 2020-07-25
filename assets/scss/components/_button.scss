@@ -63,3 +63,34 @@
         }
     }
 } 
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: $gray-darker;
+    transition: .4s ease-in-out;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none !important;
+    box-shadow: none !important;
+    .app__dark & {
+        color: rgba($white, .7);
+        &:hover {
+            color: $red;
+        }
+    }
+    &__hide {
+        width: 0;
+        opacity: 0;
+        pointer-events: none;
+        padding: 0;
+    }
+    &__show {
+        width: 50px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

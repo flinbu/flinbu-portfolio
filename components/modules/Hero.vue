@@ -20,12 +20,18 @@
                     />
                 </b-col>
                 <b-col cols="12" lg="6" class="text-center mb-3 mb-lg-0" order="1" order-lg="2">
-                    <b-img-lazy
+                    <lazy-image
+                        customClass="img-fluid module__hero--avatar"
+                        :src="require('~/assets/images/avatar@2x.png')"
+                        :placeholder="require('~/assets/images/avatar.png?lqip')"
+                        width="800"
+                    />
+                    <!-- <b-img-lazy
                         class="img-fluid module__hero--avatar"
                         src="~/assets/images/avatar@2x.png"
                         blank-src="~/assets/images/avatar.png?lqip"
                         width="800"
-                    />
+                    /> -->
                     <social-menu 
                         class="module__hero--social"
                         icon-size="lg"

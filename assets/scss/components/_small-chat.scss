@@ -1,0 +1,9 @@
+#Smallchat {
+    &.has-bottom-menu {
+        @include media-breakpoint-down(sm) {
+            iframe {
+                bottom: 60px !important;
+            }
+        }
+    }
+}

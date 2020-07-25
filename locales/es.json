@@ -45,7 +45,8 @@
             "data_visualization": "Visualización de Datos",
             "front_development": "Desarrollo UX",
             "process": "Mi Proceso",
-            "contact": "¡Creémos!"
+            "contact": "¡Creémos!",
+            "portfolio": "Mi trabajo"
         },
         "scheme_switch": {
             "label": "Modo nocturno"
@@ -177,7 +178,9 @@
         },
         "portfolio": {
             "title": "Portafolio Reciente",
-            "cta": "👉 Mira el portafolio completo"
+            "cta": "👉 Mira el portafolio en Dribbble",
+            "assets": "Research assets",
+            "technologies": "Technologies"
         },
         "links": {
             "title": "Enlaces favoritos",
