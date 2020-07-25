@@ -7,6 +7,7 @@
         variant="transparent"
         blur="20px"
         opacity="1"
+        :rounded="rounded"
     >
         <b-img-lazy
             :src="src"
@@ -80,6 +81,10 @@ export default {
         offset: {
             type: [Number, String],
             default: 360
+        },
+        rounded: {
+            type: [String, Boolean],
+            default: false
         }
     },
     data() {

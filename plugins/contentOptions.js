@@ -23,7 +23,8 @@ module.exports = {
                             props: {
                                 src: file.url,
                                 customClass: 'portfolio__asset',
-                                type: contentType
+                                type: contentType,
+                                rounded: 'sm'
                             }
                         })
                         // return `<lazy-image src="${node.data.target.fields.file.url}" type="image"/>`

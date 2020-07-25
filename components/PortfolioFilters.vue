@@ -1,5 +1,5 @@
 <template>
-    <b-row
+    <div
         v-if="filters"
         class="portfolio__filters--wrapper"
     >
@@ -11,7 +11,7 @@
         >
             {{ filter }}
         </div>
-    </b-row>
+    </div>
 </template>
 <script>
 export default {

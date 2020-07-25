@@ -29,14 +29,12 @@ export const actions = {
         // Get data from contentful
         try {
             let getPosts = await contentClient.getEntries({
-                content_type: 'portfolio',
-                order: '-sys.createdAt'
+                content_type: 'portfolio'
             })
             let slugs = []
             let categories = ['All']
             let posts = getPosts.items.map(post => {
                 let postData = parsePostData(post)
-                console.log(postData)
                 let slug = slugThis(post.fields.title)
                 slugs.push({
                     slug: slug,
