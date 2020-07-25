@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid class="module module__ui content content__middle">
+    <b-container fluid class="module module__ui content content__middle py-2 py-md-6">
         <b-container fluid class="module__wrapper px-0">
             <b-row class="module__content" align-v="center">
                 <b-col class="module__data order-2 order-md-1 mb-5 mb-md-0" cols="12" md="5" offset-xl="1">
@@ -16,19 +16,16 @@
                     />
                 </b-col>
                 <b-col class="module__image--wrapper order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
-                    <b-row>
-                        <image-slider 
-                            :items="images"
-                            ratio="4x3"
-                            indicators
-                            controls
-                            :infinite-scroll="true"
-                            :interval="2000"
-                            :play-speed="1000"
-                            caption
-                            lazy
-                        />
-                    </b-row>
+                    <owl-carousel
+                        :content="images"
+                        class="carousel__fancy w-100"
+                        autoplay
+                        loop
+                        :autoplay-timeout="3000"
+                        autoplay-hover-pause
+                        lazy
+                        item-click
+                    />
                 </b-col>
             </b-row>
         </b-container>
@@ -65,7 +62,15 @@ export default {
             ]
         },
         images() {
-            return this.$store.state.portfolio.items
+            // return this.$store.state.portfolio.items
+            return this.$store.state.contentful.posts.map( post => {
+                return {
+                    title: post.title,
+                    image: post.thumbnail,
+                    placeholder: post.thumbnail_ph,
+                    url: post.url
+                }
+            })
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid class="module module__creation content content__middle py-6 py-lg-10">
+    <b-container fluid class="module module__creation content content__middle pt-0 pb-6 py-md-6 py-lg-10">
         <b-container class="module__wrapper px-0">
             <b-row class="module__content">
                 <b-col class="module__data" cols="12" xl="10" offset-xl="1">

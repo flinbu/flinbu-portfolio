@@ -35,7 +35,6 @@ export default {
   ** Global CSS
   */
   css: [
-    "hooper/dist/hooper.css",
     "@/assets/scss/app.scss"
   ],
   loading: {
@@ -82,7 +81,7 @@ export default {
   ],
   optimizedImages: {
     optimizeImages: true,
-    optimizeImagesInDev: true
+    optimizeImagesInDev: false
   },
   /*
   ** Nuxt.js modules
@@ -94,9 +93,16 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
     'nuxt-webfontloader',
     'vue-scrollto/nuxt'
   ],
+  // Robots
+  robots: { 
+    UserAgent: '*',
+    Disallow: '/',
+    Sitemap: 'https://flinbu.co/sitemap.xml'
+  },
   // Bootsrap Config
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`

@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid class="module module__data content content__middle">
+    <b-container fluid class="module module__data content content__middle py-2 py-md-6">
         <b-row>
             <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
@@ -17,7 +17,7 @@
                         />
                     </b-col>
                     <b-col 
-                        class="module__image--wrapper order-1 mb-5 mb-md-0 pl-0 pr-0"
+                        class="module__image--wrapper order-1 mb-5 mb-md-0"
                         cols="12"
                         md="6"
                     >   

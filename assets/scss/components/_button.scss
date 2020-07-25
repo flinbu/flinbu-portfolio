@@ -76,6 +76,7 @@
     justify-content: center;
     outline: none !important;
     box-shadow: none !important;
+    margin-left: -($grid-gutter-width / 2);
     .app__dark & {
         color: rgba($white, .7);
         &:hover {
@@ -87,6 +88,7 @@
         opacity: 0;
         pointer-events: none;
         padding: 0;
+        margin-left: 0;
     }
     &__show {
         width: 50px;

@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid class="module module__frontend content content__middle">
+    <b-container fluid class="module module__frontend content content__middle py-2 py-md-6">
         <b-row>
             <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
@@ -23,13 +23,11 @@
                         />
                     </b-col>
                     <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
-                        <b-row>
-                            <lazy-image
-                                customClass="module__image module__image--front-dev img-fluid w-100"
-                                :src="require('~/assets/images/front-dev@2x.png')"
-                                :placeholder="require('~/assets/images/front-dev@2x.png?lqip')"
-                            />
-                        </b-row>
+                        <lazy-image
+                            customClass="module__image module__image--front-dev img-fluid w-100"
+                            :src="require('~/assets/images/front-dev@2x.png')"
+                            :placeholder="require('~/assets/images/front-dev@2x.png?lqip')"
+                        />
                     </b-col>
                 </b-row>
             </b-container>

@@ -1,0 +1,92 @@
+.carousel {
+    // Fancy style
+    &__fancy {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 48px rgba(4, 6, 4, .10);
+        &:hover {
+            .carousel__nav {
+                opacity: 1;
+            }
+        }
+        .carousel {
+            &__nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 10;
+                cursor: pointer;
+                color: $gray-dark;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba($white, .5);
+                border-radius: 50%;
+                opacity: 0.5;
+                transition: .4s ease-in-out;
+                &--next {
+                    right: 30px;
+                }
+                &--prev {
+                    left: 30px;
+                }
+            }
+        }
+        .owl {
+            &-dots {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10;
+            }
+            &-dot {
+                span {
+                    width: $slider-pagination-size !important;
+                    height: $slider-pagination-size !important;
+                    background-color: $gray-dark !important;
+                    margin: 0 4px !important;
+                    border-radius: 50% !important;
+                    transition: .4s ease-in-out !important;
+                    opacity: .5;
+                    cursor: pointer;
+                    box-shadow: 0 5px 10px rgba($black, .1);
+                }
+                &.active {
+                    span {
+                        width: $slider-pagination-size * $slider-pagination-size-var !important;
+                        border-radius: $slider-pagination-size !important;
+                    }
+                }
+            }
+            &-stage-outer {
+                position: relative;
+            }
+            &-stage {
+                height: auto;
+            }
+            &-item {
+                position: relative;
+                &:after {
+                    content: '';
+                    pointer-events: none;
+                    display: block;
+                    width: 100%;
+                    padding-top: 75%;
+                    position: relative;
+                    z-index: 1;
+                }
+                .b-overlay-wrap {
+                    position: absolute !important;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}

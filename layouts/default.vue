@@ -25,9 +25,6 @@ export default {
     }
   },
   mounted() {
-    // Load data
-    this.$store.dispatch('portfolio/fetch')
-
     let cookie = this.$cookies.get('color-scheme')
     if (cookie) {
       this.scheme = cookie
