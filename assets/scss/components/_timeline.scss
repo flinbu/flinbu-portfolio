@@ -1,0 +1,61 @@
+.timeline {
+    position: relative;
+    &__item {
+        position: relative;
+        padding-left: 80px;
+        margin-bottom: $grid-gutter-width;
+        &:hover {
+            .timeline {
+                &__date {
+                    background-color: $red;
+                    color: $white;
+                }
+            }
+        }
+    }
+    &:before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 100%;
+        background-color: $red;
+        position: absolute;
+        top: 0;
+        left: 30px;
+    }
+    &__date {
+        position: absolute;
+        display: flex;
+        left: 0;
+        top: 0;
+        width: 60px;
+        height: 60px;
+        font-size: 12px;
+        color: $red;
+        padding: 10px;
+        text-align: center;
+        background-color: $white;
+        border-radius: 50%;
+        border: 1px solid $red;
+        align-items: center;
+        justify-content: center;
+        transition: .4s ease-in-out;
+        .app__dark & {
+            background-color: $body-bg-dark;
+        }
+    }
+    &__title {
+        font-size: 20px;
+    }
+    &__company {
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $gray-dark;
+        margin-bottom: $grid-gutter-width * 0.5;
+    }
+    &__description {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}

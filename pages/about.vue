@@ -27,21 +27,39 @@
                   </div>
 
                   <!-- Skills -->
-                  <div class="about__section">
+                  <div class="about__section mb-6">
                     <h3 class="about__section--title">{{ $t('pages.about.skills.title') }}</h3>
                     <ul class="about__skills">
                       <li v-for="skill in 8" :key="`skill-${skill}`">{{ $t(`pages.about.skills.options.${skill}`) }}</li>
                     </ul>
                   </div>
 
+                  <!-- Experience -->
+                  <div class="about__section mb-6">
+                    <h3 class="about__section--title">{{ $t('pages.about.experience.title') }}</h3>
+                    <timeline class="about__timeline" :timeline="experience" />
+                  </div>
+
                   <!-- More -->
                   <div class="about__section">
                     <h3 class="about__section--title">{{ $t('pages.about.more') }}</h3>
-                    <button-group
-                        class="about__section--buttons d-flex align-items-center justify-content-start flex-wrap"
-                        :buttons="buttons"
-                        button-class="mb-5"
-                    />
+                    <b-row align-v="stretch">
+                      <b-col 
+                        v-for="(button, i) in buttons"
+                        :key="`button-${i}`"
+                        class="about__more--wrapper"
+                        cols="12" 
+                        md="4"
+                      >
+                        <button class="about__more--button" @click="open(button.type, button.target)">
+                          <img
+                            :src="require(`~/assets/images/${button.image}`)"
+                            class="about__more--image"
+                          />
+                          <span class="about__more--label">{{ button.label }}</span>
+                        </button>
+                      </b-col>
+                    </b-row>
                   </div>
 
                   <!-- CTA -->
@@ -54,50 +72,67 @@
 </template>
 <script>
 
-// Modules
 import HeroGlitch from '~/components/modules/HeroGlitch'
-import UXDesign from '~/components/modules/UIDesign'
-import DataVisualization from '~/components/modules/DataVisualization'
-import FrontendDevelopment from '~/components/modules/FrontendDevelopment'
-import CreationProcess from '~/components/modules/CreationProccess'
-import Contact from '~/components/modules/Contact'
+import Timeline from '~/components/Timeline'
+
+const YEAR = new Date().getFullYear()
 
 export default {
   hideFooter: true,
   components: {
-    HeroGlitch
+    HeroGlitch,
+    Timeline
   },
   computed: {
     buttons() {
       return [
         {
           type: 'modal',
-          label: this.$t('pages.portfolio.creation_process'),
+          label: this.$t('pages.about.process'),
           target: 'showProcess',
-          theme: 'main',
-          shadow: false
+          image: 'creation-process.png'
         },
         {
           type: 'link',
           label: this.$t('pages.about.work'),
           target: '/portfolio',
-          theme: 'main',
-          shadow: false
+          image: 'my-work.png'
         },
         {
             type: "external",
             label: this.$t('pages.about.resume'),
             target: process.env.RESUME_URL,
             theme: "white",
-            color: "red",
-            shadow: false
+          image: 'resume.png'
         }
       ]
+    },
+    experience() {
+      let timeline = []
+      for (let i = 0; i < 4; i++) {
+        timeline.push({
+          title: this.$t(`pages.about.experience.timeline.${i + 1}.title`),
+          company: this.$t(`pages.about.experience.timeline.${i + 1}.company`),
+          description: this.$t(`pages.about.experience.timeline.${i + 1}.description`),
+          date: this.$t(`pages.about.experience.timeline.${i + 1}.date`, {year: YEAR})
+        })
+      }
+      return timeline
     }
   },
   methods: {
     contact() {
       this.$root.$emit('showContact')
+    },
+    open(type, url) {
+      switch (type) {
+        case 'link':
+          return this.$router.push(url)
+        case 'external':
+          return window.open(url)
+        case 'modal':
+          return this.$root.$emit(url)
+      }
     }
   }
 }
