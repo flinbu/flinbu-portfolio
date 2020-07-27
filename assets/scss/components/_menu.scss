@@ -6,6 +6,7 @@
         &.menu {
             &__hide {
                 opacity: 0;
+                pointer-events: none;
             }
             &__show {
                 opacity: 1;

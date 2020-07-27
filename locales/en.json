@@ -68,8 +68,8 @@
     "pages": {
         "home": {
             "hero_description": "<p>Taking into account both sides of the project, users and business to meet the needs of both, with analytical thinking, user research and surf the best methods resulting in functional UI and UX and 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>",
-            "hero_button_main": "Work together",
-            "hero_button_second": "Resume",
+            "hero_button_main": "About me",
+            "hero_button_second": "My work",
 
             "ux_design_title": "UX Design",
             "ux_design_subtitle": "Innovate. Together.",
@@ -111,7 +111,32 @@
             "social_title": "Let's Connect",
             "social_subtitle": "My digital print"
         },
+        "about": {
+            "title": "Hi there! I’m a UX designer, developer and consultant working remotely from home.",
+            "bio": {
+                "title": "Bio",
+                "content": "<p>Creative, curious and analytical. High knowledge in development and web design, UX/UI for apps, user research and prototypes</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluating the best methods and solutions, we get a real functional UX and UI designs 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>"
+            },
+            "skills": {
+                "title": "What can I do?",
+                "options": {
+                    "1": "App design",
+                    "2": "UX design",
+                    "3": "User research",
+                    "4": "Analytcal thinking",
+                    "5": "UI development",
+                    "6": "Web design",
+                    "7": "Data visualization",
+                    "8": "UX advisory"
+                }
+            },
+            "more": "Know me more",
+            "resume": "Resume",
+            "work": "Check my work",
+            "contact": "So, ready to disrupt?<br /><span class=\"text-red\">Let's start a new project together!</span>"
+        },
         "creation_process": {
+            "assets": "Resulting assets",
             "brief": {
                 "title": "Brief & Estimation",
                 "desc": "Define and clarify the scope of project, what are the business needs and much time will take, we define the brief and conditions and terms.",
@@ -180,7 +205,9 @@
             "title": "Latest Portfolio",
             "cta": "👉 Check Dribbble portfolio",
             "assets": "Research assets",
-            "technologies": "Technologies"
+            "technologies": "Technologies",
+            "creation_process": "Check my creation process",
+            "lets_work": "Let's start a new project together! 🚀"
         },
         "links": {
             "title": "Favourite Links",

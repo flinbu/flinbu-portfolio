@@ -20,7 +20,8 @@
         .module__hero & {
             font-size: 50px;
         }
-        .app__dark & {
+        .app__dark &,
+        .modal__dark &  {
             color: $white;
         }
         @include media-breakpoint-down(sm) {

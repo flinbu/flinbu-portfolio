@@ -23,7 +23,7 @@
                             md="10"
                             lg="11"
                         >
-                            <transition-group name="list-complete" tag="div" :class="`row align-items-stretch mb-6 list-complete portfolio__list portfolio__list--${animatedList ? 'animated' : 'static'}`">
+                            <transition-group name="list-complete" tag="div" :class="`row align-items-stretch list-complete portfolio__list portfolio__list--${animatedList ? 'animated' : 'static'}`">
                                 <b-col
                                     v-for="(item, i) in filteredItems"
                                     :key="`portfolio-item-${i}`"
@@ -56,13 +56,13 @@
                     <b-row>
                         <b-col
                             cols="12"
-                            class="d-flex align-items-center justify-content-center"
+                            class="d-flex align-items-center justify-content-center mt-4"
                         >
-                            <a 
-                                :href="portfolioURL" 
-                                target="_blank"
-                                class="app-button app-button__anchor app-button__main app-button__has-shadow text-white"
-                            >{{ labels.fullPortofolio }}</a>
+                            <button-group
+                                class="module__action d-flex align-items-center justify-content-center flex-wrap"
+                                :buttons="buttons"
+                                button-class="module__action mb-5"
+                            />
                         </b-col>
                     </b-row>
                 </b-col>
@@ -79,12 +79,29 @@ export default {
     data() {
         return {
             portfolio: [],
-            portfolioURL: process.env.DRIBBBLE_URL,
             animatedList: false,
             filterBy: 'All'
         }
     },
     computed: {
+        buttons() {
+            return [
+                {
+                    type: 'modal',
+                    label: this.$t('pages.portfolio.creation_process'),
+                    target: 'showProcess',
+                    theme: 'main',
+                    shadow: true
+                },
+                {
+                    type: 'modal',
+                    label: this.$t('pages.portfolio.lets_work'),
+                    target: 'showContact',
+                    theme: 'main',
+                    shadow: true
+                }
+            ]
+        },
         labels() {
             return {
                 title: this.$t('pages.portfolio.title').split(' '),

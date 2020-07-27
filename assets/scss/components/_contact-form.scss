@@ -6,7 +6,8 @@
                 font-size: 18px;
                 margin-bottom: 8px;
                 transition: .4s ease-in-out;
-                .app__dark & {
+                .app__dark &,
+                .modal__dark & {
                     color: $gray-lighter;
                 }
             }
@@ -17,7 +18,8 @@
             &:not(textarea) {
                 height: 55px;
             }
-            .app__dark & {
+            .app__dark &,
+            .modal__dark & {
                 background-color: $gray-darker;
                 color: $white;
             }
@@ -33,7 +35,8 @@
     .custom-control-label {
         color: $gray-darker;
         transition: .4s ease-in-out;
-        .app__dark & {
+        .app__dark &,
+        .modal__dark & {
             color: $gray-light;
         }
     }
@@ -57,7 +60,8 @@
                 &:focus-within {
                     box-shadow: none !important;
                 }
-                .app__dark & {
+                .app__dark &,
+                .modal__dark & {
                     background-color: $gray-darker;
                     color: $white;
                 }
@@ -71,7 +75,8 @@
                 outline: none;
                 box-shadow: 0 10px 20px rgba($black, .08);
                 transition: .4s ease-in-out;
-                .app__dark & {
+                .app__dark &,
+                .modal__dark & {
                     box-shadow: 0 10px 20px rgba($black, .4);
                 }
                 li {
@@ -97,7 +102,8 @@
                 &.active {
                     background-color: $red;
                 }
-                .app__dark & {
+                .app__dark &,
+                .modal__dark & {
                     background-color: $gray-darker;
                     color: $white;
                     &:active {
@@ -116,7 +122,8 @@
                 &:after {
                     border-top-color: $gray-darker;
                 }
-                .app__dark & {
+                .app__dark &,
+                .modal__dark & {
                     background-color: $gray-darker;
                     color: $white;
                     &:after {
@@ -137,7 +144,8 @@
                 padding: 8px;
                 width: 100%;
                 z-index: 1000000000;
-                .app__dark & {
+                .app__dark &,
+                .modal__dark & {
                     background: $body-bg-dark;
                 }
             }
@@ -149,7 +157,8 @@
         padding-bottom: 16px;
         text-align: center;
         transition: .4s ease-in-out;
-        .app__dark & {
+        .app__dark &,
+        .modal__dark & {
             color: $white;
             border-bottom-color: rgba($white, .05);
         }

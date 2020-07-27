@@ -51,6 +51,15 @@
                     </div>
                 </b-col>
             </b-row>
+            <b-row align-h="center" class="mt-6">
+                <b-col cols="12" class="module__wrapper portfolio__wrapper portfolio__content" >
+                    <button-group
+                        class="module__action d-flex align-items-center justify-content-start flex-wrap"
+                        :buttons="buttons"
+                        button-class="module__action mb-5"
+                    />
+                </b-col>
+            </b-row>
         </b-container>
     </div>
 </template>
@@ -84,6 +93,24 @@ export default {
         },
         postContent() {
             return documentToHtmlString(this.post.content, options)
+        },
+        buttons() {
+            return [
+                {
+                    type: 'modal',
+                    label: this.$t('pages.portfolio.creation_process'),
+                    target: 'showProcess',
+                    theme: 'main',
+                    shadow: true
+                },
+                {
+                    type: 'modal',
+                    label: this.$t('pages.portfolio.lets_work'),
+                    target: 'showContact',
+                    theme: 'main',
+                    shadow: true
+                }
+            ]
         }
     },
     fetch() {

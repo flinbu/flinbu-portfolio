@@ -11,8 +11,8 @@
                     />
                     <p class="module__subtitle text-center text-md-left">{{ labels.subtitle }}</p>
                     <div class="divider mx-auto mr-md-auto ml-md-0 mb-3"/>
-                    <h3 class="module__copyline text-center text-md-left mb-3">{{ $t('site.copyline') }}</h3>
-                    <div class="module__description text-center text-md-left mb-5" v-html="labels.description"/>
+                    <h3 class="module__copyline text-center text-md-left mb-5 mb-md-3">{{ $t('site.copyline') }}</h3>
+                    <div class="module__description text-center text-md-left mb-5 d-none d-md-block" v-html="labels.description"/>
                     <button-group
                         class="module__actions d-flex align-items-center justify-content-center justify-content-md-start flex-wrap"
                         :buttons="buttons"
@@ -26,12 +26,6 @@
                         :placeholder="require('~/assets/images/avatar.png?lqip')"
                         width="800"
                     />
-                    <!-- <b-img-lazy
-                        class="img-fluid module__hero--avatar"
-                        src="~/assets/images/avatar@2x.png"
-                        blank-src="~/assets/images/avatar.png?lqip"
-                        width="800"
-                    /> -->
                     <social-menu 
                         class="module__hero--social"
                         icon-size="lg"
@@ -57,16 +51,16 @@ export default {
         buttons() {
             return [
                 {
-                    type: "anchor",
+                    type: "link",
                     label: this.$t('pages.home.hero_button_main'),
-                    target: "#contact",
+                    target: "/about",
                     theme: "main",
                     shadow: true
                 },
                 {
-                    type: "external",
+                    type: "link",
                     label: this.$t('pages.home.hero_button_second'),
-                    target: process.env.RESUME_URL,
+                    target: '/portfolio',
                     theme: "white",
                     color: "red",
                     shadow: true

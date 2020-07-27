@@ -1,7 +1,7 @@
 <template>
     <carousel 
         v-if="content && content.length > 0" 
-        class="owl-carousel__wrapper"
+        class="owl-carousel__wrapper carousel"
         :items="items"
         :margin="margin"
         :loop="loop"

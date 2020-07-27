@@ -16,7 +16,8 @@ export default {
         showBack() {
             let showNames = [
                 'portfolio',
-                'portfolio-slug'
+                'portfolio-slug',
+                'about'
             ]
             let currentRoute = this.$route.name
             console.log(currentRoute)

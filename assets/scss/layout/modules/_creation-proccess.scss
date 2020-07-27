@@ -51,7 +51,8 @@
         & * {
             transition: .4s ease-in-out;
         }
-        .app__dark & {
+        .app__dark &,
+        .modal__dark &  {
             background-color: $body-bg-dark;
             box-shadow: 10px 10px 30px #141414, 
                         -10px -10px 30px #1c1c1c;
@@ -64,7 +65,8 @@
         margin-bottom: 0;
         text-align: center;
         width: 100%;
-        .app__dark & {
+        .app__dark &,
+        .modal__dark &  {
             color: $white;
         }
     }
@@ -95,8 +97,147 @@
         font-size: 50px;
         color: $red;
         margin-bottom: 15px;
-        .app__dark & {
+        .app__dark &,
+        .modal__dark &  {
             color: $gray-light;
+        }
+    }
+    &__carousel {
+        position: relative;
+        .owl {
+            &-stage {
+                @extend .d-flex;
+                @extend .align-items-stretch;
+                @extend .justify-content-start;
+                @extend .flex-wrap;
+                // @include media-breakpoint-down(sm) {
+                //     align-items: flex-start;
+                // }
+                &-outer {
+                    overflow: visible !important;
+                }
+            }
+            &-item {
+                margin-bottom: 50px;
+            }
+            &-nav {
+                &-prev,
+                &-next {
+                    display: flex;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: 10;
+                    width: 50px;
+                    height: 50px;
+                    background-color: $white;
+                    border-radius: 10px;
+                    box-shadow: 5px 5px 20px rgba($black, .08);
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    color: $gray-dark;
+                    transition: .4s ease-in-out;
+                    .app__dark &,
+                    .modal__dark &  {
+                        background-color: lighten($body-bg-dark, 3%);
+                        color: $white;
+                    }
+                    @media (max-width: 380px) {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                &-prev {
+                    left: -10px;
+                }
+                &-next {
+                    right: -10px;
+                }
+                @media (max-width: 380px) {
+                    &-prev {
+                        left: -25px;
+                    }
+                    &-next {
+                        right: -25px;
+                    }
+                }
+            }
+            &-dots {
+                bottom: 0 !important;
+                @include media-breakpoint-down(sm) {
+                    bottom: -20px !important;
+                }
+            }
+        }
+        .creation-process {
+            &__step {
+                text-align: left;
+                padding: $grid-gutter-width / 2;
+                height: 100%;
+                margin: 0;
+                // @include media-breakpoint-down(sm) {
+                //     height: auto;
+                // }
+                @media (max-width: 380px) {
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+            }
+            &__content {
+                text-align: left;
+                padding: 40px 30px 20px;
+                border-radius: 30px;
+                box-shadow: 10px 10px 40px rgba($black, .08);
+                @extend .justify-content-start;
+                @extend .align-items-start;
+                @extend .align-content-start;
+                .app__dark &,
+                .modal__dark & {
+                    background-color: lighten($body-bg-dark, 1%);
+                    box-shadow: none;
+                }
+            }
+            &__title {
+                font-size: 20px;
+                text-align: left;
+                margin-bottom: 15px;
+            }
+            &__icon {
+                font-size: 40px;
+                margin-bottom: 15px;
+                .app__dark &,
+                .modal__dark &  {
+                    color: $red;
+                }
+            }
+            &__description {
+                margin-bottom: 15px;
+                line-height: 1.8em;
+                font-size: 16px;
+            }
+            &__assets {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: flex-start;
+                li {
+                    display: inline-block;
+                    padding: 8px 16px;
+                    border-radius: 16px;
+                    background-color: darken($body-bg, 3%);
+                    margin: 4px 8px 4px 0;
+                    transition: .4s ease-in-out;
+                    .app__dark &,
+                    .modal__dark &  {
+                        background-color: lighten($body-bg-dark, 3%);
+                        color: rgba($white, .7);
+                    }
+                }
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
     "start": "nuxt start",
     "export": "nuxt export",
     "serve": "nuxt serve",
-    "dist": "nuxt build && nuxt export && rm -rf deploy/* && mv dist/* deploy"
+    "dist": "nuxt build && nuxt export && rm -rf deploy/* && mv dist/* deploy && mv dist/.nojekyll deploy"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",

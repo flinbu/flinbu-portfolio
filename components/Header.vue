@@ -52,13 +52,20 @@ export default {
             alwaysMenu: false
         }
     },
+    computed: {
+        location() {
+            return this.$route.name
+        }
+    },
     methods: {
         onScroll() {
-            this.scrollClass = window.scrollY > 100 ? 'fixed' : 'normal'
-            if (this.scrollClass == 'fixed') {
-                this.$root.$emit('hideMenu', false)
-            } else {
-                this.$root.$emit('hideMenu', true)
+            if (this.location !== 'about' || (this.location == 'about' && window.innerWidth < 768)) {
+                this.scrollClass = window.scrollY > 100 ? 'fixed' : 'normal'
+                if (this.scrollClass == 'fixed') {
+                    this.$root.$emit('hideMenu', false)
+                } else {
+                    this.$root.$emit('hideMenu', true)
+                }
             }
         }
     },

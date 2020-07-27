@@ -10,7 +10,7 @@ module.exports = {
     parsePostData(post) {
         let data = {}
         let thumbnail = post.fields.thumbnail.fields.file.url || ''
-        let thumbnail_ph = post.fields.thumbnail_ph.fields.file.url || ''
+        let thumbnail_ph = post.fields.thumbnail_ph ? post.fields.thumbnail_ph.fields.file.url || '' : ''
 
         data.id = post.sys.id // ID
         data.title = post.fields.title // Title

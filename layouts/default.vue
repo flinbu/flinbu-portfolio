@@ -8,15 +8,16 @@
 </template>
 <script>
 export default {
-  props: {
-    hideFooter: {
-      type: Boolean,
-      default: false
-    }
-  },
   data() {
     return {
       scheme: 'light'
+    }
+  },
+  computed: {
+    hideFooter() {
+      return this.$route.matched.map(r => {
+        return (r.components.default.options ? r.components.default.options.hideFooter : false)
+      })[0]
     }
   },
   watch: {

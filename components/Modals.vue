@@ -1,16 +1,19 @@
 <template>
     <div>
         <menu-modal/>
-        <creation-modal/>
+        <process-modal/>
+        <contact-modal/>
     </div>
 </template>
 <script>
 import MenuModal from '~/components/modals/BigMenu'
-import CreationModal from '~/components/modals/CreationStep'
+import ProcessModal from '~/components/modals/Process'
+import ContactModal from '~/components/modals/ContactModal'
 export default {
     components: {
         MenuModal,
-        CreationModal
+        ProcessModal,
+        ContactModal
     }
 }
 </script>

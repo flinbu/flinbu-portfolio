@@ -63,7 +63,14 @@ export default {
             ]
         },
         showMenu() {
-            return this.$route.path == '/' ? this.show : true
+            if (this.location == 'modal-menu') return true
+            let pathName = this.$route.name
+            let showOn = [
+                'index',
+                'portfolio',
+                'portfolio-slug'
+            ]
+            return showOn.includes(pathName)
         }
     },
     methods: {
@@ -88,11 +95,6 @@ export default {
             }
             this.$emit('clicked')
         }
-    },
-    mounted() {
-        this.$root.$on('hideMenu', hide => {
-            this.show = !hide
-        })
     }
 }
 </script>

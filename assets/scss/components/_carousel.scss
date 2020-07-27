@@ -35,32 +35,6 @@
             }
         }
         .owl {
-            &-dots {
-                position: absolute;
-                bottom: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 10;
-            }
-            &-dot {
-                span {
-                    width: $slider-pagination-size !important;
-                    height: $slider-pagination-size !important;
-                    background-color: $gray-dark !important;
-                    margin: 0 4px !important;
-                    border-radius: 50% !important;
-                    transition: .4s ease-in-out !important;
-                    opacity: .5;
-                    cursor: pointer;
-                    box-shadow: 0 5px 10px rgba($black, .1);
-                }
-                &.active {
-                    span {
-                        width: $slider-pagination-size * $slider-pagination-size-var !important;
-                        border-radius: $slider-pagination-size !important;
-                    }
-                }
-            }
             &-stage-outer {
                 position: relative;
             }
@@ -85,6 +59,35 @@
                     top: 0;
                     left: 0;
                     z-index: 2;
+                }
+            }
+        }
+    }
+    .owl {
+        &-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        &-dot {
+            outline: none;
+            span {
+                width: $slider-pagination-size !important;
+                height: $slider-pagination-size !important;
+                background-color: $gray-dark !important;
+                margin: 0 4px !important;
+                border-radius: 50% !important;
+                transition: .4s ease-in-out !important;
+                opacity: .5;
+                cursor: pointer;
+                box-shadow: 0 5px 10px rgba($black, .1);
+            }
+            &.active {
+                span {
+                    width: $slider-pagination-size * $slider-pagination-size-var !important;
+                    border-radius: $slider-pagination-size !important;
                 }
             }
         }

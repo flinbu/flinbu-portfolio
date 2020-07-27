@@ -68,8 +68,8 @@
     "pages": {
         "home": {
             "hero_description": "<p>Tomo en cuenta ambos lados del proyecto, los usuarios y la empresa para satisfacer las necesidades de ambos. Aplicando el pensamiento analítico, la investigación de usuario y la evaluación del mejor método y solución, lo que resulta en diseños de interfaz de usuario funcionales y 100% seguro de su implementación, esto gracias a la experiencia en desarrollo adquirida en todos estos años.</p>",
-            "hero_button_main": "Trabajemos juntos",
-            "hero_button_second": "CV",
+            "hero_button_main": "Acerca de mi",
+            "hero_button_second": "Mi trabajo",
 
             "ux_design_title": "UX Design",
             "ux_design_subtitle": "Innovemos. Juntos.",
@@ -112,6 +112,7 @@
             "social_subtitle": "Mi huella digital"
         },
         "creation_process": {
+            "assets": "Resultados",
             "brief": {
                 "title": "Brief & Estimation",
                 "desc": "Define and clarify the scope of project, what are the business needs and much time will take, we define the brief and conditions and terms.",
@@ -180,7 +181,9 @@
             "title": "Portafolio Reciente",
             "cta": "👉 Mira el portafolio en Dribbble",
             "assets": "Research assets",
-            "technologies": "Technologies"
+            "technologies": "Technologies",
+            "creation_process": "Conóce mi proceso",
+            "lets_work": "¡Empecemos un nuevo proyecto juntos! 🚀"
         },
         "links": {
             "title": "Enlaces favoritos",

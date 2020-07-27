@@ -22,9 +22,18 @@
         border: none;
         border-radius: 50%;
         transition: .4s ease-in-out;
+        z-index: 10;
+        .app__dark &,
+        .modal__dark & {
+            color: $red;
+        }
         @include media-breakpoint-up(md) {
             top: -20px;
             right: -20px;
+        }
+        .modal__process & {
+            top: 20px;
+            right: 20px;
         }
     }
     &__request-cv {
@@ -67,4 +76,5 @@
     }
 }
 
-@import 'menu';
+@import 'modals/menu';
+@import 'modals/process';
