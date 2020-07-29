@@ -31,6 +31,11 @@ export default {
         menu() {
             return [
                 {
+                    link: '/about',
+                    label: this.$t('components.menu.about'),
+                    type: 'link'
+                },
+                {
                     link: '#ux-design',
                     label: this.$t('components.menu.ux_design'),
                     type: 'anchor'

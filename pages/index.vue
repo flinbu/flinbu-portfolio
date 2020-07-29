@@ -1,6 +1,6 @@
 <template>
   <div class="app__home">
-    <Hero key="hero" id="hero"/>
+    <Hero2 key="hero" id="hero"/>
     <UXDesign key="ux-design" id="ux-design"/>
     <DataVisualization key="data-visualization" id="data-visualization"/>
     <FrontendDevelopment key="frontend-development" id="frontend-development"/>
@@ -12,6 +12,7 @@
 
 // Modules
 import Hero from '~/components/modules/Hero'
+import Hero2 from '~/components/modules/Hero2'
 import UXDesign from '~/components/modules/UIDesign'
 import DataVisualization from '~/components/modules/DataVisualization'
 import FrontendDevelopment from '~/components/modules/FrontendDevelopment'
@@ -22,6 +23,7 @@ import Contact from '~/components/modules/Contact'
 export default {
   components: {
     Hero,
+    Hero2,
     UXDesign,
     DataVisualization,
     FrontendDevelopment,

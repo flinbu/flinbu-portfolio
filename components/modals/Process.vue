@@ -28,14 +28,14 @@ export default {
     data() {
         return {
             showModal: false,
-            theme: 'light'
+            theme: 'dark'
         }
     },
     mounted() {
         this.$root.$on('showProcess', () => this.showModal = true)
 
         let scheme = this.$cookies.get('color-scheme')
-        this.theme = scheme ? scheme : 'light'
+        this.theme = scheme ? scheme : 'dark'
         this.$root.$on('scheme', scheme => this.theme = scheme)
     }
 }

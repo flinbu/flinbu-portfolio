@@ -78,7 +78,7 @@ export default {
                     target: '_blank'
                 }
             ],
-            theme: 'light'
+            theme: 'dark'
         }
     },
     computed: {
@@ -102,7 +102,7 @@ export default {
         })
 
         let scheme = this.$cookies.get('color-scheme') 
-        this.theme = scheme ? scheme : 'light'
+        this.theme = scheme ? scheme : 'dark'
 
         this.$root.$on('scheme', scheme => {
             this.theme = scheme

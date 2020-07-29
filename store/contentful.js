@@ -1,6 +1,17 @@
 import { createClient } from '~/plugins/contentful.js'
 import { slugThis, parsePostData } from '~/plugins/tools.js'
 const contentClient = createClient()
+// const fs = require('fs-extra')
+
+const getDay = () => {
+    const date = new Date()
+    const dd = date.getDate()
+    const mm = date.getMonth() + 1
+    const yyyy = date.getFullYear()
+    
+    if (dd < 10) dd = `0${dd}`
+    return `${dd}${mm}${yyyy}`
+}
 
 export const state = () => ({
     posts: [],
@@ -28,9 +39,38 @@ export const actions = {
     async fetch({ commit }) {
         // Get data from contentful
         try {
+            // const today = getDay()
+            // const basePath = '/data'
+            // const dataPath = `${basePath}/contentful-${today}.js`
+            // let getPosts = {}
+
+            // Check cache file
+            // fs.pathExists(dataPath, async (err, exists) => {
+            //     if (!exists) {
+            //         console.error('Cache file missing...')
+            //         await fs.emptyDir(basePath)
+            //         getPosts = await getPosts()
+            //         try {
+            //             await fs.writeJSON(dataPath, getPosts)
+            //             console.log('Cache file created...')
+            //         } catch (err) {
+            //             console.error(err)
+            //         }
+            //     } else {
+            //         try {
+            //             getPosts = fs.readJSON(dataPath)
+            //             console.log('Cache file readed...')
+            //         } catch (err) {
+            //             console.error(err)
+            //             getPosts = await getPosts()
+            //         }
+            //     }
+            // })
+
             let getPosts = await contentClient.getEntries({
                 content_type: 'portfolio'
             })
+
             let slugs = []
             let categories = ['All']
             let posts = getPosts.items.map(post => {

@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      scheme: 'light'
+      scheme: 'dark'
     }
   },
   computed: {

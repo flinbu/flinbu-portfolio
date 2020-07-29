@@ -64,5 +64,5 @@ import Brand from '~/components/Logo'
 Vue.component('Brand', Brand)
 
 // Glitch Image
-import GlitchImage from '~/components/GlitchImage'
-Vue.component('GlitchImage', GlitchImage)
+// import GlitchImage from '~/components/GlitchImage'
+// Vue.component('GlitchImage', GlitchImage)

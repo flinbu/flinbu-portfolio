@@ -3,7 +3,7 @@
     <div class="module module__hero content h-md-100 pt-0 pb-0">
         <b-container fluid>
             <b-row class="h-md-100 pt-0 pb-6 py-md-8" align-v="start">
-                <glitch-image
+                <!-- <glitch-image
                     :src="require('~/assets/images/flinbu-poster.jpg')"
                     :src-mobile="require('~/assets/images/flinbu-poster-mobile.jpg')"
                     :src-dark="require('~/assets/images/flinbu-poster-dark.jpg')"
@@ -11,7 +11,17 @@
                     :slices="3"
                     :alt="$t('site.title')"
                     class="about__image"
-                />
+                /> -->
+                <b-col
+                  cols="12"
+                  md="6"
+                  lg="7"
+                  class="about__media--wrapper"
+                >
+                  <b-row>
+                    <hero-2 hide-buttons class="about__media w-100" />
+                  </b-row>
+                </b-col>
                 <b-col
                   cols="12"
                   md="6"
@@ -72,7 +82,7 @@
 </template>
 <script>
 
-import HeroGlitch from '~/components/modules/HeroGlitch'
+import Hero2 from '~/components/modules/Hero2'
 import Timeline from '~/components/Timeline'
 
 const YEAR = new Date().getFullYear()
@@ -80,7 +90,7 @@ const YEAR = new Date().getFullYear()
 export default {
   hideFooter: true,
   components: {
-    HeroGlitch,
+    Hero2,
     Timeline
   },
   computed: {

@@ -194,7 +194,7 @@
                 @extend .align-content-start;
                 .app__dark &,
                 .modal__dark & {
-                    background-color: lighten($body-bg-dark, 1%);
+                    background-color: lighten($body-bg-dark, 2%);
                     box-shadow: none;
                 }
             }
@@ -233,7 +233,7 @@
                     transition: .4s ease-in-out;
                     .app__dark &,
                     .modal__dark &  {
-                        background-color: lighten($body-bg-dark, 3%);
+                        background-color: lighten($body-bg-dark, 5%);
                         color: rgba($white, .7);
                     }
                 }

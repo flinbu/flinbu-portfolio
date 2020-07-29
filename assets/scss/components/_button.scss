@@ -10,8 +10,8 @@
             color: $white;
         }
         &.app-button__has-shadow {
-            box-shadow: 5px 5px 20px rgba($red, .4),
-                        -5px -5px 20px rgba($gray-light, .4);
+            // box-shadow: 5px 5px 20px rgba($red, .4),
+            //             -5px -5px 20px rgba($gray-light, .4);
             .app__dark & {
                 box-shadow: none;
             }
@@ -21,10 +21,10 @@
             .app-button__content {
                 color: $red;
             }
-            &.app-button__has-shadow {
-                box-shadow:  10px 10px 30px #c64b37, 
-                             -10px -10px 30px #ff654b;
-            }
+            // &.app-button__has-shadow {
+            //     // box-shadow:  10px 10px 30px #c64b37, 
+            //     //              -10px -10px 30px #ff654b;
+            // }
         }
     }
     &__white {
@@ -32,9 +32,16 @@
         .app-button__content {
             color: $red;
         }
-        &.app-button__has-shadow {
-            box-shadow: 10px 10px 30px rgba($body-bg-dark, .05), 
-                        -10px -10px 30px $gray-lighter;
+        // &.app-button__has-shadow {
+        //     box-shadow: 10px 10px 30px rgba($body-bg-dark, .05), 
+        //                 -10px -10px 30px $gray-lighter;
+        // }
+        .not-variable & {
+            background-color: lighten($body-bg-dark, 5%);
+            box-shadow: none;
+            .app-button__content {
+                color: $white;
+            }
         }
         .app__dark & {
             background-color: lighten($body-bg-dark, 5%);

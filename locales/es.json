@@ -46,7 +46,8 @@
             "front_development": "Desarrollo UX",
             "process": "Mi Proceso",
             "contact": "¡Creémos!",
-            "portfolio": "Mi trabajo"
+            "portfolio": "Mi trabajo",
+            "about": "Bio"
         },
         "scheme_switch": {
             "label": "Modo nocturno"
@@ -110,6 +111,60 @@
 
             "social_title": "¡Conéctemos!",
             "social_subtitle": "Mi huella digital"
+        },
+        "about": {
+            "title": "Hi there! I’m a UX designer, developer and consultant working remotely from home.",
+            "bio": {
+                "title": "Bio",
+                "content": "<p>Creative, curious and analytical. High knowledge in development and web design, UX/UI for apps, user research and prototypes</p><p>I take into account both sides of the project, users and business to meet the needs of both. Applying analytical thinking, user research and evaluating the best methods and solutions, we get a real functional UX and UI designs 100% sure of its implementation, this thanks to the experience in development acquired in all these years.</p>"
+            },
+            "skills": {
+                "title": "What can I do?",
+                "options": {
+                    "1": "App design",
+                    "2": "UX design",
+                    "3": "User research",
+                    "4": "Analytcal thinking",
+                    "5": "UI development",
+                    "6": "Web design",
+                    "7": "Data visualization",
+                    "8": "UX advisory"
+                }
+            },
+            "experience": {
+                "title": "My experience",
+                "timeline": {
+                    "1": {
+                        "title": "UX Designer & developer",
+                        "company": "Freelance",
+                        "description": "I have been design lover for a long time, but I have always been interested in functional design.  When I met the digital world and had a smart phone on my hands, I knew what I wanted to be the rest of my life, since then I have been studying the needs of people and companies, looking for a solution together and getting the best way to users, all designed for them, for people. Working with many agencies and clients, we achieve some digital products that really works!",
+                        "date": "2009  {year}"
+                    }, 
+                    "2": {
+                        "title": "Lead UX Designer",
+                        "company": "Send SDT - WeSend",
+                        "description": "Working as design advisor, I transform complicated processes and concepts into simple, intuitive user flows and interfaces. I collaborate with stakeholders to ensure that final designs meet specifications, as well as the needs of end users. I work closely with engineering team to transform concept sketches to pixel-perfect prototypes. I provide final detailed design specifications and assets for front-end developers to implement. WeSendWallet Experience",
+                        "date": "2018  2020"
+                    },
+                    "3": {
+                        "title": "UI/UX Designer",
+                        "company": "El País S.A.",
+                        "description": "Create and design concepts for digital content has interactive info graphics and journalism investigations. Winner of an ABA price for Rio Cali special mini site. Also two times winning the Rodrigo Lloreda to best digital multimedia content. Nominated to best multimedia piece in the Simon Bolivar prices.",
+                        "date": "2012  2018"
+                    },
+                    "4": {
+                        "title": "Creative direction",
+                        "company": "E-Solutions",
+                        "description": "Oversee all creative development such as websites and graphic pieces.  Design of the interface for the company's flagship product, an E-Commerce, CRM and B2B system manager.",
+                        "date": "2010  2012"
+                    }
+                }
+            },
+            "more": "Know me more",
+            "resume": "Resume",
+            "process": "My process",
+            "work": "My work",
+            "contact": "So, ready to disrupt?<br /><span class=\"text-red\">Let's start a new project together!</span>"
         },
         "creation_process": {
             "assets": "Resultados",

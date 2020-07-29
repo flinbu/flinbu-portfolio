@@ -46,7 +46,8 @@
             "front_development": "Front Dev.",
             "process": "My Process",
             "contact": "Let's Work!",
-            "portfolio": "My work"
+            "portfolio": "My work",
+            "about": "Bio"
         },
         "scheme_switch": {
             "label": "Night mode"

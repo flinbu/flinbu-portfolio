@@ -10,11 +10,36 @@
             height: auto !important;
         }
     }
+    &__media {
+        &--wrapper {
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            overflow: hidden;
+            @include media-breakpoint-down(sm) {
+                position: relative;
+                height: auto !important;
+            }
+        }
+        .module__hero--v2 {
+            &__background {
+                transform: scale(1.5);
+                @include media-breakpoint-down(sm) {
+                    transform: scale(1.3);
+                    margin-bottom: -100px;
+                }
+            }
+        }
+    }
     &__content {
         min-height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
         padding: $grid-gutter-width;
+        position: relative;
+        z-index: 1;
         .app__dark & {
             color: $white;
         }
@@ -82,7 +107,7 @@
             margin: 8px 16px 8px 0;
             transition: .4s ease-in-out;
             .app__dark & {
-                background-color: lighten($body-bg-dark, 3%);
+                background-color: lighten($body-bg-dark, 5%);
                 color: rgba($white, .7);
             }
         }
