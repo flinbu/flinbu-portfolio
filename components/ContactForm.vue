@@ -1,95 +1,114 @@
 <template>
     <b-form class="contact-form" @submit.prevent="send">
-        <b-form-row>
-            <b-col cols="12">
-                <b-form-group :label="labelName">
-                    <b-form-input
-                        v-model="form.name"
-                        required
-                        :disabled="loading"
-                        @focus="onFocus"
-                    />
-                </b-form-group>
-            </b-col>
-            <b-col cols="12">
-                <b-form-group :label="labelEmail">
-                    <b-form-input
-                        type="email"
-                        v-model="form.email"
-                        required
-                        :disabled="loading"
-                        @focus="onFocus"
-                    />
-                </b-form-group>
-            </b-col>
-            <b-col cols="12" md="6">
-                <b-form-group :label="labelHelp">
-                    <b-dropdown 
-                        :text="form.help" 
-                        class="contact-form__select"
-                        lazy
-                    >
-                        <b-dropdown-item
-                            v-for="(item, i) in helpOptions"
-                            :key="i"
-                            :active="form.help == item"
-                            @click="form.help = item"
-                        >{{ item }}</b-dropdown-item>
-                    </b-dropdown>
-                </b-form-group>
-            </b-col>
-            <b-col cols="12" md="6">
-                <b-form-group :label="labelPriority">
-                    <b-dropdown 
-                        :text="form.priority" 
-                        class="contact-form__select"
-                        lazy
-                    >
-                        <b-dropdown-item
-                            v-for="(item, i) in priorityOptions"
-                            :key="i"
-                            :active="form.priority == item"
-                            @click="form.priority = item"
-                        >{{ item }}</b-dropdown-item>
-                    </b-dropdown>
-                </b-form-group>
-            </b-col>
-            <b-col cols="12">
-                <b-form-group :label="labelMessage">
-                    <b-form-textarea
-                        v-model="form.message"
-                        rows="10"
-                        required
-                        :disabled="loading"
-                        @focus="onFocus"
-                        :placeholder="placeholderMessage"
-                    />
-                </b-form-group>
-            </b-col>
-            <b-col cols="12">
-                <b-row>
-                    <b-col class="col-lg-auto mb-2 mb-lg-0">
-                        <b-button 
-                            type="submit"
-                            variant="primary"
-                            size="lg"
-                            class="contact-form__submit"
-                            v-html="buttonLabel"
+        <b-overlay :show="loading" rounded="sm" class="w-100" variant="transparent" spinnet-type="grow" spinner-variant="primary">
+            <b-form-row>
+                <b-col cols="12">
+                    <b-form-group :label="labelName">
+                        <b-form-input
+                            v-model="form.name"
+                            required
                             :disabled="loading"
+                            @focus="onFocus"
                         />
-                    </b-col>
-                    <b-col cols="12" class="mt-4" v-if="response">
-                        <span
-                            :class="`font-weight-light text-${responseColor}`"
-                            v-html="response"
+                    </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                    <b-form-group :label="labelEmail">
+                        <b-form-input
+                            type="email"
+                            v-model="form.email"
+                            required
+                            :disabled="loading"
+                            @focus="onFocus"
                         />
-                    </b-col>
-                </b-row>
-            </b-col>
-        </b-form-row>
+                    </b-form-group>
+                </b-col>
+                <b-col cols="12" md="6">
+                    <b-form-group :label="labelHelp">
+                        <b-dropdown 
+                            :text="form.help" 
+                            class="contact-form__select"
+                            lazy
+                        >
+                            <b-dropdown-item
+                                v-for="(item, i) in helpOptions"
+                                :key="i"
+                                :active="form.help == item"
+                                @click="form.help = item"
+                            >{{ item }}</b-dropdown-item>
+                        </b-dropdown>
+                    </b-form-group>
+                </b-col>
+                <b-col cols="12" md="6">
+                    <b-form-group :label="labelPriority">
+                        <b-dropdown 
+                            :text="form.priority" 
+                            class="contact-form__select"
+                            lazy
+                        >
+                            <b-dropdown-item
+                                v-for="(item, i) in priorityOptions"
+                                :key="i"
+                                :active="form.priority == item"
+                                @click="form.priority = item"
+                            >{{ item }}</b-dropdown-item>
+                        </b-dropdown>
+                    </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                    <b-form-group :label="labelMessage">
+                        <b-form-textarea
+                            v-model="form.message"
+                            rows="10"
+                            required
+                            :disabled="loading"
+                            @focus="onFocus"
+                            :placeholder="placeholderMessage"
+                        />
+                    </b-form-group>
+                </b-col>
+                <b-col cols="12">
+                    <b-row>
+                        <b-col class="col-lg-auto mb-2 mb-lg-0">
+                            <b-button 
+                                type="submit"
+                                variant="primary"
+                                size="lg"
+                                class="contact-form__submit"
+                                v-html="buttonLabel"
+                                :disabled="loading"
+                            />
+                        </b-col>
+                        <b-col cols="12" class="mt-4" v-if="response">
+                            <span
+                                :class="`font-weight-light text-${responseColor}`"
+                                v-html="response"
+                            />
+                        </b-col>
+                    </b-row>
+                </b-col>
+            </b-form-row>
+        </b-overlay>
+        <b-alert
+            :show="dismissCountDown"
+            class="position-fixed fixed-bottom m-0 rounded-0"
+            :variant="responseColor"
+            style="z-index: 2000;"
+            @dismissed="dismissCountDown = 0"
+            @dismiss-count-down="countDownChanged"
+        >
+            {{ response }}
+        </b-alert>
     </b-form>
 </template>
 <script>
+import CockpitSDK from 'cockpit-sdk'
+
+const cockpitClient = new CockpitSDK({
+    host: process.env.API_HOST,
+    accessToken: process.env.API_TOKEN
+})
+
 const initialForm = {
     name: "",
     email: "",
@@ -133,7 +152,9 @@ export default {
             loading: false,
             form: initialForm,
             response: false,
-            responseColor: "gray"
+            responseColor: "gray",
+            dismissSec: 5,
+            dismissCountDown: 0
         }
     },
     computed: {
@@ -162,55 +183,36 @@ export default {
     methods: {
         async send(event) {
             this.loading = true
-
-            let data = new URLSearchParams()
-            data.append('action', 'send_mail')
-            data.append('email', process.env.API_EMAIL)
-            data.append('key', process.env.API_KEY)
-            data.append('to', process.env.API_EMAIL)
-            data.append('name', this.form.name)
-            data.append('subject', 'Message from webpage')
-            data.append('replyto', this.form.email)
-
-            let message = ''
-            message += `<strong>${this.labelName}:</strong> ${this.form.name}</br></br>`
-            message += `<strong>${this.labelEmail}:</strong> ${this.form.email}</br></br>`
-            message += `<strong>${this.labelHelp}:</strong> ${this.form.help}</br></br>`
-            message += `<strong>${this.labelPriority}:</strong> ${this.form.priority}</br></br>`
-            message += `<strong>${this.labelMessage}:</strong> ${this.form.message}`
-
-            data.append('body', message)
-            
-            let actionURL = process.env.API
-
-            await this.$axios
-                    .post(actionURL, data)
-                    .then(response => {
-                        this.loading = false
-                        let success = response.data.success ? true : false
-                        if (success) {
-                            event.target.reset()
-                            this.clearForm()
-                            this.response = this.$t('components.contact_form.messages.success')
-                            this.responseColor = "green"
-                        } else {
-                            console.log(response)
-                            this.response = this.$t('components.contact_form.messages.error')
-                            this.responseColor = "red"
-                        }
-                    })
-                    .catch(err => {
-                        this.loading = false
-                        console.log(err)
-                        this.response = this.$t('components.contact_form.messages.error')
-                        this.responseColor = "red"
-                    })
+            try {
+                await cockpitClient.formSubmit('contact', {
+                    name: this.form.name,
+                    email: this.form.email,
+                    help: this.form.help,
+                    priority: this.form.priority,
+                    message: this.form.message
+                })
+                this.loading = false
+                this.clearForm()
+                this.response = this.$t('components.contact_form.messages.success')
+                this.responseColor = "success"
+                this.dismissCountDown = this.dismissSec
+            } catch (err) {
+                this.loading = false
+                this.clearForm()
+                this.response = this.$t('components.contact_form.messages.error')
+                this.responseColor = "danger"
+                this.dismissCountDown = this.dismissSec
+            }
         },
         clearForm() {
             this.form = initialForm
         },
         onFocus() {
             this.response = false
+        },
+        countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown
+            this.clearForm()
         }
     },
     mounted() {

@@ -33,8 +33,12 @@
 </template>
 <script>
 import axios from 'axios'
+import { mapGetters } from 'vuex'
 export default {
     computed: {
+        ...mapGetters({
+            homePortfolio: 'cockpit/getHomePortfolio'
+        }),
         labels() {
             let title = this.$t('pages.home.ux_design_title').split(' ')
             return {
@@ -62,15 +66,9 @@ export default {
             ]
         },
         images() {
-            // return this.$store.state.portfolio.items
-            return this.$store.state.contentful.posts.map( post => {
-                return {
-                    title: post.title,
-                    image: post.thumbnail,
-                    placeholder: post.thumbnail_ph,
-                    url: post.url
-                }
-            })
+            if (!this.homePortfolio) return []
+
+            return this.homePortfolio
         }
     }
 }

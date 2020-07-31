@@ -20,11 +20,12 @@
 
                 </b-col>
                 <b-col cols="12" class="module__wrapper portfolio__wrapper portfolio__content">
-                    <RichTextRenderer
+                    <!-- <RichTextRenderer
                         :document="post.content"
                         :nodeRenderers="renderOptions.renderNode"
                         :marksRenderers="renderOptions.renderMark"
-                    />
+                    /> -->
+                    <div class="portfolio__content" v-html="post.content"/>
                     <div v-if="post.assets && post.assets.length > 0" class="portfolio__assets mt-5">
                         <h2 class="mb-1">{{ $t('pages.portfolio.assets') }}</h2>
                         <ul class="portfolio__category--wrapper">
@@ -81,15 +82,14 @@ export default {
     computed: {
         ...mapGetters({
             getPost: 'contentful/getPost',
-            getPostID: 'contentful/getPostID'
+            getPostID: 'cockpit/getID',
+            getItem: 'cockpit/getItem'
         }),
         postID() {
-            if (!this.$store.state.contentful.fetched) return null
             return this.getPostID(this.$route.params.slug)
         },
         post() {
-            if (!this.postID) return false
-            return this.getPost(this.postID)
+            return this.getItem(this.postID)
         },
         postContent() {
             return documentToHtmlString(this.post.content, options)
@@ -113,11 +113,9 @@ export default {
             ]
         }
     },
-    fetch() {
-        if (!this.$store.state.contentful.fetched) {
-            this.$store.dispatch('contentful/fetch', () => {
-                this.loading = false
-            })
+    async fetch() {
+        if (!this.$store.state.cockpit.fetched) {
+            await this.$store.dispatch('cockpit/fetch')
         } else {
             this.loading = false
         }

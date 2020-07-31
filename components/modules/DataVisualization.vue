@@ -1,6 +1,6 @@
 <template>
     <b-container fluid class="module module__data content content__middle py-2 py-md-6">
-        <b-row>
+        <b-row class="w-100">
             <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
                     <b-col class="module__data order-2 pl-md-5 mb-5 mb-md-0" cols="12" md="5">
@@ -23,8 +23,8 @@
                     >   
                         <lazy-image
                             customClass="module__image img-fluid w-100"
-                            :src="require('~/assets/images/gota-gota@2x.jpg')"
-                            :placeholder="require('~/assets/images/gota-gota@2x.jpg?lqip')"
+                            :src="mainImage.full"
+                            :palceholder="mainImage.ph"
                         />
                     </b-col>
                 </b-row>
@@ -33,6 +33,7 @@
     </b-container>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
@@ -55,11 +56,20 @@ export default {
         }
     },
     computed: {
+        ...mapGetters({
+            homeData: 'cockpit/getHomeData'
+        }),
         labels() {
             return {
                 title: this.$t('pages.home.data_title').split(' '),
                 subtitle: this.$t('pages.home.data_subtitle'),
                 description: this.$t('pages.home.data_description')
+            }
+        },
+        mainImage() {
+            return {
+                full: this.homeData('data_visualization_image'),
+                ph: this.homeData('data_visualization_ph')
             }
         }
     }

@@ -104,7 +104,7 @@
                 }
                 .app__dark &,
                 .modal__dark & {
-                    background-color: $gray-darker;
+                    background-color: lighten($body-bg-dark, 5%);
                     color: $white;
                     &:active {
                         color: $white;
@@ -124,7 +124,7 @@
                 }
                 .app__dark &,
                 .modal__dark & {
-                    background-color: $gray-darker;
+                    background-color: lighten($body-bg-dark, 5%);
                     color: $white;
                     &:after {
                         border-top-color: $white;

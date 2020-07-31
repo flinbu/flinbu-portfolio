@@ -1,6 +1,6 @@
 <template>
     <b-container fluid class="module module__frontend content content__middle py-2 py-md-6">
-        <b-row>
+        <b-row class="w-100">
             <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
                     <b-col class="module__data order-2 order-md-1 mb-5 mb-md-0" cols="12" md="5" offset-md="1">
@@ -25,8 +25,8 @@
                     <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                         <lazy-image
                             customClass="module__image module__image--front-dev img-fluid w-100"
-                            :src="require('~/assets/images/front-dev@2x.png')"
-                            :placeholder="require('~/assets/images/front-dev@2x.png?lqip')"
+                            :src="mainImage.full"
+                            :placeholder="mainImage.ph"
                         />
                     </b-col>
                 </b-row>
@@ -35,6 +35,7 @@
     </b-container>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
     data() {
         return {
@@ -58,11 +59,20 @@ export default {
         }
     },
     computed: {
+        ...mapGetters({
+            homeData: 'cockpit/getHomeData'
+        }),
         labels() {
             return {
                 title: this.$t('pages.home.front_dev_title').split(' '),
                 subtitle: this.$t('pages.home.front_dev_subtitle'),
                 description: this.$t('pages.home.front_dev_description')
+            }
+        },
+        mainImage() {
+            return {
+                full: this.homeData('front_dev_image'),
+                ph: this.homeData('front_dev_ph')
             }
         }
     },

@@ -32,7 +32,7 @@ export default {
     Contact
   },
   fetch() {
-      if (!this.$store.state.contentful.fetched) this.$store.dispatch('contentful/fetch')
+      if (!this.$store.state.cockpit.fetched) this.$store.dispatch('cockpit/fetch')
   }
 }
 

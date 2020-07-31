@@ -71,6 +71,7 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import PortfolioFilters from '~/components/PortfolioFilters'
 export default {
     components: {
@@ -84,6 +85,10 @@ export default {
         }
     },
     computed: {
+        ...mapGetters({
+            getPortfolio: 'cockpit/getPortfolio',
+            getCategories: 'cockpit/getCategories'
+        }),
         buttons() {
             return [
                 {
@@ -113,7 +118,7 @@ export default {
             return 12 / gridCols
         },
         filters() {
-            return this.$store.state.contentful.categories
+            return this.getCategories
         },
         filteredItems() {
             if (this.filterBy == 'All') return this.portfolio
@@ -139,11 +144,11 @@ export default {
         }
     },
     async fetch() {
-        if (!this.$store.state.contentful.fetched) {
-            await this.$store.dispatch('contentful/fetch')
-            this.portfolio = this.$store.state.contentful.posts
+        if (!this.$store.state.cockpit.fetched) {
+            await this.$store.dispatch('cockpit/fetch')
+            this.portfolio = this.getPortfolio
         } else {
-            this.portfolio = this.$store.state.contentful.posts
+            this.portfolio = this.getPortfolio
         }
     },
     mounted() {
