@@ -63,6 +63,10 @@ Vue.component('AppMenu', AppMenu)
 import Brand from '~/components/Logo'
 Vue.component('Brand', Brand)
 
+// Loader
+import LoaderOverlay from '~/components/LoaderOverlay'
+Vue.component('LoaderOverlay', LoaderOverlay)
+
 // Glitch Image
 // import GlitchImage from '~/components/GlitchImage'
 // Vue.component('GlitchImage', GlitchImage)

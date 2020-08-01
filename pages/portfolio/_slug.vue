@@ -20,11 +20,6 @@
 
                 </b-col>
                 <b-col cols="12" class="module__wrapper portfolio__wrapper portfolio__content">
-                    <!-- <RichTextRenderer
-                        :document="post.content"
-                        :nodeRenderers="renderOptions.renderNode"
-                        :marksRenderers="renderOptions.renderMark"
-                    /> -->
                     <div class="portfolio__content" v-html="post.content"/>
                     <div v-if="post.assets && post.assets.length > 0" class="portfolio__assets mt-5">
                         <h2 class="mb-1">{{ $t('pages.portfolio.assets') }}</h2>
@@ -66,17 +61,10 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-// import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import RichTextRenderer from 'contentful-rich-text-vue-renderer'
-import { options } from '~/plugins/contentOptions'
 export default {
-    components: {
-        RichTextRenderer
-    },
     data() {
         return {
-            loading: true,
-            renderOptions: options
+            loading: true
         }
     },
     computed: {
@@ -115,9 +103,11 @@ export default {
     },
     async fetch() {
         if (!this.$store.state.cockpit.fetched) {
+            this.$root.$emit('loading', true)
             await this.$store.dispatch('cockpit/fetch')
+            this.$root.$emit('loading', false)
         } else {
-            this.loading = false
+            this.$root.$emit('loading', false)
         }
     }
 }

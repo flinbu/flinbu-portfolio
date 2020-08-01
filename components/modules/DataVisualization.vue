@@ -1,6 +1,6 @@
 <template>
     <b-container fluid class="module module__data content content__middle py-2 py-md-6">
-        <b-row class="w-100">
+        <b-row class="w-md-100">
             <b-container fluid class="module__wrapper">
                 <b-row class="module__content" align-v="center">
                     <b-col class="module__data order-2 pl-md-5 mb-5 mb-md-0" cols="12" md="5">

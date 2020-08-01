@@ -4,6 +4,7 @@
     <nuxt/>
     <app-footer v-if="!hideFooter"/>
     <modals/>
+    <loader-overlay/>
   </main>
 </template>
 <script>

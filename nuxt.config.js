@@ -27,7 +27,7 @@ export default {
     ],
     script: [
       {
-        src: process.env.SMALLCHAT_URL || ''
+        src: process.env.SMALLCHAT_ID ? `https://embed.small.chat/${process.env.SMALLCHAT_ID}.js` : ''
       }
     ]
   },

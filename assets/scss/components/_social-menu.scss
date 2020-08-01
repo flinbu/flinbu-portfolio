@@ -46,7 +46,8 @@
             &__item {
                 .nav-link {
                     color: $gray-dark;
-                    .app__dark & {
+                    .app__dark &,
+                    .modal__dark & {
                         color: $white;
                     }
                 }

@@ -1,8 +1,8 @@
 <template>
     <div class="module module__hero module__hero--v2 content content__middl pt-6 pt-md-3 pb-6 mb-6 mb-md-4">
-        <img :src="moduleBackground" class="module__hero--v2__background"/>
+        <img :src="moduleBackground" class="animated slow fadeIn module__hero--v2__background"/>
         <b-container class="module__hero--v2__content">
-            <b-row class="module__hero--v2__row" align-v="end" align-h="center">
+            <b-row class="module__hero--v2__row animated fadeIn slow delay-1s slow" align-v="end" align-h="center">
                 <b-col cols="12">
                     <module-title
                         tag="h1"
@@ -87,7 +87,6 @@ export default {
         setBackground() {
             let intervalTime = Math.round(Math.random() * (10000 - 3000)) + 3000
             setTimeout(() => {
-                console.log('Changing hero BG...')
                 this.moduleBackground = anaglyphs[Math.floor(Math.random() * anaglyphs.length)]
                 setTimeout(() => {
                     this.moduleBackground = mainAnaglyph

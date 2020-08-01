@@ -1,0 +1,7 @@
+.w {
+    @include media-breakpoint-up(md) {
+        &-md-100 {
+            width: 100% !important;
+        }
+    }
+}

@@ -144,6 +144,13 @@ export default {
           return this.$root.$emit(url)
       }
     }
+  },
+  async fetch() {
+    if (!this.$store.state.cockpit.fetched) {
+      this.$root.$emit('loading', true)
+      await this.$store.dispatch('cockpit/fetch')
+      this.$root.$emit('loading', false)
+    }
   }
 }
 

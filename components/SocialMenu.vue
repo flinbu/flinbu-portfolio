@@ -1,8 +1,9 @@
 <template>
     <b-nav 
-        :class="`social-menu social-menu__${scheme} social-menu__${location}`"
+        :class="`social-menu social-menu__${scheme} social-menu__${location} animated fadeIn`"
         :align="alignment"
         :vertical="vertical"
+        v-if="socialMenu && socialMenu.length > 0"
     >
         <b-nav-item
             v-for="(social, index) in socialMenu"
@@ -20,6 +21,7 @@
     </b-nav>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
     props: {
         scheme: {
@@ -48,41 +50,9 @@ export default {
         }
     },
     computed: {
-        // Create social menu items array
-        socialMenu() {
-            return [
-                {
-                    network: "dribbble",
-                    icon: "dribbble",
-                    url: "https://dribbble.com/flinbu",
-                    label: "Dribbble"
-                },
-                {
-                    network: "behance",
-                    icon: "behance",
-                    url: "https://behance.net/flinbu",
-                    label: "Behance"
-                },
-                {
-                    network: "github",
-                    icon: "github",
-                    url: "https://github.com/flinbu",
-                    label: "GitHub"
-                },
-                {
-                    network: "instagram",
-                    icon: "instagram",
-                    url: "https://instagram.com/flinbu",
-                    label: "Instagram"
-                },
-                {
-                    network: "linkedin",
-                    icon: "linkedin",
-                    url: "https://www.linkedin.com/in/flinbu/",
-                    label: "LinkedIn"
-                }
-            ]
-        }
+        ...mapGetters({
+            socialMenu: 'cockpit/getSocial'
+        })
     }
 }
 </script>

@@ -13,24 +13,28 @@ export const state = () => ({
     fetched: false,
     posts: [],
     slugs: [],
-    categories: []
+    categories: [],
+    social: []
 })
 
 export const mutations = {
     load (state, items) {
         state.posts = items
     },
-    setSlugs (state, slugs) {
+    slugs (state, slugs) {
         state.slugs = slugs
     },
-    setCategories (state, categories) {
+    categories (state, categories) {
         state.categories = categories
     },
-    setHome (state, data) {
+    home (state, data) {
         state.home = data
     },
     fetched (state, status) {
         state.fetched = status
+    },
+    social (state, items) {
+        state.social = items
     }
 }
 
@@ -56,7 +60,7 @@ export const actions = {
                 portfolio: home.portfolio,
                 fetched: true
             }
-            commit('setHome', homeData)
+            commit('home', homeData)
         } catch (err) {
             console.error('homedata', err)
         }
@@ -78,11 +82,26 @@ export const actions = {
             })
             
             commit('load', portfolio.entries)
-            commit('setSlugs', slugs)
-            commit('setCategories', categories)
+            commit('slugs', slugs)
+            commit('categories', categories)
             commit('fetched', true)
         } catch (err) {
             console.error('portfolio', err)
+        }
+
+        // Social
+        try {
+            let social = await cockpitClient.collectionGet('social')
+            commit('social', social.entries.reverse().map( item => {
+                return {
+                    network: slugThis(item.name),
+                    icon: item.icon,
+                    url: item.url,
+                    label: item.name
+                }
+            }))
+        } catch (err) {
+            console.error('social', err)
         }
     }
 }
@@ -176,5 +195,10 @@ export const getters = {
         if (!state.fetched) return []
 
         return state.categories
+    },
+    getSocial: state => {
+        if (!state.fetched) return []
+
+        return state.social
     }
 }

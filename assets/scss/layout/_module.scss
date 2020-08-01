@@ -64,7 +64,8 @@
         color: $gray-darker;
         line-height: 30px;
         transition: .4s ease-in-out;
-        .app__dark & {
+        .app__dark &,
+        .modal__dark & {
             color: rgba($white, .6);
         }
     }

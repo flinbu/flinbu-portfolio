@@ -145,7 +145,9 @@ export default {
     },
     async fetch() {
         if (!this.$store.state.cockpit.fetched) {
+            this.$root.$emit('loading', true)
             await this.$store.dispatch('cockpit/fetch')
+            this.$root.$emit('loading', false)
             this.portfolio = this.getPortfolio
         } else {
             this.portfolio = this.getPortfolio

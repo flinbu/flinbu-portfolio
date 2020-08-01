@@ -6,6 +6,8 @@
 @import "global/mixins";
 @import "global/icons";
 @import "global/transitions";
+@import "global/animate";
+@import "global/measurements";
 
 
 @each $color in $social-scheme {

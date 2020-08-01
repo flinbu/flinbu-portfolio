@@ -1,6 +1,6 @@
 <template>
-    <b-form class="contact-form" @submit.prevent="send">
-        <b-overlay :show="loading" rounded="sm" class="w-100" variant="transparent" spinnet-type="grow" spinner-variant="primary">
+    <b-overlay :show="loading" rounded="sm" class="w-100" variant="transparent" spinnet-type="grow" spinner-variant="primary">
+        <b-form class="contact-form" @submit.prevent="send" ref="form">
             <b-form-row>
                 <b-col cols="12">
                     <b-form-group :label="labelName">
@@ -79,27 +79,11 @@
                                 :disabled="loading"
                             />
                         </b-col>
-                        <b-col cols="12" class="mt-4" v-if="response">
-                            <span
-                                :class="`font-weight-light text-${responseColor}`"
-                                v-html="response"
-                            />
-                        </b-col>
                     </b-row>
                 </b-col>
             </b-form-row>
-        </b-overlay>
-        <b-alert
-            :show="dismissCountDown"
-            class="position-fixed fixed-bottom m-0 rounded-0"
-            :variant="responseColor"
-            style="z-index: 2000;"
-            @dismissed="dismissCountDown = 0"
-            @dismiss-count-down="countDownChanged"
-        >
-            {{ response }}
-        </b-alert>
-    </b-form>
+        </b-form>
+    </b-overlay>
 </template>
 <script>
 import CockpitSDK from 'cockpit-sdk'
@@ -109,13 +93,6 @@ const cockpitClient = new CockpitSDK({
     accessToken: process.env.API_TOKEN
 })
 
-const initialForm = {
-    name: "",
-    email: "",
-    help: "",
-    priority: "",
-    message: ""
-}
 export default {
     props: {
         labelName: {
@@ -150,7 +127,13 @@ export default {
     data() {
         return {
             loading: false,
-            form: initialForm,
+            form: {
+                name: "",
+                email: "",
+                help: "",
+                priority: "",
+                message: ""
+            },
             response: false,
             responseColor: "gray",
             dismissSec: 5,
@@ -185,27 +168,43 @@ export default {
             this.loading = true
             try {
                 await cockpitClient.formSubmit('contact', {
-                    name: this.form.name,
-                    email: this.form.email,
-                    help: this.form.help,
-                    priority: this.form.priority,
-                    message: this.form.message
+                    "Name": this.form.name,
+                    "Email": this.form.email,
+                    "Help": this.form.help,
+                    "Priority": this.form.priority,
+                    "Message": this.form.message
                 })
                 this.loading = false
+                this.toast(this.$t('components.contact_form.messages.success'), 'success', true)
                 this.clearForm()
-                this.response = this.$t('components.contact_form.messages.success')
-                this.responseColor = "success"
-                this.dismissCountDown = this.dismissSec
             } catch (err) {
                 this.loading = false
+                this.toast(this.$t('components.contact_form.messages.error'), 'danger', true)
                 this.clearForm()
-                this.response = this.$t('components.contact_form.messages.error')
-                this.responseColor = "danger"
-                this.dismissCountDown = this.dismissSec
             }
         },
+        toast(message = '', variant = 'success', append = false) {
+            this.$bvToast.toast(message, {
+                autoHideDelay: this.dismissSec * 1000,
+                noCloseButton: true,
+                solid: false,
+                appendToast: append,
+                variant: variant,
+                toaster: 'b-toaster-bottom-center',
+                toastClass: 'toast',
+                bodyClass: 'toast__body text-center'
+            })
+        },
         clearForm() {
-            this.form = initialForm
+            this.form = {
+                name: "",
+                email: "",
+                help: this.helpOptions[0],
+                priority: this.priorityOptions[0],
+                message: ""
+            }
+            this.$refs.form.reset()
+            console.log(this.form)
         },
         onFocus() {
             this.response = false
