@@ -67,18 +67,20 @@ export const actions = {
 
         // Portfolio
         try {
-            let portfolio = await cockpitClient.collectionGet('portfolio')
+            let portfolio = await cockpitClient.collectionGet('portfolio', {
+                sort: { _created: -1 }
+            })
             let slugs = portfolio.entries.map( item => {
                 return {
-                    slug: slugThis(item.title),
+                    slug: item.title_slug,
                     id: item._id
                 }
             })
             let categories = ['All']
             portfolio.entries.forEach( post => {
-                categories.push(post.category.find( cat => {
-                    if (!categories.includes(cat)) return cat
-                }))
+                post.category.forEach( cat => {
+                    if (cat && !categories.includes(cat)) categories.push(cat)
+                })
             })
             
             commit('load', portfolio.entries)
@@ -148,11 +150,11 @@ export const getters = {
         })
         return {
             title: post.title,
-            slug: slugThis(post.title),
+            slug: post.title_slug,
             excerpt: post.excerpt || '',
             thumbnail: `${assetsPath}${post.image.path}`,
             thumbnail_ph: thumbnail_ph || false,
-            url: `/portfolio/${slugThis(post.title)}`,
+            url: `/portfolio/${post.title_slug}`,
             content: postContent || '',
             technologies: (post.technologies && post.technologies.length > 0) ? post.technologies : [],
             category: (post.category && post.category.length > 0) ? post.category : [],
@@ -165,16 +167,9 @@ export const getters = {
     getPortfolio: state => {
         if (!state.fetched) return []
         return state.posts.map( post => {
-            let thumbnail = cockpitClient.image(post.image._id, {
-                width: 400,
-                height: 400 * 320 / 330,
-                pixelRatio: 2,
-                mode: 'bestFit',
-                quality: 90
-            })
             let thumbnail_ph = cockpitClient.image(post.image._id, {
                 width: 100,
-                height: 100 * 320 / 330,
+                height: 100 * 960 / 1280,
                 mode: 'bestFit',
                 quality: 20,
                 filters: {
@@ -185,9 +180,9 @@ export const getters = {
                 id: post._id,
                 title: post.title,
                 category: post.category,
-                thumbnail: thumbnail,
+                thumbnail: `${assetsPath}${post.image.path}`,
                 thumbnail_ph: thumbnail_ph,
-                url: `/portfolio/${slugThis(post.title)}`
+                url: `/portfolio/${post.title_slug}`
             }
         })
     },

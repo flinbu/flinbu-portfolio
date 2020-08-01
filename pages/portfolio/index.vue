@@ -12,7 +12,7 @@
                     </div>
                 </b-col>
                 <b-col cols="12" class="module__wrapper portfolio__wrapper">
-                    <b-row align-v="stretch" class="position-relative">
+                    <b-row align-v="stretch" class="position-relative mb-5">
                         <portfolio-filters 
                             :filters="filters" 
                             v-model="filterBy"
@@ -20,18 +20,16 @@
                         />
                         <b-col
                             cols="12"
-                            md="10"
-                            lg="11"
+                            class="portfolio__grid"
                         >
                             <transition-group name="list-complete" tag="div" :class="`row align-items-stretch list-complete portfolio__list portfolio__list--${animatedList ? 'animated' : 'static'}`">
                                 <b-col
                                     v-for="(item, i) in filteredItems"
                                     :key="`portfolio-item-${i}`"
-                                    class="portfolio__item--wrapper"
+                                    class="portfolio__item--wrapper px-0"
                                     cols="12" 
                                     md="6" 
-                                    lg="4" 
-                                    :xl="cols"
+                                    lg="4"
                                     :data-groups="item.category"
                                 >
                                     <b-card
@@ -41,7 +39,6 @@
                                         <b-card-img-lazy
                                             :src="item.thumbnail"
                                             :blank-src="item.thumbnail_ph"
-                                            height="330"
                                             :ref="`portfolioImage-${item.id}`"
                                             v-on:update:show="updateImg(`portfolioImage-${item.id}`)"
                                         />
