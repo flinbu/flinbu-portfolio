@@ -1,13 +1,23 @@
 .toast {
     width: 90%;
     max-width: 600px;
-    border-radius: 30px;
+    border-radius: 10px;
+    box-shadow: 0 -10px 40px rgba($black, .8);
     border: none;
+    margin: 0 auto;
+    outline: none;
     &__body {
         font-size: 18px;
+        font-weight: 400;
+        @include media-breakpoint-down(sm) {
+            font-size: 16px;
+        }
     }
 }
 .b-toast,
 .b-toaster-slot {
     max-width: 600px !important;
+}
+.b-toaster {
+    z-index: 999999999;
 }

@@ -189,7 +189,6 @@ export default {
                 noCloseButton: true,
                 solid: false,
                 appendToast: append,
-                variant: variant,
                 toaster: 'b-toaster-bottom-center',
                 toastClass: 'toast',
                 bodyClass: 'toast__body text-center'
