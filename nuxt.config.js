@@ -1,5 +1,8 @@
-// import { createClient } from './plugins/contentful.js'
-// const contentClient = createClient()
+import CockpitSDK from 'cockpit-sdk'
+const cockpit = new CockpitSDK({
+  host: process.env.API_HOST,
+  accessToken: process.env.API_TOKEN
+})
 export default {
   /*
   ** Nuxt rendering mode
@@ -137,17 +140,12 @@ export default {
       }
     }
   },
-  // generate: {
-  //   routes () {
-  //     contentClient.getEntries({
-  //       content_type: 'portfolio'
-  //     })
-  //     .then(res => {
-  //       return res.items.map( post => {
-  //         let slug = post.fields.title == undefined ? '' : post.fields.title.replace(/[^a-z0-9_]+/gi, '-').replace(/^-|-$/g, '').toLowerCase()
-  //         return `/portfolio/${slug}`
-  //       })
-  //     })
-  //   }
-  // }
+  generate: {
+    async routes () {
+      const posts = await cockpit.collectionGet('portfolio')
+      return posts.entries.map( post => {
+        return `/portfolio/${post.title_slug}`
+      })
+    }
+  }
 }

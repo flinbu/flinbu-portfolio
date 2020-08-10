@@ -18,6 +18,7 @@
             "priority": "¿Cuál es la prioridad?",
             "message": "Cuéntame sobre tu proyecto",
             "cta": "¡Comencemos!",
+            "captcha": "Resuelve...",
             "placeholder": {
                 "message": "Presupuesto, detalles adicionales, plazos, características especiales ..."
             },
@@ -37,7 +38,8 @@
             },
             "messages": {
                 "success": "¡Gracias por el mensaje! Me pondré en contacto lo antes posible.",
-                "error": "¡Algo ha salido mal! Su mensaje no pudo ser enviado, por favor intente nuevamente, ¡gracias!"
+                "error": "¡Algo ha salido mal! Su mensaje no pudo ser enviado, por favor intente nuevamente, ¡gracias!",
+                "captcha_error": "Ups... {sum} no es igual a {answer}, inténtalo de nuevo."
             }
         },
         "menu": {

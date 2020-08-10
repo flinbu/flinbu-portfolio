@@ -67,9 +67,7 @@ export const actions = {
 
         // Portfolio
         try {
-            let portfolio = await cockpitClient.collectionGet('portfolio', {
-                sort: { _created: -1 }
-            })
+            let portfolio = await cockpitClient.collectionGet('portfolio')
             let slugs = portfolio.entries.map( item => {
                 return {
                     slug: item.title_slug,
@@ -127,7 +125,7 @@ export const getters = {
                     mode: 'thumbnail',
                     quality: 10
                 }),
-                url: `/portfolio/${slugThis(data.title)}`
+                url: `/portfolio/${data.title_slug}`
             }
         })
     },

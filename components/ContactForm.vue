@@ -68,8 +68,20 @@
                     </b-form-group>
                 </b-col>
                 <b-col cols="12">
-                    <b-row>
-                        <b-col class="col-lg-auto mb-2 mb-lg-0">
+                    <b-row align-v="center">
+                        <b-col cols="12" md="7">
+                            <b-form-group :label="$t('components.contact_form.captcha')">
+                                <b-form-input
+                                    v-model="form.captcha"
+                                    :placeholder="captcha.sum"
+                                    required
+                                    :disabled="loading"
+                                    :state="form.captcha == captcha.result"
+                                    ref="captcha"
+                                />
+                            </b-form-group>
+                        </b-col>
+                        <b-col cols="12" md="5" class="mb-2 mb-lg-0 d-flex justify-content-end">
                             <b-button 
                                 type="submit"
                                 variant="primary"
@@ -87,6 +99,7 @@
 </template>
 <script>
 import CockpitSDK from 'cockpit-sdk'
+import { mathCaptcha } from '~/plugins/mathCaptcha'
 
 const cockpitClient = new CockpitSDK({
     host: process.env.API_HOST,
@@ -127,12 +140,14 @@ export default {
     data() {
         return {
             loading: false,
+            captcha: {sum: '', result: ''},
             form: {
                 name: "",
                 email: "",
                 help: "",
                 priority: "",
-                message: ""
+                message: "",
+                captcha: ""
             },
             response: false,
             responseColor: "gray",
@@ -165,6 +180,9 @@ export default {
     },
     methods: {
         async send(event) {
+            if (this.form.captcha != this.captcha.result) {
+                return this.toast(this.$t('components.contact_form.messages.captcha_error', { sum: this.captcha.sum, answer: this.form.captcha}), 'danger', true)
+            }
             this.loading = true
             try {
                 await cockpitClient.formSubmit('contact', {
@@ -203,6 +221,7 @@ export default {
                 message: ""
             }
             this.$refs.form.reset()
+            this.resetCaptcha()
             console.log(this.form)
         },
         onFocus() {
@@ -211,11 +230,15 @@ export default {
         countDownChanged(dismissCountDown) {
             this.dismissCountDown = dismissCountDown
             this.clearForm()
+        },
+        resetCaptcha() {
+            this.captcha = mathCaptcha.generate({lower: 5, upper: 20})
         }
     },
     mounted() {
         this.form.help = this.helpOptions[0]
         this.form.priority = this.priorityOptions[0]
+        this.resetCaptcha()
     }
 }
 </script>
