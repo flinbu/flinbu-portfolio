@@ -63,9 +63,17 @@
                       >
                         <button class="about__more--button" @click="open(button.type, button.target)">
                           <img
+                            v-if="button.image"
                             :src="require(`~/assets/images/${button.image}`)"
                             class="about__more--image"
                           />
+                          <div class="about__more--icon-wrapper">
+                            <icon
+                              :name="button.icon"
+                              size="md"
+                              class="about__more--icon"
+                            />
+                          </div>
                           <span class="about__more--label">{{ button.label }}</span>
                         </button>
                       </b-col>
@@ -100,20 +108,23 @@ export default {
           type: 'modal',
           label: this.$t('pages.about.process'),
           target: 'showProcess',
-          image: 'creation-process.png'
+          icon: 'brain'
+          // image: 'creation-process.png'
         },
         {
           type: 'link',
           label: this.$t('pages.about.work'),
           target: '/portfolio',
-          image: 'my-work.png'
+          icon: 'coffee'
+          // image: 'my-work.png'
         },
         {
             type: "external",
             label: this.$t('pages.about.resume'),
             target: process.env.RESUME_URL,
             theme: "white",
-          image: 'resume.png'
+            icon: 'briefcase-alt'
+          // image: 'resume.png'
         }
       ]
     },

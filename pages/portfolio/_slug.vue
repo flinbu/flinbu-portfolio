@@ -69,7 +69,6 @@ export default {
     },
     computed: {
         ...mapGetters({
-            getPost: 'contentful/getPost',
             getPostID: 'cockpit/getID',
             getItem: 'cockpit/getItem'
         }),

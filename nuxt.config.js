@@ -8,7 +8,7 @@ export default {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'spa',
+  ssr: false,
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -103,7 +103,8 @@ export default {
   // Robots
   robots: { 
     UserAgent: '*',
-    Disallow: '/',
+    Disallow: '/cms',
+    Allow: '*',
     Sitemap: 'https://flinbu.co/sitemap.xml'
   },
   // Bootsrap Config
