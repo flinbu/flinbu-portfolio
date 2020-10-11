@@ -57,6 +57,15 @@
         "lang_switch": {
             "es": "ES",
             "en": "EN"
+        },
+        "access_post": {
+            "title": "This post is password protected",
+            "disclaimer": "Please enter the provided credentials to unlock it. Thanks!",
+            "email": "Email",
+            "password": "Password",
+            "cta": "Unlock",
+            "no_password": "The entered email hasn't been associated to any password",
+            "bad_password": "Wrong password"
         }
     },
     "modals": {

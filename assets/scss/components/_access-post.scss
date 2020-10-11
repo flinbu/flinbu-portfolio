@@ -1,0 +1,20 @@
+.access-post {
+    &__submit {
+        background: none;
+        color: $pink;
+        &:hover,
+        &:focus,
+        &:focus-within,
+        &:active {
+            @include linear-gradient($red, $pink);
+            color: $white;
+        }
+    }
+    &__title,
+    &__disclaimer {
+        color: $dark;
+        .app__dark & {
+            color: $light;
+        }
+    }
+}

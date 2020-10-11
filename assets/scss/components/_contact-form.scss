@@ -2,7 +2,8 @@
     .form {
         &-group {
             margin-bottom: 24px;
-            legend {
+            legend,
+            label {
                 font-size: 18px;
                 margin-bottom: 8px;
                 transition: .4s ease-in-out;
@@ -27,7 +28,8 @@
     }
     .field__check_group {
         .form-group {
-            legend {
+            legend,
+            label {
                 text-align: center;
             }
         }

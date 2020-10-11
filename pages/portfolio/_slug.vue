@@ -19,7 +19,11 @@
                     </div>
 
                 </b-col>
-                <b-col cols="12" class="module__wrapper portfolio__wrapper portfolio__content">
+                <b-col v-if="postProtected" cols="12" class="modue moduke__wrapper portfolio__wrapper portfolio__protection">
+                    <div class="portfolio__content" v-html="post.protected_content"/>
+                    <access-post @success="protect = false"/>
+                </b-col>
+                <b-col v-else cols="12" class="module__wrapper portfolio__wrapper portfolio__content">
                     <div class="portfolio__content" v-html="post.content"/>
                     <div v-if="post.assets && post.assets.length > 0" class="portfolio__assets mt-5">
                         <h2 class="mb-1">{{ $t('pages.portfolio.assets') }}</h2>
@@ -48,7 +52,7 @@
                 </b-col>
             </b-row>
             <b-row align-h="center" class="mt-6">
-                <b-col cols="12" class="module__wrapper portfolio__wrapper portfolio__content" >
+                <b-col cols="12" class="module__wrapper portfolio__wrapper portfolio__content d-flex justify-content-center align-items-center flex-wrap" >
                     <button-group
                         class="module__action d-flex align-items-center justify-content-start flex-wrap"
                         :buttons="buttons"
@@ -61,10 +65,15 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import AccessPost from '~/components/AccessPost'
 export default {
+    components: {
+        AccessPost
+    },
     data() {
         return {
-            loading: true
+            loading: true,
+            protect: null
         }
     },
     computed: {
@@ -77,7 +86,7 @@ export default {
         },
         post() {
             return this.getItem(this.postID)
-        },
+        }, 
         postContent() {
             return documentToHtmlString(this.post.content, options)
         },
@@ -98,6 +107,14 @@ export default {
                     shadow: true
                 }
             ]
+        },
+        postProtected() {
+            return this.post.protected ? this.protect : false
+        }
+    },
+    watch: {
+        post(data) {
+            this.protect = data.protected
         }
     },
     async fetch() {

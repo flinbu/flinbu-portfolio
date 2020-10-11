@@ -142,6 +142,8 @@ export const getters = {
 
         let postContent = post.content.replace(/(?:^|\W)\/cms\/storage\/uploads(?:$|\W)/g, `"${assetsPath}/`)
 
+        let protectedContent = post.protected ? post.protected_content.replace(/(?:^|\W)\/cms\/storage\/uploads(?:$|\W)/g, `"${assetsPath}/`) : ''
+
         let thumbnail_ph = cockpitClient.image(post.image._id, {
             mode: 'thumbnail',
             quality: 10
@@ -149,11 +151,13 @@ export const getters = {
         return {
             title: post.title,
             slug: post.title_slug,
+            protected: post.protected,
             excerpt: post.excerpt || '',
             thumbnail: `${assetsPath}${post.image.path}`,
             thumbnail_ph: thumbnail_ph || false,
             url: `/portfolio/${post.title_slug}`,
             content: postContent || '',
+            protected_content: protectedContent || '',
             technologies: (post.technologies && post.technologies.length > 0) ? post.technologies : [],
             category: (post.category && post.category.length > 0) ? post.category : [],
             assets: (post.assets && post.assets.length > 0) ? post.assets : []
