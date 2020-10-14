@@ -17,6 +17,7 @@
     "airtable": "^0.8.1",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.17.3",
+    "moment": "^2.29.1",
     "nuxt": "^2.14.6",
     "sweet-modal-vue": "^2.0.0",
     "vue-cookies": "^1.7.4",

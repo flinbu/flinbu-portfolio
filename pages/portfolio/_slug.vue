@@ -23,7 +23,7 @@
                     <div class="portfolio__content" v-html="post.protected_content"/>
                     <access-post @success="protect = false"/>
                 </b-col>
-                <b-col v-else cols="12" class="module__wrapper portfolio__wrapper portfolio__content">
+                <b-col v-else cols="12" class="module__wrapper portfolio__wrapper portfolio__content animated fadeIn">
                     <div class="portfolio__content" v-html="post.content"/>
                     <div v-if="post.assets && post.assets.length > 0" class="portfolio__assets mt-5">
                         <h2 class="mb-1">{{ $t('pages.portfolio.assets') }}</h2>
@@ -73,7 +73,7 @@ export default {
     data() {
         return {
             loading: true,
-            protect: null
+            protect: false
         }
     },
     computed: {
@@ -116,6 +116,9 @@ export default {
         post(data) {
             this.protect = data.protected
         }
+    },
+    mounted() {
+        if (this.post) this.protect = this.post.protected
     },
     async fetch() {
         if (!this.$store.state.cockpit.fetched) {

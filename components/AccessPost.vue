@@ -47,6 +47,9 @@
 </template>
 <script>
 import CockpitSDK from 'cockpit-sdk'
+import moment from 'moment'
+
+const today = moment()
 
 const cockpitClient = new CockpitSDK({
     host: process.env.API_HOST,
@@ -77,6 +80,12 @@ export default {
             if (password) {
                 if (password.value.pass !== this.password) {
                     this.toast(this.$t('components.access_post.bad_password'), 'danger')
+                } else if (password.value.expire) {
+                    const expDate = moment(password.value.expire_date)
+                    let diffDates = today.diff(expDate, 'days')
+                    if (diffDates > 0) {
+                        this.toast(this.$t('components.access_post.expired_password'), 'danger')
+                    }
                 } else {
                     this.$emit('success', true)
                 }
@@ -88,7 +97,7 @@ export default {
         toast(message = '', variant = 'success', append = false) {
             this.$bvToast.toast(message, {
                 variant: variant,
-                noCloseButton: false,
+                noCloseButton: true,
                 solid: false,
                 appendToast: append,
                 toaster: 'b-toaster-bottom-center',

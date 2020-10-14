@@ -65,7 +65,9 @@
             "password": "Password",
             "cta": "Unlock",
             "no_password": "The entered email hasn't been associated to any password",
-            "bad_password": "Wrong password"
+            "bad_password": "Wrong password",
+            "expired_password": "The password has expired",
+            "success": "Access granted!"
         }
     },
     "modals": {
