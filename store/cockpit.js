@@ -14,7 +14,9 @@ export const state = () => ({
     posts: [],
     slugs: [],
     categories: [],
-    social: []
+    social: [],
+    bookmarks: [],
+    bookmarks_fetched: false
 })
 
 export const mutations = {
@@ -35,10 +37,24 @@ export const mutations = {
     },
     social (state, items) {
         state.social = items
+    },
+    bookmarks (state, items) {
+        state.bookmarks = items
+        if (items.length > 0) {
+            state.bookmarks_fetched = true
+        }
     }
 }
 
 export const actions = {
+    async fetch_bookmarks({ commit }) {
+        try {
+            let bookmarks = await cockpitClient.collectionGet('bookmarks')
+            commit('bookmarks', bookmarks.entries)
+        } catch (err) {
+            console.error('bookmarks', err)
+        }
+    },
     async fetch({ commit }) {
 
         // Fetch home data
@@ -197,5 +213,25 @@ export const getters = {
         if (!state.fetched) return []
 
         return state.social
+    },
+    getBookmarks: state => {
+        if (!state.bookmarks_fetched) return []
+
+        return state.bookmarks
+    },
+    getBookmarksCategories: state => {
+        if (!state.bookmarks_fetched) return []
+
+        let categories = []
+
+        state.bookmarks.forEach( bookmark => {
+            for (let i = 0; i < bookmark.category.length; i++) {
+                if (categories.indexOf(bookmark.category[i]) == -1) {
+                    categories.push(bookmark.category[i])
+                }
+            }
+        })
+
+        return categories
     }
 }

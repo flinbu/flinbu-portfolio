@@ -1,0 +1,17 @@
+.bookmark {
+    border: none;
+    transition: .4s ease-in-out;
+    box-shadow: 0 5px 20px rgba($black, .08);
+    &__category {
+        display: inline-block;
+        border: 1px solid $pink;
+        color: $pink;
+        padding: 8px 16px;
+        border-radius: 30px;
+        font-size: 12px;
+    }
+    .app__dark & {
+        background-color: lighten($body-bg-dark, 3%);
+        color: $white;
+    }
+}

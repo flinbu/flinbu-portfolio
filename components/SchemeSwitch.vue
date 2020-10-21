@@ -19,7 +19,7 @@ export default {
     },
     data() {
         return {
-            darkMode: false
+            darkMode: true
         }
     },
     watch: {
@@ -28,12 +28,12 @@ export default {
         }
     },
     mounted() {
-        let cookie = this.$cookies.get('color-scheme')
-        if ( cookie) {
-            this.darkMode = cookie == 'dark' ? true : false
-        } else {
-            this.darkMode = false
-        }
+        // let cookie = this.$cookies.get('color-scheme')
+        // if ( cookie) {
+        //     this.darkMode = cookie == 'dark' ? true : false
+        // } else {
+        //     this.darkMode = false
+        // }
         this.$root.$on('scheme', scheme => {
             this.darkMode = scheme == 'dark' ? true : false
         })

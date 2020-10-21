@@ -73,7 +73,8 @@ export default {
             let showOn = [
                 'index',
                 'portfolio',
-                'portfolio-slug'
+                'portfolio-slug',
+                'bookmarks'
             ]
             return showOn.includes(pathName)
         }
