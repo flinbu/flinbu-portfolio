@@ -217,7 +217,26 @@ export const getters = {
     getBookmarks: state => {
         if (!state.bookmarks_fetched) return []
 
-        return state.bookmarks
+        return state.bookmarks.map( bookmark => {
+            let ph = cockpitClient.image(bookmark.image._id, {
+                width: 150,
+                height: 150,
+                mode: 'bestFit',
+                quality: 20,
+                filters: {
+                    blur: 100   
+                }
+            })
+            return {
+                title: bookmark.title,
+                id: bookmark._id,
+                slug: bookmark.title_slug,
+                image: `${assetsPath}${bookmark.image.path}`,
+                thumbnail: ph,
+                category: bookmark.category,
+                link: bookmark.link
+            }
+        })
     },
     getBookmarksCategories: state => {
         if (!state.bookmarks_fetched) return []

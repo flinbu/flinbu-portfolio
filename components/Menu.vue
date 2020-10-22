@@ -9,8 +9,11 @@
             <a 
                 :href="item.link" 
                 @click.prevent="openLink(item)" 
-                class="menu__item menu__item--anchor"
-            >{{ item.label }}</a>
+                class="menu__item menu__item--anchor d-inline-flex align-items-center"
+            >
+                <i v-if="item.icon" :class="`bx bx-xs bx-${item.icon}`"/>
+                <span v-else>{{ item.label }}</span>
+            </a>
         </div>
     </div>
 </template>
@@ -64,6 +67,11 @@ export default {
                     link: '#contact',
                     label: this.$t('components.menu.contact'),
                     type: 'anchor'
+                },
+                {
+                    link: '/bookmarks',
+                    icon: 'bookmark',
+                    type: 'link'
                 }
             ]
         },

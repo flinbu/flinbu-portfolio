@@ -1,6 +1,6 @@
 <template>
     <div class="app__bookmarks">
-        <b-container class="module module__bookmarks py-8 py-md-10">
+        <b-container v-if="loaded" class="module module__bookmarks py-8 py-md-10">
             <b-row align-h="center">
                 <b-col class="module__wrapper" cols="12" md="6">
                     <div class="module__content mb-5">
@@ -35,21 +35,21 @@
                 <b-col class="module__wrapper bookmarks__wrapper" cols="12">
                     <b-row class="position-relative mb-5" align-h="center">
                         <b-col cols="12" md="10" lg="9">
-                            <b-card-group columns>
+                            <b-card-group v-if="bookmarks.length > 0" columns>
                                 <b-card 
                                     no-body
                                     class="bookmark mb-3 p-0"
                                     tag="article"
                                     v-for="bookmark in filteredBookmarks"
-                                    :key="`bookmark-${bookmark._id}`"
-                                    @click="openLink(bookmark.link)"
+                                    :key="`bookmark-${bookmark.id}`"
                                 >
                                     <b-card-img-lazy
-                                        :src="`${assetsPath}${bookmark.image.path}`"
+                                        :src="bookmark.image"
+                                        :blank-src="bookmark.thumbnail"
                                         :alt="bookmark.title"
                                         top
                                     />
-                                    <b-card-title class="px-3 pt-4 pb-2">{{ bookmark.title }}</b-card-title>
+                                    <b-card-title @click="openLink(bookmark.link)" class="px-3 pt-4 pb-2">{{ bookmark.title }}</b-card-title>
                                     <b-card-body class="px-3 pt-0 pb-3 d-flex justify-content-space-between align-items-center">
                                         <div class="bookmark__category">
                                             <span class="bookmark__category--content">{{ bookmark.category[0] }}</span>
@@ -66,15 +66,14 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
-const assetsPath = `${process.env.API_HOST}/storage/uploads`
+import { mapGetters, mapActions } from 'vuex'
 export default {
     data() {
         return {
             bookmarks: [],
             animatedList: false,
             filterBy: 'All',
-            assetsPath
+            loaded: false
         }
     },
     computed: {
@@ -108,8 +107,10 @@ export default {
             await this.$store.dispatch('cockpit/fetch_bookmarks')
             this.$root.$emit('loading', false)
             this.bookmarks = this.getBookmarks
+            this.loaded = true
         } else {
             this.bookmarks = this.getBookmarks
+            this.loaded = true
         }
     }
 }

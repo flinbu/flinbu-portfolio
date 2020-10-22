@@ -11,7 +11,7 @@
         font-size: 12px;
     }
     .app__dark & {
-        background-color: lighten($body-bg-dark, 3%);
+        background-color: lighten($body-bg-dark, 5%);
         color: $white;
     }
 }
