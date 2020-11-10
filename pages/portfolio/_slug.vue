@@ -24,7 +24,16 @@
                     <access-post @success="protect = false"/>
                 </b-col>
                 <b-col v-else cols="12" class="module__wrapper portfolio__wrapper portfolio__content animated fadeIn">
-                    <div class="portfolio__content" v-html="post.content"/>
+                    <div class="portfolio__content--wrapper">
+                        <div
+                            v-for="(block, i) in post.content"
+                            :key="`content-block-${i}`"
+                            class="portfolio__content--block"
+                        >
+                            <h2 class="portfolio__content--title" v-if="block.showTitle" v-html="block.title"/>
+                            <div class="post__content" v-html="block.content"/>
+                        </div>
+                    </div>
                     <div v-if="post.assets && post.assets.length > 0" class="portfolio__assets mt-5">
                         <h2 class="mb-1">{{ $t('pages.portfolio.assets') }}</h2>
                         <ul class="portfolio__category--wrapper">

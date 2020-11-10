@@ -156,7 +156,13 @@ export const getters = {
 
         let post = state.posts.find( item => item._id == id)
 
-        let postContent = post.content.replace(/(?:^|\W)\/cms\/storage\/uploads(?:$|\W)/g, `"${assetsPath}/`)
+        let postContent = post.project_content ? post.project_content.map( block => {
+            return {
+                title: block.value.title,
+                showTitle: block.value.show_title,
+                content: block.value.content.replace(/(?:^|\W)\/cms\/storage\/uploads(?:$|\W)/g, `"${assetsPath}/`)
+            }
+        }) : ''
 
         let protectedContent = post.protected ? post.protected_content.replace(/(?:^|\W)\/cms\/storage\/uploads(?:$|\W)/g, `"${assetsPath}/`) : ''
 
