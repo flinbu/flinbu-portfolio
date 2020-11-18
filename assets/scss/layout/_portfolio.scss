@@ -257,6 +257,12 @@
             margin-bottom: 1em;
             font-weight: 700;
         }
+        p {
+            display: block;
+            &:last-child {
+                clear: both;
+            }
+        }
         img {
             display: block;
             width: 100% !important;
@@ -276,6 +282,16 @@
                     width: 100% !important;
                     max-width: 100% !important;
                     transform: translateX(0);
+                }
+            }
+            &.floating-image {
+                display: block;
+                width: 300px;
+                @include media-breakpoint-down(sm) {
+                    max-width: 80% !important;
+                    margin-left: auto;
+                    margin-right: auto;
+                    float: none !important;
                 }
             }
         }

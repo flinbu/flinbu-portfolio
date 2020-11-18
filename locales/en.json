@@ -60,7 +60,7 @@
         },
         "access_post": {
             "title": "This post is password protected",
-            "disclaimer": "Please enter the provided credentials to unlock it. Thanks!",
+            "disclaimer": "Please enter the provided credentials to unlock it. Thanks!<small class=\"d-block mx-auto mt-1 opacity-70\">If you don't have any, please contact me or use the chat in the bottom right corner. 🙃</small>",
             "email": "Email",
             "password": "Password",
             "cta": "Unlock",
