@@ -29,9 +29,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ],
     script: [
-      {
-        src: process.env.SMALLCHAT_ID ? `https://embed.small.chat/${process.env.SMALLCHAT_ID}.js` : ''
-      }
+      // {
+      //   src: process.env.SMALLCHAT_ID ? `https://embed.small.chat/${process.env.SMALLCHAT_ID}.js` : ''
+      // }
     ]
   },
   /*
