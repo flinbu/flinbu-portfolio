@@ -37,8 +37,7 @@
                                         @click="visitItem(item)"
                                     >
                                         <b-card-img-lazy
-                                            :src="item.thumbnail"
-                                            :blank-src="item.thumbnail_ph"
+                                            :src="`${assetsBase}/${item.image}`"
                                             :ref="`portfolioImage-${item.id}`"
                                             v-on:update:show="updateImg(`portfolioImage-${item.id}`)"
                                         />
@@ -68,7 +67,7 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import PortfolioFilters from '~/components/PortfolioFilters'
 export default {
     components: {
@@ -76,15 +75,16 @@ export default {
     },
     data() {
         return {
-            portfolio: [],
+            // portfolio: [],
             animatedList: false,
-            filterBy: 'All'
+            filterBy: 'All',
+            loading: false
         }
     },
     computed: {
         ...mapGetters({
-            getPortfolio: 'cockpit/getPortfolio',
-            getCategories: 'cockpit/getCategories'
+            portfolio: 'portfolio',
+            categories: 'categories'
         }),
         buttons() {
             return [
@@ -115,24 +115,41 @@ export default {
             return 12 / gridCols
         },
         filters() {
-            return this.getCategories
+            return this.categories
         },
         filteredItems() {
             if (this.filterBy == 'All') return this.portfolio
 
             return this.portfolio.filter( item => item.category.indexOf(this.filterBy) !== -1)
+        },
+        assetsBase() {
+            return `${process.env.apiUrl}/assets`
+        }
+    },
+    watch: {
+        loading(state) {
+            this.$root.$emit('loading', state)
         }
     },
     methods: {
-        visitItem({url, id}) {
+        ...mapActions({
+            get_portfolio: 'get_portfolio',
+            get_asset: 'get_asset'
+        }),
+        visitItem({slug, id}) {
             // window.open(url, "_blank")
-            this.$router.push(url)
+            this.$router.push(`/portfolio/${slug}`)
         },
         updateImg(el) {
             setTimeout( () => this.$refs[el][0].$el.classList.add('loaded'), 1000)
         },
         filterPortfolio(filter) {
             this.filterBy = filter
+        },
+        async fetch_data() {
+            this.loading = true
+            await this.get_portfolio()
+            this.loading = false
         }
     },
     head() {
@@ -141,17 +158,7 @@ export default {
         }
     },
     async fetch() {
-        if (!this.$store.state.cockpit.fetched) {
-            this.$root.$emit('loading', true)
-            await this.$store.dispatch('cockpit/fetch')
-            this.$root.$emit('loading', false)
-            this.portfolio = this.getPortfolio
-        } else {
-            this.portfolio = this.getPortfolio
-        }
-    },
-    mounted() {
-        // document.getElementById('Smallchat').classList.add('has-bottom-menu')
+        if (!this.portfolio) await this.fetch_data()
     }
 }
 </script>

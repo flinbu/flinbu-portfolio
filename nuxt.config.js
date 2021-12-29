@@ -98,7 +98,9 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     'nuxt-webfontloader',
-    'vue-scrollto/nuxt'
+    'vue-scrollto/nuxt',
+    '@pnodev/nuxt-directus',
+    'cookie-universal-nuxt'
   ],
   // Robots
   robots: { 
@@ -129,7 +131,15 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: process.env.API || 'https://api.flinbu.co'
+  },
+  directus: {
+    apiUrl: process.env.API || 'https://api.flinbu.co'
+  },
+  env: {
+    apiUrl: process.env.API || 'https://api.flinbu.co'
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/

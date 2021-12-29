@@ -73,7 +73,7 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import AccessPost from '~/components/AccessPost'
 export default {
     components: {
@@ -82,21 +82,20 @@ export default {
     data() {
         return {
             loading: true,
-            protect: false
+            protect: false,
+            post: false
         }
     },
     computed: {
         ...mapGetters({
-            getPostID: 'cockpit/getID',
-            getItem: 'cockpit/getItem'
+            getPostID: 'portfolio_id',
+            getItem: 'portfolio_item'
         }),
-        postID() {
-            return this.getPostID(this.$route.params.slug)
+        slug() {
+            return this.$route.params.slug
         },
-        post() {
-            return this.getItem(this.postID)
-        }, 
         postContent() {
+            if (!this.post) return ''
             return documentToHtmlString(this.post.content, options)
         },
         buttons() {
@@ -118,18 +117,33 @@ export default {
             ]
         },
         postProtected() {
+            if (!this.post) return false
             return this.post.protected ? this.protect : false
         }
     },
     watch: {
+        loading(state) {
+            this.$root.$emit('loading', state)
+        },
         post(data) {
             this.protect = data.protected
         }
+    },
+    methods: {
+        ...mapActions({
+            get_portfolio_item: 'get_portfolio_item'
+        })
     },
     mounted() {
         if (this.post) this.protect = this.post.protected
     },
     async fetch() {
+        this.loading = true
+        this.post = await this.get_portfolio_item({
+            field: 'slug',
+            value: this.slug
+        })
+        this.loading = false
         if (!this.$store.state.cockpit.fetched) {
             this.$root.$emit('loading', true)
             await this.$store.dispatch('cockpit/fetch')
