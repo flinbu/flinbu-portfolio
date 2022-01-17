@@ -20,7 +20,7 @@
                                 auto-height
                             >
                                 <div 
-                                    v-for="(step, index) in steps" 
+                                    v-for="(step, index) in creation_process" 
                                     :key="index" class="creation-process__step" 
                                     cols="12" 
                                 >
@@ -31,13 +31,13 @@
                                             class="creation-process__icon"
                                         />
                                         <h3 class="creation-process__title">
-                                            {{ index + 1}}. {{ $t(`pages.creation_process.${step.slug}.title`) }}
+                                            {{ index + 1}}. {{ lang == 'es' ? step.title_es : step.title }}
                                         </h3>
-                                        <div class="creation-process__description" v-html="$t(`pages.creation_process.${step.slug}.desc`)"/>
+                                        <div class="creation-process__description" v-html="lang == 'es' ? step.content_es : step.content"/>
                                         <div v-if="step.assets" class="creation-process__assets--wrapper">
                                             <h3 class="creation-process__title">{{ $t('pages.creation_process.assets') }}</h3>
                                             <ul class="creation-process__assets">
-                                                <li v-for="(asset, i) in step.assets" :key="`step-${index}-asset-${i}`">{{ $t(`pages.creation_process.${step.slug}.assets.${asset}`) }}</li>
+                                                <li v-for="(asset, i) in step.assets" :key="`step-${index}-asset-${i}`">{{ asset }}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -61,50 +61,18 @@
     </b-container>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import carousel from 'vue-owl-carousel'
 export default {
     components: {
         carousel
     },
     computed: {
-        steps() {
-            return [
-                {
-                    slug: 'brief',
-                    icon: 'paperclip',
-                    assets: 2
-                },
-                {
-                    slug: 'kick_off',
-                    icon: 'planet',
-                    assets: 4
-                },
-                {
-                    slug: 'user_research',
-                    icon: 'group',
-                    assets: 5
-                },
-                {
-                    slug: 'ia_wireframes',
-                    icon: 'sitemap',
-                    assets: 3
-                },
-                {
-                    slug: 'design',
-                    icon: 'pencil',
-                    assets: 4
-                },
-                {
-                    slug: 'delivery',
-                    icon: 'list-check',
-                    assets: 5
-                },
-                {
-                    slug: 'support',
-                    icon: 'search-alt',
-                    assets: false
-                }
-            ]
+        ...mapGetters({
+            creation_process: 'creation_process'
+        }),
+        lang() {
+            return this.$i18n.locale
         },
         labels() {
             return {

@@ -3,15 +3,6 @@
     <div class="module module__hero content h-md-100 pt-0 pb-0">
         <b-container fluid>
             <b-row class="h-md-100 pt-0 pb-6 py-md-8" align-v="start">
-                <!-- <glitch-image
-                    :src="require('~/assets/images/flinbu-poster.jpg')"
-                    :src-mobile="require('~/assets/images/flinbu-poster-mobile.jpg')"
-                    :src-dark="require('~/assets/images/flinbu-poster-dark.jpg')"
-                    :src-dark-mobile="require('~/assets/images/flinbu-poster-dark-mobile.jpg')"
-                    :slices="3"
-                    :alt="$t('site.title')"
-                    class="about__image"
-                /> -->
                 <b-col
                   cols="12"
                   md="6"
@@ -31,16 +22,16 @@
                   class="about__content"
                 >
                   <div class="mb-6 about__hello">
-                    <div class="about__title--emoji">🖖</div>
-                    <h2 class="about__title mb-4">{{ $t('pages.about.title') }}</h2>
-                    <div class="about__section--content" v-html="$t('pages.about.bio.content')"/>
+                    <div v-if="about.emoji" class="about__title--emoji">{{ about.emoji }}</div>
+                    <h2 class="about__title mb-4" v-html="about.introduction"/>
+                    <div class="about__section--content" v-html="about.content"/>
                   </div>
 
                   <!-- Skills -->
                   <div class="about__section mb-6">
                     <h3 class="about__section--title">{{ $t('pages.about.skills.title') }}</h3>
                     <ul class="about__skills">
-                      <li v-for="skill in 8" :key="`skill-${skill}`">{{ $t(`pages.about.skills.options.${skill}`) }}</li>
+                      <li v-for="(skill, i) in about.skills" :key="`skill-${i}`" v-html="skill"/>
                     </ul>
                   </div>
 
@@ -90,6 +81,7 @@
 </template>
 <script>
 
+import { mapGetters, mapActions } from 'vuex'
 import Hero2 from '~/components/modules/Hero2'
 import Timeline from '~/components/Timeline'
 
@@ -102,6 +94,9 @@ export default {
     Timeline
   },
   computed: {
+    ...mapGetters({
+      about: 'about'
+    }),
     buttons() {
       return [
         {
@@ -109,39 +104,42 @@ export default {
           label: this.$t('pages.about.process'),
           target: 'showProcess',
           icon: 'brain'
-          // image: 'creation-process.png'
         },
         {
           type: 'link',
           label: this.$t('pages.about.work'),
           target: '/portfolio',
           icon: 'coffee'
-          // image: 'my-work.png'
         },
         {
             type: "external",
             label: this.$t('pages.about.resume'),
-            target: process.env.RESUME_URL,
+            target: this.resume,
             theme: "white",
             icon: 'briefcase-alt'
-          // image: 'resume.png'
         }
       ]
     },
     experience() {
-      let timeline = []
-      for (let i = 0; i < 4; i++) {
-        timeline.push({
-          title: this.$t(`pages.about.experience.timeline.${i + 1}.title`),
-          company: this.$t(`pages.about.experience.timeline.${i + 1}.company`),
-          description: this.$t(`pages.about.experience.timeline.${i + 1}.description`),
-          date: this.$t(`pages.about.experience.timeline.${i + 1}.date`, {year: YEAR})
-        })
-      }
-      return timeline
+      if (!this.about) return false
+      return this.about.experience.map( item => {
+        return {
+          title: item.title,
+          company: item.company,
+          description: item.description,
+          date: `${item.year_from} ${item.year_to == 'current' ? YEAR : item.year_to}`
+        }
+      })
+    },
+    resume() {
+      if (!this.about) return false
+      return `${process.env.apiUrl}/assets/${this.about.resume}`
     }
   },
   methods: {
+    ...mapActions({
+      get_about: 'get_about'
+    }),
     contact() {
       this.$root.$emit('showContact')
     },
@@ -157,9 +155,9 @@ export default {
     }
   },
   async fetch() {
-    if (!this.$store.state.cockpit.fetched) {
+    if (!this.about) {
       this.$root.$emit('loading', true)
-      await this.$store.dispatch('cockpit/fetch')
+      await this.get_about()
       this.$root.$emit('loading', false)
     }
   }

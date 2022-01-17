@@ -30,7 +30,7 @@
                             :key="`content-block-${i}`"
                             class="portfolio__content--block"
                         >
-                            <h2 class="portfolio__content--title" v-if="block.showTitle" v-html="block.title"/>
+                            <h2 class="portfolio__content--title" v-if="block.show_title" v-html="block.title"/>
                             <div class="post__content" v-html="block.content"/>
                         </div>
                     </div>

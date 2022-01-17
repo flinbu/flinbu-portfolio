@@ -23,8 +23,7 @@
                     >   
                         <lazy-image
                             customClass="module__image img-fluid w-100"
-                            :src="mainImage.full"
-                            :palceholder="mainImage.ph"
+                            :src="home_content.data_visualization.image"
                         />
                     </b-col>
                 </b-row>
@@ -57,19 +56,13 @@ export default {
     },
     computed: {
         ...mapGetters({
-            homeData: 'cockpit/getHomeData'
+            home_content: 'home_content'
         }),
         labels() {
             return {
                 title: this.$t('pages.home.data_title').split(' '),
                 subtitle: this.$t('pages.home.data_subtitle'),
                 description: this.$t('pages.home.data_description')
-            }
-        },
-        mainImage() {
-            return {
-                full: this.homeData('data_visualization_image'),
-                ph: this.homeData('data_visualization_ph')
             }
         }
     }

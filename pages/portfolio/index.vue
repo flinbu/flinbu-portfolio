@@ -37,7 +37,7 @@
                                         @click="visitItem(item)"
                                     >
                                         <b-card-img-lazy
-                                            :src="`${assetsBase}/${item.image}`"
+                                            :src="`${assetsBase}/${item.featured_image}`"
                                             :ref="`portfolioImage-${item.id}`"
                                             v-on:update:show="updateImg(`portfolioImage-${item.id}`)"
                                         />

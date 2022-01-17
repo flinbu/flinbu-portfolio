@@ -185,17 +185,19 @@ export default {
             }
             this.loading = true
             try {
-                await cockpitClient.formSubmit('contact', {
-                    "Name": this.form.name,
-                    "Email": this.form.email,
-                    "Help": this.form.help,
-                    "Priority": this.form.priority,
-                    "Message": this.form.message
+                const msgBody = `<strong>Name:</strong> ${this.form.name}<br/><strong>Email:</strong> ${this.form.email}<br/><strong>Help:</strong> ${this.form.help}<br/><strong>Priority:</strong> ${this.form.priority}<br/><strong>Message:</strong> ${this.form.message}`
+                await this.$mail({
+                    to: process.env.CONTACT_EMAIL,
+                    from: process.env.SMTP_FROM,
+                    subject: `Contact: ${this.form.help} - ${this.form.priority}`,
+                    text: this.form.message,
+                    html: msgBody
                 })
                 this.loading = false
                 this.toast(this.$t('components.contact_form.messages.success'), 'success', true)
                 this.clearForm()
             } catch (err) {
+                console.error(err)
                 this.loading = false
                 this.toast(this.$t('components.contact_form.messages.error'), 'danger', true)
                 this.clearForm()

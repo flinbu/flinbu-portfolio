@@ -34,13 +34,12 @@
     </b-container>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    data() {
-        return {
-            contactEmail: 'me@flinbu.co'
-        }
-    },
     computed: {
+        ...mapGetters({
+            contact: 'contact'
+        }),
         formLabels() {
             return {
                 name: this.$t('components.contact_form.name'),
@@ -60,6 +59,10 @@ export default {
                 socialTitle: this.$t('pages.home.social_title').split(' '),
                 socialSubtitle: this.$t('pages.home.social_subtitle')
             }
+        },
+        contactEmail() {
+            if (!this.contact) return 
+            return this.contact.email
         }
     }
 }

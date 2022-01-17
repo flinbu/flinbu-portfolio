@@ -25,8 +25,7 @@
                     <b-col class="module__image--wrapper mb-6 mb-lg-0 order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                         <lazy-image
                             customClass="module__image module__image--front-dev img-fluid w-100"
-                            :src="mainImage.full"
-                            :placeholder="mainImage.ph"
+                            :src="home_content.front_dev.image"
                         />
                     </b-col>
                 </b-row>
@@ -60,7 +59,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            homeData: 'cockpit/getHomeData'
+            home_content: 'home_content'
         }),
         labels() {
             return {
@@ -68,20 +67,7 @@ export default {
                 subtitle: this.$t('pages.home.front_dev_subtitle'),
                 description: this.$t('pages.home.front_dev_description')
             }
-        },
-        mainImage() {
-            return {
-                full: this.homeData('front_dev_image'),
-                ph: this.homeData('front_dev_ph')
-            }
         }
-    },
-    mounted() {
-        let schemeCookie = this.$cookies.get('color-scheme')
-        this.scheme = schemeCookie ? schemeCookie : 'light'
-        this.$root.$on('scheme', scheme => {
-            this.scheme = scheme
-        })
     }
 }
 </script>

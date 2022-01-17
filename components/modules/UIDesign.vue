@@ -17,6 +17,7 @@
                 </b-col>
                 <b-col class="module__image--wrapper order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
                     <owl-carousel
+                        v-if="images"
                         :content="images"
                         class="carousel__fancy w-100"
                         autoplay
@@ -37,7 +38,7 @@ import { mapGetters } from 'vuex'
 export default {
     computed: {
         ...mapGetters({
-            homePortfolio: 'cockpit/getHomePortfolio'
+            home_portfolio: 'home_portfolio'
         }),
         labels() {
             let title = this.$t('pages.home.ux_design_title').split(' ')
@@ -66,9 +67,8 @@ export default {
             ]
         },
         images() {
-            if (!this.homePortfolio) return []
-
-            return this.homePortfolio
+            if (!this.home_portfolio) return false
+            return this.home_portfolio
         }
     }
 }

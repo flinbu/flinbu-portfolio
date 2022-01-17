@@ -10,13 +10,13 @@
             :key="index"
             :href="social.url"
             target="_blank"
-            :class="`social-menu__item social-menu__${social.network} social-menu__${iconSize}`"
+            :class="`social-menu__item social-menu__${social.icon} social-menu__${iconSize}`"
         >
             <icon
                 :name="social.icon"
                 type="logo"
             />
-            <span class="ml-1 social-menu__item--label" v-if="labels">{{ social.label }}</span>
+            <span class="ml-1 social-menu__item--label" v-if="labels">{{ social.name }}</span>
         </b-nav-item>
     </b-nav>
 </template>
@@ -51,7 +51,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            socialMenu: 'cockpit/getSocial'
+            socialMenu: 'social_links'
         })
     }
 }

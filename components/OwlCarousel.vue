@@ -41,7 +41,7 @@
             <span class="carousel__nav carousel__nav--prev">
                 <icon name="chevron-left" size="md"/>
             </span>
-        </template>
+        </template>o
         <template v-if="showNav" slot="next">
             <span class="carousel__nav carousel__nav--next">
                 <icon name="chevron-right" size="md"/>

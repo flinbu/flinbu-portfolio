@@ -48,13 +48,14 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    { src: '~plugins/cookies.js' },
-    { src: '~plugins/i18n.js' },
-    { src: '~plugins/modal.js', mode: 'client' },
-    { src: '~plugins/lazyload.js' },
-    { src: '~plugins/sticky-kit.js' },
-    { src: '~plugins/global-components.js' },
-    { src: '~plugins/visibility.js' }
+    { src: '~plugins/cookies' },
+    { src: '~plugins/i18n' },
+    { src: '~plugins/modal', mode: 'client' },
+    { src: '~plugins/lazyload' },
+    { src: '~plugins/sticky-kit' },
+    { src: '~plugins/global-components' },
+    { src: '~plugins/visibility' },
+    { src: '~/plugins/sendgrid'}
   ],
   router: {
     middleware: ['i18n'],
@@ -138,7 +139,9 @@ export default {
     apiUrl: process.env.API || 'https://api.flinbu.co'
   },
   env: {
-    apiUrl: process.env.API || 'https://api.flinbu.co'
+    apiUrl: process.env.API || 'https://api.flinbu.co',
+    CONTACT_EMAIL: process.env.CONTACT_EMAIL,
+    SMTP_FROM: process.env.SMTP_FROM
   },
   /*
   ** Build configuration
