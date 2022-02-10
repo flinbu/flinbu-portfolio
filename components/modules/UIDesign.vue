@@ -16,17 +16,19 @@
                     />
                 </b-col>
                 <b-col class="module__image--wrapper order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
-                    <owl-carousel
-                        v-if="images"
-                        :content="images"
-                        class="carousel__fancy w-100"
-                        autoplay
-                        loop
-                        :autoplay-timeout="3000"
-                        autoplay-hover-pause
-                        lazy
-                        item-click
-                    />
+                    <client-only>
+                        <owl-carousel
+                            v-if="images"
+                            :content="images"
+                            class="carousel__fancy w-100"
+                            autoplay
+                            loop
+                            :autoplay-timeout="3000"
+                            autoplay-hover-pause
+                            lazy
+                            item-click
+                        />
+                    </client-only>
                 </b-col>
             </b-row>
         </b-container>
