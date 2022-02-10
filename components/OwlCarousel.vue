@@ -1,53 +1,55 @@
 <template>
-    <carousel 
-        v-if="content && content.length > 0" 
-        class="owl-carousel__wrapper carousel"
-        :items="items"
-        :margin="margin"
-        :loop="loop"
-        :center="center"
-        :nav="nav"
-        :autoplay="autoplay"
-        :autoplay-speed="autoplaySpeed"
-        :rewind="rewind"
-        :mouse-drag="mouseDrag"
-        :touch-drag="touchDrag"
-        :pull-drag="pullDrag"
-        :free-drag="freeDrag"
-        :stage-padding="stagePadding"
-        :auto-width="autoWidth"
-        :auto-height="lazy ? lazy : autoHeight"
-        :dots="dots"
-        :autoplay-timeout="autoplayTimeout"
-        :autoplay-hover-pause="autoplayHoverPause"
-        :responsive="responsive"
-    >
-        <div v-for="(item, i) in content" :key="`item-${i}`" @click="itemClick ? goTo(item.url) : ''">
-            <lazy-image
-                v-if="lazy"
-                :src="item.image"
-                :placeholder="item.placeholder ? item.placeholder : ''"
-                fluid-grow
-            /> 
-            <b-img
-                v-else
-                :src="item.image"
-                fluid-grow
-            /> 
-        </div>
+    <client-only>
+        <carousel 
+            v-if="content && content.length > 0" 
+            class="owl-carousel__wrapper carousel"
+            :items="items"
+            :margin="margin"
+            :loop="loop"
+            :center="center"
+            :nav="nav"
+            :autoplay="autoplay"
+            :autoplay-speed="autoplaySpeed"
+            :rewind="rewind"
+            :mouse-drag="mouseDrag"
+            :touch-drag="touchDrag"
+            :pull-drag="pullDrag"
+            :free-drag="freeDrag"
+            :stage-padding="stagePadding"
+            :auto-width="autoWidth"
+            :auto-height="lazy ? lazy : autoHeight"
+            :dots="dots"
+            :autoplay-timeout="autoplayTimeout"
+            :autoplay-hover-pause="autoplayHoverPause"
+            :responsive="responsive"
+        >
+            <div v-for="(item, i) in content" :key="`item-${i}`" @click="itemClick ? goTo(item.url) : ''">
+                <lazy-image
+                    v-if="lazy"
+                    :src="item.image"
+                    :placeholder="item.placeholder ? item.placeholder : ''"
+                    fluid-grow
+                /> 
+                <b-img
+                    v-else
+                    :src="item.image"
+                    fluid-grow
+                /> 
+            </div>
 
-        <!-- Nav -->
-        <template v-if="showNav" slot="prev">
-            <span class="carousel__nav carousel__nav--prev">
-                <icon name="chevron-left" size="md"/>
-            </span>
-        </template>o
-        <template v-if="showNav" slot="next">
-            <span class="carousel__nav carousel__nav--next">
-                <icon name="chevron-right" size="md"/>
-            </span>
-        </template>
-    </carousel>
+            <!-- Nav -->
+            <template v-if="showNav" slot="prev">
+                <span class="carousel__nav carousel__nav--prev">
+                    <icon name="chevron-left" size="md"/>
+                </span>
+            </template>o
+            <template v-if="showNav" slot="next">
+                <span class="carousel__nav carousel__nav--next">
+                    <icon name="chevron-right" size="md"/>
+                </span>
+            </template>
+        </carousel>
+    </client-only>
 </template>
 <script>
 import carousel from 'vue-owl-carousel'
