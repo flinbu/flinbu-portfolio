@@ -39,7 +39,6 @@
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "brand-colors": "^2.1.1",
-    "cockpit-sdk": "^0.15.1",
     "lqip-loader": "^2.2.1",
     "nuxt-webfontloader": "^1.1.0",
     "sass": "^1.34.1",

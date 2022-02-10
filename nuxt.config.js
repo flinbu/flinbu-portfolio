@@ -1,8 +1,3 @@
-import CockpitSDK from 'cockpit-sdk'
-const cockpit = new CockpitSDK({
-  host: process.env.API_HOST,
-  accessToken: process.env.API_TOKEN
-})
 export default {
   /*
   ** Nuxt rendering mode
@@ -152,14 +147,6 @@ export default {
       config.node = {
         fs: 'empty'
       }
-    }
-  },
-  generate: {
-    async routes () {
-      const posts = await cockpit.collectionGet('portfolio')
-      return posts.entries.map( post => {
-        return `/portfolio/${post.title_slug}`
-      })
     }
   }
 }

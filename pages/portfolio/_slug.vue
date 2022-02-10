@@ -21,7 +21,6 @@
                 </b-col>
                 <b-col v-if="postProtected" cols="12" class="modue moduke__wrapper portfolio__wrapper portfolio__protection">
                     <div class="portfolio__content" v-html="post.protected_content"/>
-                    <access-post @success="protect = false"/>
                 </b-col>
                 <b-col v-else cols="12" class="module__wrapper portfolio__wrapper portfolio__content animated fadeIn">
                     <div class="portfolio__content--wrapper">
@@ -74,11 +73,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import AccessPost from '~/components/AccessPost'
 export default {
-    components: {
-        AccessPost
-    },
     data() {
         return {
             loading: true,
@@ -144,13 +139,6 @@ export default {
             value: this.slug
         })
         this.loading = false
-        if (!this.$store.state.cockpit.fetched) {
-            this.$root.$emit('loading', true)
-            await this.$store.dispatch('cockpit/fetch')
-            this.$root.$emit('loading', false)
-        } else {
-            this.$root.$emit('loading', false)
-        }
     }
 }
 </script>

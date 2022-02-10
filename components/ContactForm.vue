@@ -98,13 +98,7 @@
     </b-overlay>
 </template>
 <script>
-import CockpitSDK from 'cockpit-sdk'
 import { mathCaptcha } from '~/plugins/mathCaptcha'
-
-const cockpitClient = new CockpitSDK({
-    host: process.env.API_HOST,
-    accessToken: process.env.API_TOKEN
-})
 
 export default {
     props: {
