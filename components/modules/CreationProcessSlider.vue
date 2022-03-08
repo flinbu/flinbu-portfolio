@@ -8,53 +8,39 @@
                         :lightText="labels.title[1]"
                         :supText="labels.subtitle"
                         justify="center"
-                        class="text-center mb-5 mb-md-7"
+                        class="text-center mb-5"
                     />
                     <b-row class="creation-process__wrapper" align-v="stretch" align-h="center">
                         <b-col cols="12">
-                            <client-only>
-                                <carousel 
-                                    class="creation-process__carousel carousel"
-                                    :items="3"
-                                    :nav="false"
-                                    :responsive="responsive"
-                                    auto-height
+                            <hooper class="creation-process__carousel carousel" :settings="sliderSettings" ref="hooper">
+                                <slide
+                                    v-for="(step, i) in creation_process"
+                                    :key="`creation-process-${i}`"
+                                    :index="i"
+                                    class="creation-process__step"
                                 >
-                                    <div 
-                                        v-for="(step, index) in creation_process" 
-                                        :key="index" class="creation-process__step" 
-                                        cols="12" 
-                                    >
-                                        <div class="creation-process__content text-left">
-                                            <icon
-                                                v-if="step.icon"
-                                                :name="step.icon"
-                                                class="creation-process__icon"
-                                            />
-                                            <h3 class="creation-process__title">
-                                                {{ index + 1}}. {{ lang == 'es' ? step.title_es : step.title }}
-                                            </h3>
-                                            <div class="creation-process__description" v-html="lang == 'es' ? step.content_es : step.content"/>
-                                            <div v-if="step.assets" class="creation-process__assets--wrapper">
-                                                <h3 class="creation-process__title">{{ $t('pages.creation_process.assets') }}</h3>
-                                                <ul class="creation-process__assets">
-                                                    <li v-for="(asset, i) in step.assets" :key="`step-${index}-asset-${i}`">{{ asset }}</li>
-                                                </ul>
-                                            </div>
+                                    <div class="creation-process__content text-left">
+                                        <icon
+                                            v-if="step.icon"
+                                            :name="step.icon"
+                                            class="creation-process__icon"
+                                        />
+                                        <h3 class="creation-process__title">
+                                            {{ i + 1 }}. {{ lang === 'es' ? step.title_es : step.title }}
+                                        </h3>
+                                        <div class="creation-process__description" v-html="lang === 'es' ? step.content_es : step.content"/>
+                                        <div v-if="step.assets" class="creation-process__assets-wrapper">
+                                            <h3 class="creation-process__title">{{ $t('pages.creation_process.assets') }}</h3>
+                                            <ul class="creation-process__assets">
+                                                <li v-for="(asset, e) in step.assets" :key="`step-${i}-asset-${e}`">{{ asset }}</li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <template slot="prev">
-                                        <span class="owl-nav-prev">
-                                            <icon name="chevron-left" size="md"/>
-                                        </span>
-                                    </template>
-                                    <template slot="next">
-                                        <span class="owl-nav-next">
-                                            <icon name="chevron-right" size="md"/>
-                                        </span>
-                                    </template>
-                                </carousel>
-                            </client-only>
+                                </slide>
+
+                                <hooper-pagination slot="hooper-addons"/>
+                                <hooper-navigation slot="hooper-addons"/>
+                            </hooper>
                         </b-col>
                     </b-row>
                 </b-col>
@@ -64,10 +50,18 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import carousel from 'vue-owl-carousel'
+import {
+    Hooper,
+    Slide,
+    Pagination as HooperPagination,
+    Navigation as HooperNavigation
+} from 'hooper'
 export default {
     components: {
-        carousel
+        Hooper,
+        Slide,
+        HooperPagination,
+        HooperNavigation
     },
     computed: {
         ...mapGetters({
@@ -80,6 +74,28 @@ export default {
             return {
                 title: this.$t('pages.home.process_title').split(' '),
                 subtitle: this.$t('pages.home.process_subtitle')
+            }
+        },
+        sliderSettings() {
+            return {
+                itemsToShow: 3,
+                itemsToSlide: 3,
+                centerMode: false,
+                wheelControl: false,
+                breakpoints: {
+                    0: {
+                        itemsToShow: 1,
+                        itemsToSlide: 1
+                    },
+                    768: {
+                        itemsToShow: 2,
+                        itemsToSlide: 2
+                    },
+                    992: {
+                        itemsToShow: 3,
+                        itemsToSlide: 3
+                    }
+                }
             }
         },
         responsive() {
@@ -97,6 +113,12 @@ export default {
                     autoHeight: false
                 }
             }
+        }
+    },
+    methods: {
+        updateWidth() {
+            const hooper = this.$refs.hooper
+            if (hooper) hooper.updateWidth()
         }
     }
 }

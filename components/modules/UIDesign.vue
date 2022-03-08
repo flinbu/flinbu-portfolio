@@ -16,28 +16,51 @@
                     />
                 </b-col>
                 <b-col class="module__image--wrapper order-1 order-md-2 mb-5 mb-md-0" cols="12" md="6">
-                    <client-only>
-                        <owl-carousel
-                            v-if="images"
-                            :content="images"
-                            class="carousel__fancy w-100"
-                            autoplay
-                            loop
-                            :autoplay-timeout="3000"
-                            autoplay-hover-pause
-                            lazy
-                            item-click
-                        />
-                    </client-only>
+                    <div  v-if="images" class="embed-responsive embed-responsive-4by3">
+                        <hooper 
+                            class="embed-responsive-item carousel is-home animate__animated animate__fadeIn"
+                            :settings="settings"
+                        >
+                            <slide
+                                v-for="(item, i) in images"
+                                :key="`home-portfolio-${i}`"
+                                :index="i"
+                            >
+                                <div class="carousel__slide">
+                                    <b-link :to="item.url">
+                                        <b-img-lazy
+                                            :src="item.image"
+                                            fluid-grow
+                                        />
+                                    </b-link>
+                                </div>
+                            </slide>
+
+                            <hooper-pagination slot="hooper-addons"/>
+                            <hooper-navigation slot="hooper-addons"/>
+                        </hooper>
+                    </div>
+                    <b-skeleton-img v-else/>
                 </b-col>
             </b-row>
         </b-container>
     </b-container>
 </template>
 <script>
-import axios from 'axios'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import { 
+    Hooper, 
+    Slide, 
+    Pagination as HooperPagination, 
+    Navigation as HooperNavigation 
+} from 'hooper'
 export default {
+    components: {
+        Hooper,
+        Slide,
+        HooperNavigation,
+        HooperPagination
+    },
     computed: {
         ...mapGetters({
             home_portfolio: 'home_portfolio'
@@ -71,7 +94,22 @@ export default {
         images() {
             if (!this.home_portfolio) return false
             return this.home_portfolio
+        },
+        sliderSettings() {
+            return {
+                itemsToShow: 1,
+                centerMode: true,
+                infiniteScroll: true
+            }
         }
+    },
+    methods: {
+        ...mapActions({
+            portfolio_slider: 'get_portfolio_slider'
+        })
+    },
+    async mounted() {
+        if (!this.home_portfolio) await this.portfolio_slider()
     }
 }
 </script>

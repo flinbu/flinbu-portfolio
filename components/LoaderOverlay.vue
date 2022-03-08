@@ -10,8 +10,8 @@
 export default {
     data() {
         return {
-            status: true,
-            show: true,
+            status: false,
+            show: false,
             animationClass: ''
         }
     },

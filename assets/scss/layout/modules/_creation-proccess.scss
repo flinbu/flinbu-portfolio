@@ -104,69 +104,39 @@
     }
     &__carousel {
         position: relative;
-        .owl {
-            &-stage {
-                @extend .d-flex;
-                @extend .align-items-stretch;
-                @extend .justify-content-start;
-                @extend .flex-wrap;
-                // @include media-breakpoint-down(sm) {
-                //     align-items: flex-start;
-                // }
-                &-outer {
-                    overflow: visible !important;
-                }
+        min-height: 560px;
+        .hooper {
+            &-indicator {
+                background: rgba($white, .25);
             }
-            &-item {
-                margin-bottom: 50px;
-            }
-            &-nav {
-                &-prev,
-                &-next {
-                    display: flex;
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    z-index: 10;
-                    width: 50px;
-                    height: 50px;
-                    background-color: $white;
-                    border-radius: 10px;
-                    box-shadow: 5px 5px 20px rgba($black, .08);
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    color: $gray-dark;
-                    transition: .4s ease-in-out;
-                    .app__dark &,
-                    .modal__dark &  {
-                        background-color: lighten($body-bg-dark, 3%);
-                        color: $white;
-                    }
-                    @media (max-width: 380px) {
-                        width: 40px;
-                        height: 40px;
-                    }
-                }
-                &-prev {
-                    left: -10px;
-                }
-                &-next {
-                    right: -10px;
+            &-prev,
+            &-next {
+                display: flex;
+                width: 50px;
+                height: 50px;
+                background-color: $white;
+                border-radius: 10px;
+                box-shadow: 5px 5px 20px rgba($black, .08);
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                color: $gray-dark;
+                transition: .4s ease-in-out;
+                .app__dark &,
+                .modal__dark &  {
+                    background-color: lighten($body-bg-dark, 3%);
+                    color: $white;
                 }
                 @media (max-width: 380px) {
-                    &-prev {
-                        left: -25px;
-                    }
-                    &-next {
-                        right: -25px;
-                    }
+                    width: 40px;
+                    height: 40px;
                 }
-            }
-            &-dots {
-                bottom: 0 !important;
-                @include media-breakpoint-down(sm) {
-                    bottom: -20px !important;
+                svg {
+                    fill: $gray-dark;
+                    .app__dark &,
+                    .modal__dark &  {
+                        color: $white;
+                    }
                 }
             }
         }

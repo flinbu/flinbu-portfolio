@@ -51,9 +51,9 @@ Vue.component('SchemeSwitch', SchemeSwitch)
 import LangSwitch from '~/components/LangSwitch'
 Vue.component('LangSwitch', LangSwitch)
 
-// OwlCarousel
-import OwlCarousel from '~/components/OwlCarousel'
-Vue.component('OwlCarousel', OwlCarousel)
+// // OwlCarousel
+// import OwlCarousel from '~/components/OwlCarousel'
+// Vue.component('OwlCarousel', OwlCarousel)
 
 // Menu
 import AppMenu from '~/components/Menu'

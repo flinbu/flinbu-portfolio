@@ -33,6 +33,7 @@ export default {
   ** Global CSS
   */
   css: [
+    'hooper/dist/hooper.css',
     "@/assets/scss/app.scss"
   ],
   loading: {

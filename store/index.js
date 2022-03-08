@@ -35,7 +35,6 @@ export const actions = {
         }
       }
     }
-    dispatch('contentful/fetch', { root: true })
   },
 
   // Get site options
