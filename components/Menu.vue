@@ -68,11 +68,11 @@ export default {
                     label: this.$t('components.menu.contact'),
                     type: 'anchor'
                 },
-                {
-                    link: '/bookmarks',
-                    icon: 'bookmark',
-                    type: 'link'
-                }
+                // {
+                //     link: '/bookmarks',
+                //     icon: 'bookmark',
+                //     type: 'link'
+                // }
             ]
         },
         showMenu() {
