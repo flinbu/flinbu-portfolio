@@ -70,6 +70,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import PortfolioFilters from '~/components/PortfolioFilters'
 export default {
+  head() {
+    return {
+      title: this.$t('site.page_title', {
+        page_title: this.$t('pages.portfolio.title')
+      })
+    }
+  },
     components: {
         PortfolioFilters
     },
@@ -150,11 +157,6 @@ export default {
             this.loading = true
             await this.get_portfolio()
             this.loading = false
-        }
-    },
-    head() {
-        return {
-            title: `${this.$t('site.title')} - ${this.$t('pages.portfolio.title')}`
         }
     },
     async fetch() {

@@ -21,6 +21,13 @@ import CreationProcessSlider from '~/components/modules/CreationProcessSlider'
 import Contact from '~/components/modules/Contact'
 
 export default {
+  head() {
+    return {
+      title: this.$t('site.page_title', {
+        page_title: this.$t('site.subtitle')
+      })
+    }
+  },
   components: {
     Hero,
     Hero2,

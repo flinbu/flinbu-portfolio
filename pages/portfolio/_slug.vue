@@ -74,6 +74,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
+    head() {
+        return {
+            title: this.$t('pages.portfolio.page_title', {
+                page_title: this.post.title
+            })
+        }
+    },
     data() {
         return {
             loading: true,

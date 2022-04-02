@@ -8,7 +8,8 @@
         "title": "Felipe Linares",
         "subtitle": "Diseñador, desarrollador y consultor UX",
         "copyline": "Creo productos fáciles y magnificos para la gente",
-        "copyright": "© {year}. Felipe Linares. Todos los derechos reservados."
+        "copyright": "© {year}. Felipe Linares. Todos los derechos reservados.",
+        "page_title": "@:site.title - {page_title}"
     },
     "components": {
         "contact_form": {
@@ -115,6 +116,7 @@
             "social_subtitle": "Mi huella digital"
         },
         "about": {
+            "page_title": "Acerca de",
             "title": "Hi there! I’m a UX designer, developer and consultant working remotely from home.",
             "bio": {
                 "title": "Bio",
@@ -235,6 +237,7 @@
             }
         },
         "portfolio": {
+            "page_title": "@:site.title - Portafolio - {page_title}",
             "title": "Portafolio Reciente",
             "cta": "👉 Mira el portafolio en Dribbble",
             "assets": "Research assets",

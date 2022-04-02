@@ -8,7 +8,8 @@
         "title": "Felipe Linares",
         "subtitle": "UX Designer, Developer & Consultant",
         "copyline": "I create easy and beautiful products for people",
-        "copyright": "© {year}. Felipe Linares. All rights reserved."
+        "copyright": "© {year}. Felipe Linares. All rights reserved.",
+        "page_title": "@:site.title - {page_title}"
     },
     "components": {
         "contact_form": {
@@ -126,6 +127,7 @@
             "social_subtitle": "My digital print"
         },
         "about": {
+            "page_title": "About",
             "title": "Hi there! I’m a UX designer, developer and consultant working remotely from home.",
             "bio": {
                 "title": "Bio",
@@ -246,6 +248,7 @@
             }
         },
         "portfolio": {
+            "page_title": "@:site.title - Portfolio - {page_title}",
             "title": "Latest Portfolio",
             "cta": "👉 Check Dribbble portfolio",
             "assets": "Research assets",

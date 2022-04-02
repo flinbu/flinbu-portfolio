@@ -88,6 +88,13 @@ import Timeline from '~/components/Timeline'
 const YEAR = new Date().getFullYear()
 
 export default {
+  head() {
+    return {
+      title: this.$t('site.page_title', {
+        page_title: this.$t('pages.about.page_title')
+      })
+    }
+  },
   hideFooter: true,
   components: {
     Hero2,
