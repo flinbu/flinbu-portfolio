@@ -1,0 +1,30 @@
+{
+    "name": "flinbu portfolio - Vue CLI & Node.js",
+    "dockerFile": "DockerFile",
+
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "files.trimTrailingWhitespace": true,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true 
+        }
+    },
+
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "octref.vetur",
+        "dariofuzinato.vue-peek",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "CoenraadS.bracket-pair-colorizer",
+        "streetsidesoftware.code-spell-checker",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "mhutchie.git-graph"
+    ],
+
+    "forwardPorts": [
+        8080
+    ]
+}
